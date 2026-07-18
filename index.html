@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>61^ Sagra della Trota e del Formaggio Salato</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --verde:    #2a4a1e;
+      --verde-m:  #3d6b2c;
+      --oro:      #c8941a;
+      --oro-c:    #f5e6c0;
+      --acqua:    #3d7a6e;
+      --acqua-c:  #d6ede9;
+      --crema:    #fdf8f0;
+      --testo:    #2c1a0e;
+      --grigio:   #7a6a5a;
+      --main-nav-h: 50px;
+      --cat-nav-h: 46px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--crema);
+      color: var(--testo);
+      line-height: 1.6;
+    }
+
+    /* ─── HERO ─────────────────────────────────── */
+    .hero {
+      background: linear-gradient(160deg, var(--verde) 0%, var(--verde-m) 50%, var(--acqua) 100%);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+      scroll-margin-top: calc(var(--main-nav-h) + 4px);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 0 auto 1.4rem;
+      position: relative;
+    }
+    .logo-sagra {
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px dashed rgba(255,255,255,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: .62rem;
+      line-height: 1.3;
+      letter-spacing: .03em;
+      color: rgba(255,255,255,.85);
+      padding: .3rem;
+    }
+    .logo-sagra img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 6vw, 2.8rem);
+      line-height: 1.2;
+      margin-bottom: .4rem;
+    }
+    .hero h1 span { color: var(--oro-c); }
+    .hero .edizione {
+      font-size: .9rem;
+      opacity: .8;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--oro-c);
+      margin: 1.2rem auto;
+      border-radius: 2px;
+    }
+    .hero-date {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: .35rem .6rem;
+      font-size: 1rem;
+      opacity: .9;
+    }
+    .hero-date-sep { opacity: .6; }
+
+    /* ─── BOTTONI GENERICI ───────────────────────── */
+    .btn {
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      border-radius: 2rem;
+      padding: .6rem 1.3rem;
+      font-family: 'Inter', sans-serif;
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .02em;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-verde { background: var(--verde); color: #fff; }
+    .btn-ghost { background: #f0ece8; color: var(--testo); }
+
+    /* ─── NAV PRINCIPALE ─────────────────────────── */
+    .main-nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--verde);
+      display: flex;
+      justify-content: center;
+      gap: .4rem;
+      padding: .5rem .6rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,.15);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .main-nav::-webkit-scrollbar { display: none; }
+    .main-btn {
+      position: relative;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,.9);
+      border-radius: 2rem;
+      padding: .5rem 1rem;
+      font-size: .8rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      letter-spacing: .03em;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .2s, color .2s;
+    }
+    .main-btn:hover, .main-btn.active {
+      background: var(--oro);
+      border-color: var(--oro);
+      color: #fff;
+    }
+    .nav-cart-badge {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 4px;
+      background: #c0392b;
+      color: #fff;
+      border-radius: 999px;
+      font-size: .65rem;
+      font-weight: 700;
+    }
+
+    /* ─── NAV CATEGORIE (dentro Menù) ────────────── */
+    .cat-nav {
+      position: sticky;
+      top: var(--main-nav-h);
+      z-index: 100;
+      background: var(--verde-m);
+      overflow-x: auto;
+      display: flex;
+      gap: .5rem;
+      padding: .55rem 1rem;
+      scrollbar-width: none;
+    }
+    .cat-nav::-webkit-scrollbar { display: none; }
+    .cat-btn {
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      border-radius: 2rem;
+      padding: .38rem .9rem;
+      font-size: .78rem;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+      white-space: nowrap;
+    }
+    .cat-btn:hover, .cat-btn.active {
+      background: var(--oro);
+      border-color: var(--oro);
+      color: #fff;
+    }
+
+    /* ─── SEZIONI DI PAGINA ──────────────────────── */
+    .page-section { scroll-margin-top: calc(var(--main-nav-h) + 6px); }
+
+    .section-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.4rem 1rem 4rem;
+    }
+
+    .menu-section {
+      margin-top: 2.8rem;
+      scroll-margin-top: calc(var(--main-nav-h) + var(--cat-nav-h) + 10px);
+    }
+    .menu-section:first-of-type { margin-top: 0; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      margin-bottom: 1.4rem;
+    }
+    .section-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .section-icon.verde  { background: #e8f0e4; }
+    .section-icon.acqua  { background: var(--acqua-c); }
+    .section-icon.oro    { background: #faefd4; }
+    .section-icon.grigio { background: #f0ece8; }
+
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--verde);
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, #ccc, transparent);
+    }
+    .section-intro {
+      font-size: .9rem;
+      color: var(--grigio);
+      margin: -.8rem 0 1.6rem;
+    }
+
+    /* ─── CARD PIATTO ───────────────────────────── */
+    .dish-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 12px rgba(44,26,14,.07);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .dish-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(44,26,14,.12);
+    }
+    .dish-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: linear-gradient(135deg, #e8e0d5 0%, #d4c8b8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      color: #b0a090;
+    }
+    .dish-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .dish-body {
+      padding: 1.1rem 1.2rem 1.3rem;
+    }
+    .dish-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--testo);
+      margin-bottom: .5rem;
+    }
+    .dish-desc {
+      font-size: .88rem;
+      color: var(--grigio);
+      line-height: 1.65;
+      margin-bottom: .7rem;
+    }
+    .dish-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+    .tag {
+      font-size: .7rem;
+      padding: .2rem .6rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      letter-spacing: .03em;
+    }
+    .tag-verde  { background: #e8f0e4; color: var(--verde); }
+    .tag-acqua  { background: var(--acqua-c); color: var(--acqua); }
+    .tag-oro    { background: #faefd4; color: #8a6010; }
+    .tag-grigio { background: #f0ece8; color: #5a4a3a; }
+    .tag-verde-dark { background: var(--verde); color: #fff; }
+
+    /* ─── CARD VARIANTI (trota) ─────────────────── */
+    .variant-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .6rem;
+      margin-top: .8rem;
+    }
+    @media (max-width: 480px) {
+      .variant-cards { grid-template-columns: 1fr; }
+    }
+    .variant-card {
+      background: var(--acqua-c);
+      border-radius: 10px;
+      padding: .7rem .8rem;
+      text-align: center;
+    }
+    .variant-card .v-icon { font-size: 1.4rem; margin-bottom: .3rem; }
+    .variant-card .v-name {
+      font-family: 'Playfair Display', serif;
+      font-size: .9rem;
+      color: var(--acqua);
+    }
+    .variant-card .v-desc {
+      font-size: .75rem;
+      color: var(--grigio);
+      margin-top: .2rem;
+      line-height: 1.4;
+    }
+    .variant-card .stepper { margin: .6rem auto 0; }
+
+    /* ─── STEPPER CARRELLO ───────────────────────── */
+    .stepper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .7rem;
+      margin-top: .9rem;
+      background: var(--crema);
+      border-radius: 2rem;
+      padding: .35rem .5rem;
+      width: fit-content;
+    }
+    .stepper button {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid #d8cfc2;
+      background: #fff;
+      color: var(--verde);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s;
+    }
+    .stepper button:hover { background: var(--oro-c); }
+    .stepper .qty-value {
+      min-width: 1.4rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: .95rem;
+    }
+    .stepper-label {
+      font-size: .72rem;
+      color: var(--grigio);
+      letter-spacing: .02em;
+    }
+
+    /* ─── ATTIVITÀ / PROGRAMMA ───────────────────── */
+    .schedule-tabs {
+      display: flex;
+      gap: .5rem;
+      margin-bottom: 1.4rem;
+      flex-wrap: wrap;
+    }
+    .day-btn {
+      background: #fff;
+      border: 1px solid #e2d9c9;
+      color: var(--verde);
+      border-radius: 2rem;
+      padding: .5rem 1.1rem;
+      font-size: .85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .day-btn:hover, .day-btn.active {
+      background: var(--verde);
+      border-color: var(--verde);
+      color: #fff;
+    }
+    .schedule-day { display: none; }
+    .schedule-day.active { display: block; }
+    .schedule-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .9rem;
+      background: #fff;
+      border-radius: 14px;
+      padding: .9rem 1.1rem;
+      margin-bottom: .7rem;
+      box-shadow: 0 2px 10px rgba(44,26,14,.06);
+    }
+    .schedule-time {
+      flex-shrink: 0;
+      background: var(--oro-c);
+      color: #8a6010;
+      font-weight: 700;
+      font-size: .78rem;
+      border-radius: 8px;
+      padding: .4rem .55rem;
+      min-width: 54px;
+      text-align: center;
+    }
+    .schedule-icon { font-size: 1.3rem; line-height: 1.3; }
+    .schedule-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--testo);
+    }
+    .schedule-sub {
+      font-size: .82rem;
+      color: var(--grigio);
+      margin-top: .15rem;
+    }
+
+    /* ─── PRENOTAZIONI / CARRELLO ────────────────── */
+    .cart-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.3rem 1.3rem 1.5rem;
+      box-shadow: 0 2px 12px rgba(44,26,14,.07);
+    }
+    .cart-empty {
+      text-align: center;
+      color: var(--grigio);
+      font-size: .9rem;
+      padding: 1rem 0 1.4rem;
+    }
+    .cart-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .8rem 0;
+      border-bottom: 1px solid #f0ece4;
+    }
+    .cart-row:last-child { border-bottom: none; }
+    .cart-item-name {
+      font-family: 'Playfair Display', serif;
+      font-size: .98rem;
+      color: var(--testo);
+    }
+    .cart-row .stepper { margin-top: 0; }
+    .cart-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.2rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .cart-total-badge {
+      font-size: .85rem;
+      color: var(--grigio);
+    }
+    .cart-total-badge strong { color: var(--verde); }
+    .cart-note {
+      font-size: .82rem;
+      color: var(--grigio);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed #e2d9c9;
+    }
+
+    /* ─── FAB CARRELLO ───────────────────────────── */
+    .cart-fab {
+      position: fixed;
+      bottom: 1.3rem;
+      right: 1.3rem;
+      z-index: 300;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--oro);
+      color: #fff;
+      border: none;
+      font-size: 1.5rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.25);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fab-badge {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      min-width: 22px;
+      height: 22px;
+      padding: 0 5px;
+      background: #c0392b;
+      color: #fff;
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 700;
+      border: 2px solid var(--crema);
+    }
+
+    /* ─── FOOTER ────────────────────────────────── */
+    footer {
+      background: var(--verde);
+      color: rgba(255,255,255,.75);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: .82rem;
+    }
+    footer strong { color: #fff; }
+    .footer-proloco-logo {
+      display: block;
+      height: 40px;
+      width: auto;
+      margin: 0 auto .8rem;
+      border-radius: 6px;
+    }
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--oro-c);
+      margin-bottom: .4rem;
+    }
+    .footer-divider {
+      width: 32px;
+      height: 2px;
+      background: var(--oro);
+      margin: .8rem auto;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV PRINCIPALE ═══════════════════════════════════════ -->
+<nav class="main-nav">
+  <button class="main-btn active" onclick="scrollToMain('home', this)">🏠 Home</button>
+  <button class="main-btn" onclick="scrollToMain('attivita', this)">🎉 Attività</button>
+  <button class="main-btn" onclick="scrollToMain('menu', this)">🍽️ Menù</button>
+  <button class="main-btn" onclick="scrollToMain('prenotazioni', this)">
+    🛒 Prenotazioni
+    <span class="nav-cart-badge cart-badge">0</span>
+  </button>
+</nav>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════ -->
+<header class="hero" id="home">
+  <!-- Il logo della sagra è ancora in lavorazione: quando è pronto, sostituisci
+       il contenuto del div qui sotto con <img src="logo-sagra.png" alt="Logo Sagra"> -->
+  <div class="hero-logos">
+    <div class="logo-sagra">
+      Logo<br>sagra<br>in arrivo
+    </div>
+  </div>
+
+  <p class="edizione">61ª edizione</p>
+  <h1>Sagra della <span>Trota</span><br>e del <span>Formaggio Salato</span></h1>
+  <div class="hero-divider"></div>
+  <div class="hero-date">
+    <span>📅 8-9 e 13-16 Agosto</span>
+    <span class="hero-date-sep">·</span>
+    <span>📍 Tramonti di Sotto</span>
+  </div>
+</header>
+
+<!-- ═══ ATTIVITÀ ═══════════════════════════════════════════ -->
+<section class="page-section" id="attivita">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-icon verde">🎉</div>
+      <h2>Attività &amp; Programma</h2>
+      <div class="section-line"></div>
+    </div>
+    <p class="section-intro">Musica dal vivo la sera e attività per tutta la famiglia durante il giorno. Ecco il programma della sagra.</p>
+
+    <!-- Modifica qui giorni, orari, nomi dei gruppi musicali e degli eventi con il programma reale -->
+    <div class="schedule-tabs">
+      <button class="day-btn active" onclick="showDay('day1', this)">Venerdì</button>
+      <button class="day-btn" onclick="showDay('day2', this)">Sabato</button>
+      <button class="day-btn" onclick="showDay('day3', this)">Domenica</button>
+    </div>
+
+    <div class="schedule-day active" id="day1">
+      <div class="schedule-item">
+        <div class="schedule-time">19:00</div>
+        <div class="schedule-icon">🍽️</div>
+        <div>
+          <div class="schedule-title">Apertura stand gastronomico</div>
+          <div class="schedule-sub">Cucina aperta con tutte le specialità del menù</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">21:00</div>
+        <div class="schedule-icon">🎸</div>
+        <div>
+          <div class="schedule-title">Serata musicale live</div>
+          <div class="schedule-sub">Si esibisce [Nome Band] — musica dal vivo in piazza</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="schedule-day" id="day2">
+      <div class="schedule-item">
+        <div class="schedule-time">10:00</div>
+        <div class="schedule-icon">🎈</div>
+        <div>
+          <div class="schedule-title">Giochi e animazione per bambini</div>
+          <div class="schedule-sub">Area giochi curata per i più piccoli</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">12:00</div>
+        <div class="schedule-icon">🍽️</div>
+        <div>
+          <div class="schedule-title">Pranzo in sagra</div>
+          <div class="schedule-sub">Stand gastronomico aperto a pranzo</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">19:00</div>
+        <div class="schedule-icon">🍽️</div>
+        <div>
+          <div class="schedule-title">Apertura stand gastronomico serale</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">21:00</div>
+        <div class="schedule-icon">🎶</div>
+        <div>
+          <div class="schedule-title">Serata musicale live</div>
+          <div class="schedule-sub">Si esibisce [Nome Band] — musica dal vivo in piazza</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="schedule-day" id="day3">
+      <div class="schedule-item">
+        <div class="schedule-time">12:00</div>
+        <div class="schedule-icon">🍽️</div>
+        <div>
+          <div class="schedule-title">Pranzo in sagra</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">15:30</div>
+        <div class="schedule-icon">🎪</div>
+        <div>
+          <div class="schedule-title">Animazione e giochi per bambini</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">19:00</div>
+        <div class="schedule-icon">🍽️</div>
+        <div>
+          <div class="schedule-title">Apertura stand gastronomico</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">21:00</div>
+        <div class="schedule-icon">🎷</div>
+        <div>
+          <div class="schedule-title">Serata musicale live</div>
+          <div class="schedule-sub">Si esibisce [Nome Band] — gran finale della sagra</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MENÙ ═══════════════════════════════════════════════ -->
+<section class="page-section" id="menu">
+
+  <nav class="cat-nav">
+    <button class="cat-btn active" onclick="scrollToCat('#antipasti', this)">🍽️ Antipasti</button>
+    <button class="cat-btn" onclick="scrollToCat('#gnocchi', this)">🥟 Gnocchi</button>
+    <button class="cat-btn" onclick="scrollToCat('#trota', this)">🐟 Trota</button>
+    <button class="cat-btn" onclick="scrollToCat('#formaggi', this)">🧀 Formaggi</button>
+    <button class="cat-btn" onclick="scrollToCat('#grigliata', this)">🔥 Grigliata</button>
+    <button class="cat-btn" onclick="scrollToCat('#contorni', this)">🫘 Contorni</button>
+    <button class="cat-btn" onclick="scrollToCat('#altro', this)">🌿 Altro</button>
+  </nav>
+
+  <main class="section-wrap">
+
+    <!-- ═══ ANTIPASTI ══════════════════════════════════════ -->
+    <section class="menu-section" id="antipasti">
+      <div class="section-header">
+        <div class="section-icon oro">🍽️</div>
+        <h2>Antipasti</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">
+          <img src="tris%20della%20val%20tramontina.jpg" alt="Tris della Val Tramontina" loading="lazy">
+        </div>
+        <div class="dish-body">
+          <h3 class="dish-name">Tris della Val Tramontina</h3>
+          <p class="dish-desc">
+            Un assaggio completo delle eccellenze della vallata in un unico piatto: salame nostrano, formaggio salato e il tradizionale pestàt — il battuto di lardo ed erbe aromatiche tipico della Val Tramontina. Il modo migliore per iniziare il pasto scoprendo in un solo boccone tutta la tradizione norcina e casearia del territorio.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-oro">Specialità della sagra</span>
+            <span class="tag tag-grigio">Salame · Formaggio salato · Pestàt</span>
+          </div>
+          <div class="stepper" data-item="Tris della Val Tramontina">
+            <button type="button" onclick="changeQty('Tris della Val Tramontina', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Tris della Val Tramontina', 1)">+</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ GNOCCHI ══════════════════════════════════════════ -->
+    <section class="menu-section" id="gnocchi">
+      <div class="section-header">
+        <div class="section-icon verde">🥟</div>
+        <h2>Gnocchi</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">
+          <img src="gnocchi%20pitina%20pomodorini.jpg" alt="Gnocchi alla Pitina, Rucola e Pomodorini" loading="lazy">
+        </div>
+        <div class="dish-body">
+          <h3 class="dish-name">Gnocchi alla Pitina, Rucola e Pomodorini</h3>
+          <p class="dish-desc">
+            La pitina è un salume antico e prezioso, nato dalla necessità di conservare la carne di ovino e selvaggina nelle valli friulane. Affumicata e stagionata secondo tradizione, si sposa con la freschezza della rucola e l'acidità dei pomodorini in un piatto che racconta secoli di storia contadina.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-verde">Prodotto tipico</span>
+            <span class="tag tag-grigio">Pitina · Rucola · Pomodorini</span>
+          </div>
+          <div class="stepper" data-item="Gnocchi alla Pitina, Rucola e Pomodorini">
+            <button type="button" onclick="changeQty('Gnocchi alla Pitina, Rucola e Pomodorini', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Gnocchi alla Pitina, Rucola e Pomodorini', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">
+          <img src="gnocchi%20formaggio%20del%20cit.jpg" alt="Gnocchi al Formai dal Cit" loading="lazy">
+        </div>
+        <div class="dish-body">
+          <h3 class="dish-name">Gnocchi al Formai dal Cit</h3>
+          <p class="dish-desc">
+            Il "formai dal cit" — letteralmente "formaggio del barattolo" — è il protagonista assoluto della nostra sagra. Stagionato sotto sale in vasi di terracotta con erbe aromatiche di montagna, sprigiona un sapore intenso e avvolgente che si scioglie sugli gnocchi creando un condimento unico, impossibile da trovare altrove.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-oro">Specialità della sagra</span>
+            <span class="tag tag-grigio">Formai dal cit · Gnocchi fatti a mano</span>
+          </div>
+          <div class="stepper" data-item="Gnocchi al Formai dal Cit">
+            <button type="button" onclick="changeQty('Gnocchi al Formai dal Cit', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Gnocchi al Formai dal Cit', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">🍅</div>
+        <div class="dish-body">
+          <h3 class="dish-name">Gnocchi al Pomodoro</h3>
+          <p class="dish-desc">
+            La semplicità che non tradisce mai. Un sugo di pomodoro saporito esalta la morbidezza degli gnocchi fatti a mano secondo la ricetta di casa. Il piatto che mette d'accordo tutti, dai bambini ai nonni.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-grigio">Gnocchi fatti a mano · Sugo di pomodoro</span>
+          </div>
+          <div class="stepper" data-item="Gnocchi al Pomodoro">
+            <button type="button" onclick="changeQty('Gnocchi al Pomodoro', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Gnocchi al Pomodoro', 1)">+</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TROTA ════════════════════════════════════════════ -->
+    <section class="menu-section" id="trota">
+      <div class="section-header">
+        <div class="section-icon acqua">🐟</div>
+        <h2>La Trota</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">🐟</div>
+        <div class="dish-body">
+          <h3 class="dish-name">Filetto di Trota</h3>
+          <p class="dish-desc">
+            La trota è l'anima di questa sagra. Allevata nelle acque fredde e cristalline dei nostri torrenti di montagna, ha una carne delicata e saporita che non richiede elaborazioni complesse. La serviamo in tre varianti per soddisfare ogni palato, mantenendo sempre al centro la qualità del pesce.
+          </p>
+          <div class="variant-cards">
+            <div class="variant-card">
+              <div class="v-icon">🌿</div>
+              <div class="v-name">alle Erbe</div>
+              <div class="v-desc">Erbe aromatiche di montagna, burro, limone</div>
+              <div class="stepper" data-item="Trota alle Erbe">
+                <button type="button" onclick="changeQty('Trota alle Erbe', -1)">–</button>
+                <span class="qty-value">0</span>
+                <button type="button" onclick="changeQty('Trota alle Erbe', 1)">+</button>
+              </div>
+            </div>
+            <div class="variant-card">
+              <div class="v-icon">🍋</div>
+              <div class="v-name">agli Agrumi</div>
+              <div class="v-desc">Scorza di agrumi, timo, un tocco di miele</div>
+              <div class="stepper" data-item="Trota agli Agrumi">
+                <button type="button" onclick="changeQty('Trota agli Agrumi', -1)">–</button>
+                <span class="qty-value">0</span>
+                <button type="button" onclick="changeQty('Trota agli Agrumi', 1)">+</button>
+              </div>
+            </div>
+            <div class="variant-card">
+              <div class="v-icon">🫒</div>
+              <div class="v-name">Mediterranea</div>
+              <div class="v-desc">Pomodoro, olive, capperi e origano</div>
+              <div class="stepper" data-item="Trota Mediterranea">
+                <button type="button" onclick="changeQty('Trota Mediterranea', -1)">–</button>
+                <span class="qty-value">0</span>
+                <button type="button" onclick="changeQty('Trota Mediterranea', 1)">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="dish-tags" style="margin-top:.9rem">
+            <span class="tag tag-acqua">Pesce fresco locale</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FORMAGGI ═════════════════════════════════════════ -->
+    <section class="menu-section" id="formaggi">
+      <div class="section-header">
+        <div class="section-icon oro">🧀</div>
+        <h2>Formaggi</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">🧀</div>
+        <div class="dish-body">
+          <h3 class="dish-name">Tris di Formaggi</h3>
+          <p class="dish-desc">
+            Una selezione che racconta la tradizione casearia della nostra vallata: formaggio salato, latteria e pecorino, tre stagionature e caratteri diversi da assaporare fianco a fianco. Un viaggio nei sapori del territorio da gustare lentamente, magari con un buon calice di vino friulano.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-oro">Formaggio salato · Latteria · Pecorino</span>
+            <span class="tag tag-grigio">Produzione locale</span>
+          </div>
+          <div class="stepper" data-item="Tris di Formaggi">
+            <button type="button" onclick="changeQty('Tris di Formaggi', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Tris di Formaggi', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">
+          <img src="frico.jpg" alt="Frico con Polenta" loading="lazy">
+        </div>
+        <div class="dish-body">
+          <h3 class="dish-name">Frico con Polenta</h3>
+          <p class="dish-desc">
+            Il frico è uno dei simboli indiscussi della cucina friulana. Formaggio fuso e fatto dorare in padella fino a diventare croccante fuori e filante dentro, servito su un letto di polenta fumante. Un piatto che scalda il cuore e che non si trova uguale da nessun'altra parte al mondo.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-verde-dark">Tradizione friulana</span>
+            <span class="tag tag-oro">Formaggio · Polenta</span>
+          </div>
+          <div class="stepper" data-item="Frico con Polenta">
+            <button type="button" onclick="changeQty('Frico con Polenta', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Frico con Polenta', 1)">+</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ GRIGLIATA ════════════════════════════════════════ -->
+    <section class="menu-section" id="grigliata">
+      <div class="section-header">
+        <div class="section-icon oro">🔥</div>
+        <h2>Dalla Griglia</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">🥩</div>
+        <div class="dish-body">
+          <h3 class="dish-name">Grigliata Mista con Polenta</h3>
+          <p class="dish-desc">
+            Il profumo della brace è il profumo della sagra. Carni selezionate grigliate al momento, servite con la polenta di mais bianco cotta lentamente nel paiolo di rame. Un piatto abbondante e conviviale, simbolo delle feste di piazza che uniscono la comunità da generazioni.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-oro">Alla brace · Polenta</span>
+          </div>
+          <div class="stepper" data-item="Grigliata Mista con Polenta">
+            <button type="button" onclick="changeQty('Grigliata Mista con Polenta', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Grigliata Mista con Polenta', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">
+          <img src="salsiccia%20e%20polenta.jpg" alt="Salsiccia con Polenta" loading="lazy">
+        </div>
+        <div class="dish-body">
+          <h3 class="dish-name">Salsiccia con Polenta</h3>
+          <p class="dish-desc">
+            La salsiccia artigianale, preparata con carni selezionate e insaporita con spezie secondo la ricetta tradizionale, trova nel letto di polenta morbida il compagno ideale. Un piatto semplice che racconta generazioni di sapienza norcina e di cucina contadina.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-grigio">Artigianale · Polenta</span>
+          </div>
+          <div class="stepper" data-item="Salsiccia con Polenta">
+            <button type="button" onclick="changeQty('Salsiccia con Polenta', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Salsiccia con Polenta', 1)">+</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CONTORNI ═════════════════════════════════════════ -->
+    <section class="menu-section" id="contorni">
+      <div class="section-header">
+        <div class="section-icon grigio">🫘</div>
+        <h2>Contorni</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">🫘</div>
+        <div class="dish-body">
+          <h3 class="dish-name">Fagioli con Cipolla</h3>
+          <p class="dish-desc">
+            Dalla tradizione povera ma ricca di gusto. I fagioli locali, cotti lentamente con cipolla dorata e un filo d'olio, sono un esempio perfetto di come la semplicità degli ingredienti — quando sono genuini — possa creare qualcosa di straordinario. Un contorno che è già un racconto.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-grigio">Produzione locale · Senza glutine</span>
+            <span class="tag tag-verde">Vegetariano</span>
+          </div>
+          <div class="stepper" data-item="Fagioli con Cipolla">
+            <button type="button" onclick="changeQty('Fagioli con Cipolla', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Fagioli con Cipolla', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">
+          <img src="patatine%20fritte.jpg" alt="Patatine Fritte" loading="lazy">
+        </div>
+        <div class="dish-body">
+          <h3 class="dish-name">Patatine Fritte</h3>
+          <p class="dish-desc">
+            Croccanti, dorate e irresistibili. Le patatine fritte sono il contorno universale che mette d'accordo grandi e piccini, e che non può mancare in una sagra che si rispetti. Perfette da abbinare a qualsiasi piatto.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-grigio">Senza glutine · Vegetariano</span>
+          </div>
+          <div class="stepper" data-item="Patatine Fritte">
+            <button type="button" onclick="changeQty('Patatine Fritte', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Patatine Fritte', 1)">+</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ALTRO ═════════════════════════════════════════════ -->
+    <section class="menu-section" id="altro">
+      <div class="section-header">
+        <div class="section-icon verde">🌿</div>
+        <h2>Altro</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">🌿</div>
+        <div class="dish-body">
+          <h3 class="dish-name">Hamburger Vegano</h3>
+          <p class="dish-desc">
+            Perché la sagra è per tutti. Un hamburger 100% vegetale, gustoso e soddisfacente, per chi sceglie un'alimentazione plant-based senza rinunciare al gusto e alla convivialità della festa. Preparato con ingredienti selezionati e condito con cura.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-verde">Vegano</span>
+            <span class="tag tag-grigio">100% vegetale</span>
+          </div>
+          <div class="stepper" data-item="Hamburger Vegano">
+            <button type="button" onclick="changeQty('Hamburger Vegano', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Hamburger Vegano', 1)">+</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</section>
+
+<!-- ═══ PRENOTAZIONI ═══════════════════════════════════════ -->
+<section class="page-section" id="prenotazioni">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-icon oro">🛒</div>
+      <h2>Prenotazioni</h2>
+      <div class="section-line"></div>
+    </div>
+    <p class="section-intro">Componi il tuo ordine dal menù con i pulsanti “+” e “–”, poi mostra questa schermata alla cassa per un ordine più veloce.</p>
+
+    <div class="cart-box">
+      <div id="cart-empty" class="cart-empty">
+        Il carrello è vuoto. Sfoglia il menù e aggiungi i piatti che desideri.
+      </div>
+      <div id="cart-list"></div>
+
+      <div class="cart-actions">
+        <span class="cart-total-badge">Piatti nel carrello: <strong id="cart-total-count">0</strong></span>
+        <div style="display:flex; gap:.6rem;">
+          <button class="btn btn-ghost" onclick="scrollToMain('menu', document.querySelectorAll('.main-btn')[2])">Vai al menù</button>
+          <button class="btn btn-verde" onclick="clearCart()">Svuota carrello</button>
+        </div>
+      </div>
+
+      <p class="cart-note">Il carrello serve solo a preparare l'ordine: il pagamento e la consegna avvengono direttamente alla cassa dello stand.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAB CARRELLO ═══════════════════════════════════════ -->
+<button class="cart-fab" onclick="scrollToMain('prenotazioni', document.querySelectorAll('.main-btn')[3])" aria-label="Vai alle prenotazioni">
+  🛒
+  <span class="fab-badge cart-badge">0</span>
+</button>
+
+<!-- ═══ FOOTER ══════════════════════════════════════════════ -->
+<footer>
+  <img src="image.png" alt="Logo Pro Loco Valtramontina" class="footer-proloco-logo">
+  <div class="footer-logo">Pro Loco Valtramontina</div>
+  <div class="footer-divider"></div>
+  <p>61ª Sagra della Trota e del Formaggio Salato</p>
+  <p style="margin-top:.4rem; opacity:.6;">Con il patrocinio del Comune · Realizzato con ❤️ dalla Pro Loco</p>
+</footer>
+
+<script>
+  /* ─── Navigazione principale ─── */
+  function scrollToMain(id, btn) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.main-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+  }
+
+  const mainIds = ['home', 'attivita', 'menu', 'prenotazioni'];
+  const mainSections = mainIds.map(id => document.getElementById(id));
+  const mainButtons = document.querySelectorAll('.main-btn');
+  const mainObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = mainSections.indexOf(e.target);
+        mainButtons.forEach(b => b.classList.remove('active'));
+        if (mainButtons[idx]) mainButtons[idx].classList.add('active');
+      }
+    });
+  }, { threshold: .3 });
+  mainSections.forEach(s => s && mainObserver.observe(s));
+
+  /* ─── Navigazione categorie menù ─── */
+  function scrollToCat(id, btn) {
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+  }
+
+  const catSections = document.querySelectorAll('.menu-section');
+  const catButtons  = document.querySelectorAll('.cat-btn');
+  const catObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = [...catSections].indexOf(e.target);
+        catButtons.forEach(b => b.classList.remove('active'));
+        if (catButtons[idx]) catButtons[idx].classList.add('active');
+      }
+    });
+  }, { threshold: .4 });
+  catSections.forEach(s => catObserver.observe(s));
+
+  /* ─── Programma / tab dei giorni ─── */
+  function showDay(dayId, btn) {
+    document.querySelectorAll('.schedule-day').forEach(d => d.classList.remove('active'));
+    document.getElementById(dayId).classList.add('active');
+    document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+  }
+
+  /* ─── Carrello prenotazioni ─── */
+  const CART_KEY = 'sagraCartItems';
+  let cart = {};
+  try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || {}; } catch (e) { cart = {}; }
+
+  function saveCart() {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    refreshCartUI();
+  }
+
+  function changeQty(item, delta) {
+    const next = (cart[item] || 0) + delta;
+    if (next <= 0) delete cart[item];
+    else cart[item] = next;
+    saveCart();
+  }
+
+  function clearCart() {
+    cart = {};
+    saveCart();
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function refreshCartUI() {
+    // aggiorna gli stepper nelle card del menù
+    document.querySelectorAll('.stepper[data-item]').forEach(st => {
+      const item = st.dataset.item;
+      const qty = cart[item] || 0;
+      const qtyEl = st.querySelector('.qty-value');
+      if (qtyEl) qtyEl.textContent = qty;
+    });
+
+    // badge del carrello (nav + fab)
+    const total = Object.values(cart).reduce((a, b) => a + b, 0);
+    document.querySelectorAll('.cart-badge').forEach(b => {
+      b.textContent = total;
+      b.style.display = total > 0 ? 'flex' : 'none';
+    });
+    document.getElementById('cart-total-count').textContent = total;
+
+    // riepilogo prenotazioni
+    const list = document.getElementById('cart-list');
+    const empty = document.getElementById('cart-empty');
+    const entries = Object.entries(cart);
+
+    if (entries.length === 0) {
+      list.innerHTML = '';
+      empty.style.display = 'block';
+      return;
+    }
+    empty.style.display = 'none';
+
+    list.innerHTML = entries.map(([name, qty]) => {
+      const safeName = escapeHtml(name);
+      return `
+        <div class="cart-row">
+          <div class="cart-item-name">${safeName}</div>
+          <div class="stepper" data-item="${safeName}">
+            <button type="button" onclick="changeQty('${name.replace(/'/g, "\\'")}', -1)">–</button>
+            <span class="qty-value">${qty}</span>
+            <button type="button" onclick="changeQty('${name.replace(/'/g, "\\'")}', 1)">+</button>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  refreshCartUI();
+</script>
+
+</body>
+</html>
