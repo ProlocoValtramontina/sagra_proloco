@@ -26,6 +26,11 @@
 
     html { scroll-behavior: smooth; }
 
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background: var(--crema);
@@ -502,6 +507,57 @@
       color: var(--grigio);
     }
     .cart-total-badge strong { color: var(--verde); }
+    .btn-confirm {
+      background: var(--verde);
+      color: #fff;
+    }
+    .btn-confirm:disabled {
+      background: #cfc7ba;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ─── SCONTRINO (ordine confermato) ──────────── */
+    .receipt-header {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--verde);
+      margin-bottom: .9rem;
+      padding-bottom: .8rem;
+      border-bottom: 1px dashed #d8cfc2;
+    }
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .55rem 0;
+      border-bottom: 1px dashed #ece4d6;
+      font-size: .95rem;
+    }
+    .receipt-row:last-child { border-bottom: none; }
+    .receipt-qty {
+      font-weight: 700;
+      color: var(--verde);
+      flex-shrink: 0;
+    }
+    .receipt-total {
+      display: flex;
+      justify-content: space-between;
+      margin-top: .9rem;
+      padding-top: .9rem;
+      border-top: 2px solid var(--verde);
+      font-weight: 700;
+      color: var(--testo);
+    }
+
+    /* blocca gli stepper del menù mentre l'ordine è confermato */
+    body.order-confirmed .stepper button {
+      opacity: .35;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+
     .cart-note {
       font-size: .82rem;
       color: var(--grigio);
@@ -1066,9 +1122,9 @@
       <h2>Prenotazioni</h2>
       <div class="section-line"></div>
     </div>
-    <p class="section-intro">Componi il tuo ordine dal menù con i pulsanti “+” e “–”, poi mostra questa schermata alla cassa per un ordine più veloce.</p>
+    <p class="section-intro">Componi il tuo ordine dal menù con i pulsanti “+” e “–”, poi conferma per generare lo scontrino virtuale da mostrare alla cassa.</p>
 
-    <div class="cart-box">
+    <div class="cart-box" id="cart-editor">
       <div id="cart-empty" class="cart-empty">
         Il carrello è vuoto. Sfoglia il menù e aggiungi i piatti che desideri.
       </div>
@@ -1076,13 +1132,30 @@
 
       <div class="cart-actions">
         <span class="cart-total-badge">Piatti nel carrello: <strong id="cart-total-count">0</strong></span>
-        <div style="display:flex; gap:.6rem;">
+        <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
           <button class="btn btn-ghost" onclick="scrollToMain('menu', document.querySelectorAll('.main-btn')[2])">Vai al menù</button>
           <button class="btn btn-verde" onclick="clearCart()">Svuota carrello</button>
+          <button class="btn btn-confirm" id="confirm-order-btn" onclick="confirmOrder()">✅ Conferma ordine</button>
         </div>
       </div>
 
       <p class="cart-note">Il carrello serve solo a preparare l'ordine: il pagamento e la consegna avvengono direttamente alla cassa dello stand.</p>
+    </div>
+
+    <div class="cart-box" id="cart-receipt" style="display:none">
+      <div class="receipt-header">🧾 Scontrino ordine</div>
+      <div id="receipt-list"></div>
+      <div class="receipt-total">
+        <span>Totale piatti</span>
+        <span id="receipt-total-count">0</span>
+      </div>
+      <div class="cart-actions">
+        <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
+          <button class="btn btn-ghost" onclick="editOrder()">✏️ Modifica ordine</button>
+          <button class="btn btn-verde" onclick="clearCart()">Svuota carrello</button>
+        </div>
+      </div>
+      <p class="cart-note">Ordine confermato: mostra questa schermata alla cassa. Per cambiare qualcosa tocca "Modifica ordine".</p>
     </div>
   </div>
 </section>
@@ -1154,8 +1227,10 @@
 
   /* ─── Carrello prenotazioni ─── */
   const CART_KEY = 'sagraCartItems';
+  const CONFIRM_KEY = 'sagraCartConfirmed';
   let cart = {};
   try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || {}; } catch (e) { cart = {}; }
+  let confirmed = localStorage.getItem(CONFIRM_KEY) === '1';
 
   function saveCart() {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
@@ -1163,6 +1238,7 @@
   }
 
   function changeQty(item, delta) {
+    if (confirmed) return;
     const next = (cart[item] || 0) + delta;
     if (next <= 0) delete cart[item];
     else cart[item] = next;
@@ -1171,7 +1247,22 @@
 
   function clearCart() {
     cart = {};
+    confirmed = false;
+    localStorage.setItem(CONFIRM_KEY, '0');
     saveCart();
+  }
+
+  function confirmOrder() {
+    if (Object.keys(cart).length === 0) return;
+    confirmed = true;
+    localStorage.setItem(CONFIRM_KEY, '1');
+    refreshCartUI();
+  }
+
+  function editOrder() {
+    confirmed = false;
+    localStorage.setItem(CONFIRM_KEY, '0');
+    refreshCartUI();
   }
 
   function escapeHtml(str) {
@@ -1193,12 +1284,34 @@
       b.textContent = total;
       b.style.display = total > 0 ? 'flex' : 'none';
     });
-    document.getElementById('cart-total-count').textContent = total;
 
-    // riepilogo prenotazioni
+    document.body.classList.toggle('order-confirmed', confirmed);
+
+    const editor = document.getElementById('cart-editor');
+    const receipt = document.getElementById('cart-receipt');
+    const entries = Object.entries(cart);
+
+    if (confirmed) {
+      editor.style.display = 'none';
+      receipt.style.display = 'block';
+
+      document.getElementById('receipt-total-count').textContent = total;
+      document.getElementById('receipt-list').innerHTML = entries.map(([name, qty]) => `
+        <div class="receipt-row">
+          <span>${escapeHtml(name)}</span>
+          <span class="receipt-qty">×${qty}</span>
+        </div>`).join('');
+      return;
+    }
+
+    editor.style.display = 'block';
+    receipt.style.display = 'none';
+
+    document.getElementById('cart-total-count').textContent = total;
+    document.getElementById('confirm-order-btn').disabled = entries.length === 0;
+
     const list = document.getElementById('cart-list');
     const empty = document.getElementById('cart-empty');
-    const entries = Object.entries(cart);
 
     if (entries.length === 0) {
       list.innerHTML = '';
