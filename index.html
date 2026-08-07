@@ -343,6 +343,76 @@
       padding: 2.4rem 1rem 4rem;
     }
 
+    /* ─── BLOCCHI APRIBILI (Attività / Menù) ─────── */
+    .reveal-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      width: 100%;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      text-align: left;
+      padding: 1.3rem 1.4rem;
+      font-family: 'Jost', sans-serif;
+      color: var(--testo);
+      box-shadow: 0 3px 14px rgba(44,26,14,.09);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .reveal-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(44,26,14,.13);
+    }
+    .reveal-toggle-sage  { background: var(--sage); }
+    .reveal-toggle-peach { background: var(--peach); }
+    .reveal-toggle-eyebrow {
+      display: block;
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      opacity: .7;
+      margin-bottom: .3rem;
+    }
+    .reveal-toggle-label {
+      display: block;
+      font-weight: 600;
+      font-size: 1.1rem;
+      line-height: 1.3;
+    }
+    .reveal-toggle-icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 1;
+      transition: transform .35s ease;
+    }
+    .reveal-toggle.open .reveal-toggle-icon { transform: rotate(45deg); }
+
+    .reveal-panel {
+      height: 0;
+      overflow: hidden;
+      transition: height .5s cubic-bezier(.4,0,.2,1);
+    }
+    .reveal-panel-inner {
+      padding-top: 1.6rem;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity .4s ease, transform .4s ease;
+    }
+    .reveal-panel.open .reveal-panel-inner {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .menu-section {
       margin-top: 2.8rem;
       scroll-margin-top: calc(var(--main-nav-h) + var(--cat-nav-h) + 10px);
@@ -802,12 +872,17 @@
 <!-- ═══ ATTIVITÀ ═══════════════════════════════════════════ -->
 <section class="page-section" id="attivita">
   <div class="section-wrap">
-    <div class="section-header">
-      <div class="section-icon verde">🎉</div>
-      <h2>Attività &amp; Programma</h2>
-      <div class="section-line"></div>
-    </div>
-    <p class="section-intro">I giorni con stand gastronomico, musica dal vivo e attività per tutta la famiglia. Ecco il programma della sagra.</p>
+    <button type="button" class="reveal-toggle reveal-toggle-sage" id="attivitaToggle" onclick="toggleReveal('attivitaPanel', this)" aria-expanded="false" aria-controls="attivitaPanel" data-label-closed="Scopri le attività in programma" data-label-open="Nascondi le attività">
+      <span>
+        <span class="reveal-toggle-eyebrow">🎉 Attività &amp; Programma</span>
+        <span class="reveal-toggle-label">Scopri le attività in programma</span>
+      </span>
+      <span class="reveal-toggle-icon">＋</span>
+    </button>
+
+    <div class="reveal-panel" id="attivitaPanel">
+    <div class="reveal-panel-inner">
+    <p class="section-intro" style="margin-top:0">I giorni con stand gastronomico, musica dal vivo e attività per tutta la famiglia. Ecco il programma della sagra.</p>
 
     <div class="schedule-tabs">
       <button class="day-btn active" onclick="showDay('day1', this)">Sab 8</button>
@@ -1059,6 +1134,8 @@
         </div>
       </div>
     </div>
+    </div>
+    </div>
   </div>
 </section>
 
@@ -1071,6 +1148,18 @@
 
 <!-- ═══ MENÙ ═══════════════════════════════════════════════ -->
 <section class="page-section" id="menu">
+  <div class="section-wrap" style="padding-bottom:0">
+    <button type="button" class="reveal-toggle reveal-toggle-peach" id="menuToggle" onclick="toggleReveal('menuPanel', this)" aria-expanded="false" aria-controls="menuPanel" data-label-closed="Scopri il menù e scegli in anticipo cosa mangiare" data-label-open="Nascondi il menù">
+      <span>
+        <span class="reveal-toggle-eyebrow">🍽️ Menù</span>
+        <span class="reveal-toggle-label">Scopri il menù e scegli in anticipo cosa mangiare</span>
+      </span>
+      <span class="reveal-toggle-icon">＋</span>
+    </button>
+  </div>
+
+  <div class="reveal-panel" id="menuPanel">
+  <div class="reveal-panel-inner">
 
   <nav class="cat-nav">
     <button class="cat-btn active" onclick="scrollToCat('#antipasti', this)">🍽️ Antipasti</button>
@@ -1437,6 +1526,8 @@
     </section>
 
   </main>
+  </div>
+  </div>
 </section>
 
 <!-- ═══ PRENOTAZIONI ═══════════════════════════════════════ -->
@@ -1518,6 +1609,46 @@
     document.querySelectorAll('.main-btn').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     toggleMainMenu(false);
+    autoOpenReveal(id);
+  }
+
+  /* ─── Blocchi apribili (Attività / Menù) ─── */
+  const revealTogglesBySection = { attivita: 'attivitaToggle', menu: 'menuToggle' };
+
+  function autoOpenReveal(sectionId) {
+    const toggleId = revealTogglesBySection[sectionId];
+    const btn = toggleId && document.getElementById(toggleId);
+    if (btn && btn.getAttribute('aria-expanded') !== 'true') {
+      toggleReveal(btn.getAttribute('aria-controls'), btn);
+    }
+  }
+
+  function toggleReveal(panelId, btn) {
+    const panel = document.getElementById(panelId);
+    const willOpen = !panel.classList.contains('open');
+
+    if (willOpen) {
+      panel.classList.add('open');
+      panel.style.overflow = 'hidden';
+      panel.style.height = panel.scrollHeight + 'px';
+      panel.addEventListener('transitionend', function onEnd(e) {
+        if (e.propertyName !== 'height') return;
+        panel.style.height = 'auto';
+        panel.style.overflow = 'visible';
+        panel.removeEventListener('transitionend', onEnd);
+      });
+    } else {
+      panel.style.overflow = 'hidden';
+      panel.style.height = panel.scrollHeight + 'px';
+      void panel.offsetHeight; // forza il reflow prima di animare verso 0
+      panel.style.height = '0px';
+      panel.classList.remove('open');
+    }
+
+    btn.classList.toggle('open', willOpen);
+    btn.setAttribute('aria-expanded', String(willOpen));
+    const label = btn.querySelector('.reveal-toggle-label');
+    if (label) label.textContent = willOpen ? btn.dataset.labelOpen : btn.dataset.labelClosed;
   }
 
   const mainIds = ['home', 'attivita', 'menu', 'prenotazioni'];
