@@ -306,37 +306,6 @@
     }
     #menu.in-view { transform: none; }
 
-    /* ─── DIVISORE TRA SEZIONI ───────────────────── */
-    .section-divider {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      max-width: 560px;
-      margin: -1.2rem auto 0;
-      padding: 0 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-    .section-divider-line {
-      flex: 1;
-      height: 2px;
-      background: linear-gradient(to right, transparent, var(--oro), transparent);
-    }
-    .section-divider-label {
-      font-family: 'Jost', sans-serif;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      font-size: .95rem;
-      color: var(--verde);
-      background: var(--crema);
-      border: 1px solid #e8dfc8;
-      border-radius: 2rem;
-      padding: .4rem 1.1rem;
-      white-space: nowrap;
-      box-shadow: 0 2px 8px rgba(44,26,14,.08);
-    }
-
     .section-wrap {
       max-width: 720px;
       margin: 0 auto;
@@ -351,24 +320,19 @@
       gap: 1rem;
       width: 100%;
       border: none;
-      border-radius: 16px;
       cursor: pointer;
       text-align: left;
-      padding: 1.3rem 1.4rem;
+      padding: 1.6rem 1.5rem;
       font-family: 'Jost', sans-serif;
       color: var(--testo);
-      box-shadow: 0 3px 14px rgba(44,26,14,.09);
-      transition: transform .15s ease, box-shadow .15s ease;
+      transition: filter .15s ease;
     }
-    .reveal-toggle:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(44,26,14,.13);
-    }
+    .reveal-toggle:hover { filter: brightness(.96); }
     .reveal-toggle-sage  { background: var(--sage); }
     .reveal-toggle-peach { background: var(--peach); }
     .reveal-toggle-eyebrow {
       display: block;
-      font-size: .7rem;
+      font-size: .72rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: .1em;
@@ -377,22 +341,19 @@
     }
     .reveal-toggle-label {
       display: block;
+      font-family: 'Jost', sans-serif;
       font-weight: 600;
-      font-size: 1.1rem;
-      line-height: 1.3;
+      text-transform: uppercase;
+      letter-spacing: .01em;
+      font-size: 1.25rem;
+      line-height: 1.2;
     }
     .reveal-toggle-icon {
       flex-shrink: 0;
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(255,255,255,.55);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      font-weight: 600;
+      font-size: 1.9rem;
+      font-weight: 500;
       line-height: 1;
+      color: var(--terra-deep);
       transition: transform .35s ease;
     }
     .reveal-toggle.open .reveal-toggle-icon { transform: rotate(45deg); }
@@ -411,6 +372,35 @@
     .reveal-panel.open .reveal-panel-inner {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* ─── Intreccio di blocchi: animazione di apertura, in stile locandina ── */
+    .weave-blocks {
+      display: flex;
+      gap: 4px;
+      height: 10px;
+      margin: 0 1rem 1.4rem;
+    }
+    .weave-blocks span {
+      flex: 1;
+      transform: scaleX(0);
+      transform-origin: left;
+      opacity: 0;
+    }
+    .weave-blocks span:nth-child(1) { background: var(--terra); }
+    .weave-blocks span:nth-child(2) { background: var(--sage-deep); }
+    .weave-blocks span:nth-child(3) { background: var(--peach-deep); }
+    .weave-blocks span:nth-child(4) { background: var(--mint); }
+    .weave-blocks span:nth-child(5) { background: var(--sage); }
+    .reveal-panel.open .weave-blocks span { animation: weaveIn .45s ease forwards; }
+    .reveal-panel.open .weave-blocks span:nth-child(1) { animation-delay: .05s; }
+    .reveal-panel.open .weave-blocks span:nth-child(2) { animation-delay: .11s; }
+    .reveal-panel.open .weave-blocks span:nth-child(3) { animation-delay: .17s; }
+    .reveal-panel.open .weave-blocks span:nth-child(4) { animation-delay: .23s; }
+    .reveal-panel.open .weave-blocks span:nth-child(5) { animation-delay: .29s; }
+    @keyframes weaveIn {
+      from { transform: scaleX(0); opacity: 0; }
+      to   { transform: scaleX(1); opacity: 1; }
     }
 
     .menu-section {
@@ -871,17 +861,18 @@
 
 <!-- ═══ ATTIVITÀ ═══════════════════════════════════════════ -->
 <section class="page-section" id="attivita">
-  <div class="section-wrap">
-    <button type="button" class="reveal-toggle reveal-toggle-sage" id="attivitaToggle" onclick="toggleReveal('attivitaPanel', this)" aria-expanded="false" aria-controls="attivitaPanel" data-label-closed="Scopri le attività in programma" data-label-open="Nascondi le attività">
-      <span>
-        <span class="reveal-toggle-eyebrow">🎉 Attività &amp; Programma</span>
-        <span class="reveal-toggle-label">Scopri le attività in programma</span>
-      </span>
-      <span class="reveal-toggle-icon">＋</span>
-    </button>
+  <button type="button" class="reveal-toggle reveal-toggle-sage" id="attivitaToggle" onclick="toggleReveal('attivitaPanel', this)" aria-expanded="false" aria-controls="attivitaPanel" data-label-closed="Scopri le attività in programma" data-label-open="Nascondi le attività">
+    <span>
+      <span class="reveal-toggle-eyebrow">🎉 Attività &amp; Programma</span>
+      <span class="reveal-toggle-label">Scopri le attività in programma</span>
+    </span>
+    <span class="reveal-toggle-icon">＋</span>
+  </button>
 
+  <div class="section-wrap">
     <div class="reveal-panel" id="attivitaPanel">
     <div class="reveal-panel-inner">
+    <div class="weave-blocks" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
     <p class="section-intro" style="margin-top:0">I giorni con stand gastronomico, musica dal vivo e attività per tutta la famiglia. Ecco il programma della sagra.</p>
 
     <div class="schedule-tabs">
@@ -1139,27 +1130,19 @@
   </div>
 </section>
 
-<!-- ═══ DIVISORE ATTIVITÀ → MENÙ ═══════════════════════════ -->
-<div class="section-divider">
-  <span class="section-divider-line"></span>
-  <span class="section-divider-label">🍽️ Il Menù</span>
-  <span class="section-divider-line"></span>
-</div>
-
 <!-- ═══ MENÙ ═══════════════════════════════════════════════ -->
 <section class="page-section" id="menu">
-  <div class="section-wrap" style="padding-bottom:0">
-    <button type="button" class="reveal-toggle reveal-toggle-peach" id="menuToggle" onclick="toggleReveal('menuPanel', this)" aria-expanded="false" aria-controls="menuPanel" data-label-closed="Scopri il menù e scegli in anticipo cosa mangiare" data-label-open="Nascondi il menù">
-      <span>
-        <span class="reveal-toggle-eyebrow">🍽️ Menù</span>
-        <span class="reveal-toggle-label">Scopri il menù e scegli in anticipo cosa mangiare</span>
-      </span>
-      <span class="reveal-toggle-icon">＋</span>
-    </button>
-  </div>
+  <button type="button" class="reveal-toggle reveal-toggle-peach" id="menuToggle" onclick="toggleReveal('menuPanel', this)" aria-expanded="false" aria-controls="menuPanel" data-label-closed="Scopri il menù e scegli in anticipo cosa mangiare" data-label-open="Nascondi il menù">
+    <span>
+      <span class="reveal-toggle-eyebrow">🍽️ Menù</span>
+      <span class="reveal-toggle-label">Scopri il menù e scegli in anticipo cosa mangiare</span>
+    </span>
+    <span class="reveal-toggle-icon">＋</span>
+  </button>
 
   <div class="reveal-panel" id="menuPanel">
   <div class="reveal-panel-inner">
+  <div class="weave-blocks" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
 
   <nav class="cat-nav">
     <button class="cat-btn active" onclick="scrollToCat('#antipasti', this)">🍽️ Antipasti</button>
@@ -1605,10 +1588,18 @@
   });
 
   function scrollToMain(id, btn) {
+    // chiude subito il menu a tendina, senza animazione: se la chiusura
+    // e lo scroll partissero insieme, le due transizioni si scontrerebbero
+    // e lo scroll atterrerebbe in un punto instabile a metà pagina
+    const navMenu = document.getElementById('mainNavMenu');
+    navMenu.style.transition = 'none';
+    toggleMainMenu(false);
+    void navMenu.offsetHeight;
+    navMenu.style.transition = '';
+
     document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
     document.querySelectorAll('.main-btn').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
-    toggleMainMenu(false);
     autoOpenReveal(id);
   }
 
@@ -1650,6 +1641,20 @@
     const label = btn.querySelector('.reveal-toggle-label');
     if (label) label.textContent = willOpen ? btn.dataset.labelOpen : btn.dataset.labelClosed;
   }
+
+  /* Il Menù è il motivo principale del sito: si apre da solo scorrendo
+     fino a lì, senza bisogno di cliccare (a differenza di Attività,
+     che resta un contenuto di corredo apribile solo su richiesta). */
+  const menuAutoOpenObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        autoOpenReveal('menu');
+        menuAutoOpenObserver.disconnect();
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -35% 0px' });
+  const menuSectionEl = document.getElementById('menu');
+  if (menuSectionEl) menuAutoOpenObserver.observe(menuSectionEl);
 
   const mainIds = ['home', 'attivita', 'menu', 'prenotazioni'];
   const mainSections = mainIds.map(id => document.getElementById(id));
