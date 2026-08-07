@@ -75,23 +75,24 @@
 
     .hero-row-mint {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 1.3rem;
-      flex-wrap: wrap;
-      padding-top: 2rem;
-      padding-bottom: 2rem;
+      text-align: center;
+      gap: .5rem;
+      padding-top: 1.7rem;
+      padding-bottom: 1.7rem;
     }
-    .hero-logos { position: relative; flex-shrink: 0; }
     .logo-sagra {
-      width: 84px;
-      height: 84px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       background: #fff;
-      box-shadow: 0 4px 14px rgba(0,0,0,.18);
+      box-shadow: 0 4px 14px rgba(0,0,0,.14);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: .5rem;
+      padding: .4rem;
+      margin-bottom: .3rem;
     }
     .logo-sagra img {
       width: 100%;
@@ -103,22 +104,24 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: .6rem;
-      font-size: 1.05rem;
-      flex: 1;
-      min-width: 220px;
+      align-items: center;
+      gap: .3rem;
     }
-    .hero-facts li {
-      display: flex;
-      align-items: flex-start;
-      gap: .6rem;
+    .hero-facts li:first-child {
+      font-family: 'Jost', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .8rem;
+      color: var(--terra-deep);
     }
-    .hero-facts .ast {
-      color: var(--terra);
-      font-size: 1.2rem;
-      line-height: 1.3;
-      flex-shrink: 0;
+    .hero-facts li:last-child {
+      font-size: .92rem;
+      color: var(--testo);
+      opacity: .8;
+      max-width: 300px;
     }
+    .hero-facts .ast { display: none; }
 
     .hero-row-date {
       display: flex;
@@ -179,8 +182,24 @@
       font-family: 'Jost', sans-serif;
       font-weight: 600;
       text-transform: uppercase;
-      font-size: 1.05rem;
-      letter-spacing: .04em;
+      font-size: .72rem;
+      letter-spacing: .03em;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: calc(100% - 60px);
+      opacity: 0;
+      transform: translateY(-3px);
+      transition: opacity .3s ease, transform .3s ease;
+    }
+    .main-nav-brand.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .main-nav-brand .brand-sub { opacity: .75; }
+    @media (max-width: 400px) {
+      .main-nav-brand .brand-sub { display: none; }
     }
     .hamburger-btn {
       position: relative;
@@ -757,7 +776,7 @@
 <!-- ═══ NAV PRINCIPALE ═══════════════════════════════════════ -->
 <nav class="main-nav">
   <div class="main-nav-bar">
-    <span class="main-nav-brand">🐟🧀 Sagra</span>
+    <span class="main-nav-brand" id="navBrand">Sagra della Trota e del Formaggio Salato<span class="brand-sub"> · Pro Loco Valtramontina</span></span>
     <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMainMenu()" aria-label="Apri il menu di navigazione" aria-expanded="false">
       ☰
       <span class="nav-cart-badge cart-badge">0</span>
@@ -783,14 +802,12 @@
     <h1 class="hero-title">e del Formaggio<br>Salato</h1>
   </div>
   <div class="hero-row hero-row-mint">
-    <div class="hero-logos">
-      <div class="logo-sagra">
-        <img src="logo.png" alt="Logo Sagra della Trota e del Formaggio Salato">
-      </div>
+    <div class="logo-sagra">
+      <img src="logo.png" alt="Logo Sagra della Trota e del Formaggio Salato">
     </div>
     <ul class="hero-facts">
-      <li><span class="ast">✳</span> 61ª edizione — Pro Loco Valtramontina</li>
-      <li><span class="ast">✳</span> Gnocchi, frico, trota alla griglia e musica dal vivo</li>
+      <li><span class="ast">✳</span> 61ª edizione</li>
+      <li><span class="ast">✳</span> Gnocchi, frico, pitina, formaggi e tanta musica dal vivo</li>
     </ul>
   </div>
   <div class="hero-row hero-row-peach hero-row-date">
@@ -807,42 +824,18 @@
       <h2>Attività &amp; Programma</h2>
       <div class="section-line"></div>
     </div>
-    <p class="section-intro">10 giorni di eventi, laboratori, musica e spettacoli in giro per il paese e la valle. Ecco il programma completo.</p>
+    <p class="section-intro">I giorni con stand gastronomico, musica dal vivo e attività per tutta la famiglia. Ecco il programma della sagra.</p>
 
     <div class="schedule-tabs">
-      <button class="day-btn active" onclick="showDay('day1', this)">Ven 7</button>
-      <button class="day-btn" onclick="showDay('day2', this)">Sab 8</button>
-      <button class="day-btn" onclick="showDay('day3', this)">Dom 9</button>
-      <button class="day-btn" onclick="showDay('day4', this)">Lun 10</button>
-      <button class="day-btn" onclick="showDay('day5', this)">Mar 11</button>
-      <button class="day-btn" onclick="showDay('day6', this)">Gio 13</button>
-      <button class="day-btn" onclick="showDay('day7', this)">Ven 14</button>
-      <button class="day-btn" onclick="showDay('day8', this)">Sab 15</button>
-      <button class="day-btn" onclick="showDay('day9', this)">Dom 16</button>
-    </div>
-
-    <!-- VENERDÌ 7 AGOSTO -->
-    <div class="schedule-day active" id="day1">
-      <div class="schedule-item">
-        <div class="schedule-time">18:00</div>
-        <div class="schedule-icon">📖</div>
-        <div>
-          <div class="schedule-title">Cjanton di Paradîs</div>
-          <div class="schedule-sub">Casa della Conoscenza — Presentazione del libro di poesie del dott. Massimo Neri, a cura di Franca Benvenuti. Al termine aperitivo.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">20:45</div>
-        <div class="schedule-icon">🎭</div>
-        <div>
-          <div class="schedule-title">Il Morbin, l'Ostermann mai cantato</div>
-          <div class="schedule-sub">Sala Pro loco — Antichi canti popolari friulani raccolti da Valentino Ostermann a fine '800, con Flavia Valoppi, Chiara Grillo e Annalisa De Vittor (compagnia Lis Grimis di Codroipo).</div>
-        </div>
-      </div>
+      <button class="day-btn active" onclick="showDay('day1', this)">Sab 8</button>
+      <button class="day-btn" onclick="showDay('day2', this)">Dom 9</button>
+      <button class="day-btn" onclick="showDay('day3', this)">Ven 14</button>
+      <button class="day-btn" onclick="showDay('day4', this)">Sab 15</button>
+      <button class="day-btn" onclick="showDay('day5', this)">Dom 16</button>
     </div>
 
     <!-- SABATO 8 AGOSTO -->
-    <div class="schedule-day" id="day2">
+    <div class="schedule-day active" id="day1">
       <div class="schedule-item">
         <div class="schedule-time">10:00</div>
         <div class="schedule-icon">🌲</div>
@@ -910,7 +903,7 @@
     </div>
 
     <!-- DOMENICA 9 AGOSTO -->
-    <div class="schedule-day" id="day3">
+    <div class="schedule-day" id="day2">
       <div class="schedule-item">
         <div class="schedule-time">9:00</div>
         <div class="schedule-icon">🧘</div>
@@ -953,76 +946,8 @@
       </div>
     </div>
 
-    <!-- LUNEDÌ 10 AGOSTO -->
-    <div class="schedule-day" id="day4">
-      <div class="schedule-item">
-        <div class="schedule-time">9:00</div>
-        <div class="schedule-icon">🧘</div>
-        <div>
-          <div class="schedule-title">Yoga sul prato</div>
-          <div class="schedule-sub">Via Roma — Stare nel momento presente: avvicinamento allo yoga con Paola Turelli.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">15:00</div>
-        <div class="schedule-icon">🥾</div>
-        <div>
-          <div class="schedule-title">Alla scoperta dei borghi abbandonati</div>
-          <div class="schedule-sub">Ritrovo sede Pro loco — Escursione con la guida Lisetta Totis (Parco delle Dolomiti Friulane), termina a borgo Tàmar.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">18:00</div>
-        <div class="schedule-icon">✨</div>
-        <div>
-          <div class="schedule-title">Tàmar sotto le stelle</div>
-          <div class="schedule-sub">Borgo Tàmar — Festa con musica folk del Trio Saiok e balli intorno al fuoco. Pastasciutta offerta a tutti e osservazione delle stelle con l'astrofilo Alessandro Boz.<br><em>Info: borgo raggiungibile a piedi in ~1h30 (disliv. 300 mt), adatto a bambini abituati a camminare. Portare abbigliamento adeguato, un plaid e una torcia per il rientro.</em></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MARTEDÌ 11 AGOSTO -->
-    <div class="schedule-day" id="day5">
-      <div class="schedule-item">
-        <div class="schedule-time">18:00</div>
-        <div class="schedule-icon">🗣️</div>
-        <div>
-          <div class="schedule-title">Camp-One: territorio e opportunità</div>
-          <div class="schedule-sub">Sala Pro loco — Presentazione del progetto fondiario Camp One con Adriana Vicentin, Graziano Danelin, Piergiorgio Sturlese, Chiara Aviani, Antonio Carrara; modera Giampaolo Bidoli (sindaco di Tramonti di Sotto). Al termine aperitivo.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">20:30</div>
-        <div class="schedule-icon">🎭</div>
-        <div>
-          <div class="schedule-title">Qua qua, attaccati là</div>
-          <div class="schedule-sub">Sala Pro loco — Spettacolo di ombre cinesi tratto dalla fiaba friulana in "Fiabe Italiane" di Italo Calvino, con Angela Maserin, Daniela Measso, Francesca Corrado, Lorenza Poggioli, Valentino Muin; voce narrante Nilla Patrizio, musica di Patrizia Bertoncello.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- GIOVEDÌ 13 AGOSTO -->
-    <div class="schedule-day" id="day6">
-      <div class="schedule-item">
-        <div class="schedule-time">18:00</div>
-        <div class="schedule-icon">📚</div>
-        <div>
-          <div class="schedule-title">Biodiverse</div>
-          <div class="schedule-sub">Casa della Conoscenza — Geografie femministe di nature post-selvagge (BeccoGiallo Editore): quattro fumettiste italiane esplorano il valore della biodiversità. A cura di Marina Girardi, autrice, in dialogo con Vincenzo Bottecchia. Al termine aperitivo.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">20:30</div>
-        <div class="schedule-icon">🎤</div>
-        <div>
-          <div class="schedule-title">Tjere</div>
-          <div class="schedule-sub">Sala Pro loco — Concerto di canti popolari dedicati alla terra con il Coro degli Angeli, accompagnamento musicale del maestro Didier Ortolan, coordinamento Patrizia Bertoncello.</div>
-        </div>
-      </div>
-    </div>
-
     <!-- VENERDÌ 14 AGOSTO -->
-    <div class="schedule-day" id="day7">
+    <div class="schedule-day" id="day3">
       <div class="schedule-item">
         <div class="schedule-time">15:30</div>
         <div class="schedule-icon">🎭</div>
@@ -1066,7 +991,7 @@
     </div>
 
     <!-- SABATO 15 AGOSTO -->
-    <div class="schedule-day" id="day8">
+    <div class="schedule-day" id="day4">
       <div class="schedule-item">
         <div class="schedule-time">9:00</div>
         <div class="schedule-icon">🧘</div>
@@ -1109,7 +1034,7 @@
     </div>
 
     <!-- DOMENICA 16 AGOSTO -->
-    <div class="schedule-day" id="day9">
+    <div class="schedule-day" id="day5">
       <div class="schedule-item">
         <div class="schedule-time">9:00</div>
         <div class="schedule-icon">🧘</div>
@@ -1598,6 +1523,14 @@
     });
   }, { threshold: .3 });
   mainSections.forEach(s => s && mainObserver.observe(s));
+
+  /* ─── Titolo nella nav: compare solo dopo aver scrollato oltre l'header ─── */
+  const navBrand = document.getElementById('navBrand');
+  const heroHeight = getComputedStyle(document.documentElement).getPropertyValue('--main-nav-h');
+  const heroObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => navBrand.classList.toggle('show', !e.isIntersecting));
+  }, { rootMargin: `-${heroHeight} 0px 0px 0px`, threshold: 0 });
+  heroObserver.observe(document.getElementById('home'));
 
   /* ─── Effetto di comparsa tra le sezioni ─── */
   const revealObserver = new IntersectionObserver(entries => {
