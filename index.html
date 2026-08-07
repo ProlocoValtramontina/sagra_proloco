@@ -203,12 +203,14 @@
     }
     .hamburger-btn {
       position: relative;
+      overflow: visible;
       background: rgba(255,255,255,0.12);
       border: 1px solid rgba(255,255,255,0.3);
       color: #fff;
       border-radius: 10px;
       width: 42px;
       height: 36px;
+      margin-right: 6px;
       font-size: 1.25rem;
       line-height: 1;
       cursor: pointer;
@@ -264,7 +266,7 @@
       font-size: .65rem;
       font-weight: 700;
     }
-    .hamburger-btn .nav-cart-badge { top: -6px; right: -6px; }
+    .hamburger-btn .nav-cart-badge { top: -6px; right: -4px; }
 
     /* ─── NAV CATEGORIE (dentro Menù) ────────────── */
     .cat-nav {
@@ -1093,10 +1095,9 @@
     <button class="cat-btn active" onclick="scrollToCat('#antipasti', this)">🍽️ Antipasti</button>
     <button class="cat-btn" onclick="scrollToCat('#gnocchi', this)">🥟 Gnocchi</button>
     <button class="cat-btn" onclick="scrollToCat('#trota', this)">🐟 Trota</button>
-    <button class="cat-btn" onclick="scrollToCat('#formaggi', this)">🧀 Formaggi</button>
-    <button class="cat-btn" onclick="scrollToCat('#grigliata', this)">🔥 Grigliata</button>
+    <button class="cat-btn" onclick="scrollToCat('#secondi', this)">🔥 Secondi</button>
     <button class="cat-btn" onclick="scrollToCat('#contorni', this)">🫘 Contorni</button>
-    <button class="cat-btn" onclick="scrollToCat('#altro', this)">🌿 Altro</button>
+    <button class="cat-btn" onclick="scrollToCat('#dolci', this)">🍰 Dolci</button>
   </nav>
 
   <main class="section-wrap">
@@ -1126,6 +1127,25 @@
             <button type="button" onclick="changeQty('Tris della Val Tramontina', -1)">–</button>
             <span class="qty-value">0</span>
             <button type="button" onclick="changeQty('Tris della Val Tramontina', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">🧀</div>
+        <div class="dish-body">
+          <h3 class="dish-name">Tris di Formaggi</h3>
+          <p class="dish-desc">
+            Una selezione che racconta la tradizione casearia della nostra vallata: formaggio salato, latteria e pecorino, tre stagionature e caratteri diversi da assaporare fianco a fianco. Un viaggio nei sapori del territorio da gustare lentamente, magari con un buon calice di vino friulano.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-oro">Formaggio salato · Latteria · Pecorino</span>
+            <span class="tag tag-grigio">Produzione locale</span>
+          </div>
+          <div class="stepper" data-item="Tris di Formaggi">
+            <button type="button" onclick="changeQty('Tris di Formaggi', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Tris di Formaggi', 1)">+</button>
           </div>
         </div>
       </div>
@@ -1254,60 +1274,11 @@
       </div>
     </section>
 
-    <!-- ═══ FORMAGGI ═════════════════════════════════════════ -->
-    <section class="menu-section" id="formaggi">
-      <div class="section-header">
-        <div class="section-icon oro">🧀</div>
-        <h2>Formaggi</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="dish-card">
-        <div class="dish-img">🧀</div>
-        <div class="dish-body">
-          <h3 class="dish-name">Tris di Formaggi</h3>
-          <p class="dish-desc">
-            Una selezione che racconta la tradizione casearia della nostra vallata: formaggio salato, latteria e pecorino, tre stagionature e caratteri diversi da assaporare fianco a fianco. Un viaggio nei sapori del territorio da gustare lentamente, magari con un buon calice di vino friulano.
-          </p>
-          <div class="dish-tags">
-            <span class="tag tag-oro">Formaggio salato · Latteria · Pecorino</span>
-            <span class="tag tag-grigio">Produzione locale</span>
-          </div>
-          <div class="stepper" data-item="Tris di Formaggi">
-            <button type="button" onclick="changeQty('Tris di Formaggi', -1)">–</button>
-            <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Tris di Formaggi', 1)">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="dish-card">
-        <div class="dish-img">
-          <img src="frico.jpg" alt="Frico con Polenta" loading="lazy">
-        </div>
-        <div class="dish-body">
-          <h3 class="dish-name">Frico con Polenta</h3>
-          <p class="dish-desc">
-            Il frico è uno dei simboli indiscussi della cucina friulana. Formaggio fuso e fatto dorare in padella fino a diventare croccante fuori e filante dentro, servito su un letto di polenta fumante. Un piatto che scalda il cuore e che non si trova uguale da nessun'altra parte al mondo.
-          </p>
-          <div class="dish-tags">
-            <span class="tag tag-verde-dark">Tradizione friulana</span>
-            <span class="tag tag-oro">Formaggio · Polenta</span>
-          </div>
-          <div class="stepper" data-item="Frico con Polenta">
-            <button type="button" onclick="changeQty('Frico con Polenta', -1)">–</button>
-            <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Frico con Polenta', 1)">+</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ GRIGLIATA ════════════════════════════════════════ -->
-    <section class="menu-section" id="grigliata">
+    <!-- ═══ SECONDI ═════════════════════════════════════════ -->
+    <section class="menu-section" id="secondi">
       <div class="section-header">
         <div class="section-icon oro">🔥</div>
-        <h2>Dalla Griglia</h2>
+        <h2>Secondi</h2>
         <div class="section-line"></div>
       </div>
 
@@ -1345,6 +1316,46 @@
             <button type="button" onclick="changeQty('Salsiccia con Polenta', -1)">–</button>
             <span class="qty-value">0</span>
             <button type="button" onclick="changeQty('Salsiccia con Polenta', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">
+          <img src="frico.jpg" alt="Frico con Polenta" loading="lazy">
+        </div>
+        <div class="dish-body">
+          <h3 class="dish-name">Frico con Polenta</h3>
+          <p class="dish-desc">
+            Il frico è uno dei simboli indiscussi della cucina friulana. Formaggio fuso e fatto dorare in padella fino a diventare croccante fuori e filante dentro, servito su un letto di polenta fumante. Un piatto che scalda il cuore e che non si trova uguale da nessun'altra parte al mondo.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-verde-dark">Tradizione friulana</span>
+            <span class="tag tag-oro">Formaggio · Polenta</span>
+          </div>
+          <div class="stepper" data-item="Frico con Polenta">
+            <button type="button" onclick="changeQty('Frico con Polenta', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Frico con Polenta', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">🌿</div>
+        <div class="dish-body">
+          <h3 class="dish-name">Hamburger Vegano</h3>
+          <p class="dish-desc">
+            Perché la sagra è per tutti. Un hamburger 100% vegetale, gustoso e soddisfacente, per chi sceglie un'alimentazione plant-based senza rinunciare al gusto e alla convivialità della festa. Preparato con ingredienti selezionati e condito con cura.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-verde">Vegano</span>
+            <span class="tag tag-grigio">100% vegetale</span>
+          </div>
+          <div class="stepper" data-item="Hamburger Vegano">
+            <button type="button" onclick="changeQty('Hamburger Vegano', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Hamburger Vegano', 1)">+</button>
           </div>
         </div>
       </div>
@@ -1398,29 +1409,47 @@
       </div>
     </section>
 
-    <!-- ═══ ALTRO ═════════════════════════════════════════════ -->
-    <section class="menu-section" id="altro">
+    <!-- ═══ DOLCI ═══════════════════════════════════════════ -->
+    <section class="menu-section" id="dolci">
       <div class="section-header">
-        <div class="section-icon verde">🌿</div>
-        <h2>Altro</h2>
+        <div class="section-icon verde">🍰</div>
+        <h2>Dolci</h2>
         <div class="section-line"></div>
       </div>
 
       <div class="dish-card">
-        <div class="dish-img">🌿</div>
+        <div class="dish-img">🥧</div>
         <div class="dish-body">
-          <h3 class="dish-name">Hamburger Vegano</h3>
+          <h3 class="dish-name">Strudel di Mele</h3>
           <p class="dish-desc">
-            Perché la sagra è per tutti. Un hamburger 100% vegetale, gustoso e soddisfacente, per chi sceglie un'alimentazione plant-based senza rinunciare al gusto e alla convivialità della festa. Preparato con ingredienti selezionati e condito con cura.
+            Mele locali avvolte in una sfoglia sottile e dorata, cotte al forno secondo la tradizione contadina. Un dolce caldo e profumato di cannella, perfetto per chiudere il pasto in dolcezza.
           </p>
           <div class="dish-tags">
-            <span class="tag tag-verde">Vegano</span>
-            <span class="tag tag-grigio">100% vegetale</span>
+            <span class="tag tag-oro">Fatto in casa</span>
+            <span class="tag tag-grigio">Mele · Cannella</span>
           </div>
-          <div class="stepper" data-item="Hamburger Vegano">
-            <button type="button" onclick="changeQty('Hamburger Vegano', -1)">–</button>
+          <div class="stepper" data-item="Strudel di Mele">
+            <button type="button" onclick="changeQty('Strudel di Mele', -1)">–</button>
             <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Hamburger Vegano', 1)">+</button>
+            <button type="button" onclick="changeQty('Strudel di Mele', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">🍮</div>
+        <div class="dish-body">
+          <h3 class="dish-name">Panna Cotta ai Frutti di Bosco o Arancia e Amaretti</h3>
+          <p class="dish-desc">
+            Panna cotta vellutata, servita a scelta con una fresca coulis di frutti di bosco oppure con salsa all'arancia e amaretti sbriciolati. Un dolce al cucchiaio semplice ed elegante, per chiudere in leggerezza.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-grigio">Senza glutine</span>
+          </div>
+          <div class="stepper" data-item="Panna Cotta ai Frutti di Bosco o Arancia e Amaretti">
+            <button type="button" onclick="changeQty('Panna Cotta ai Frutti di Bosco o Arancia e Amaretti', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Panna Cotta ai Frutti di Bosco o Arancia e Amaretti', 1)">+</button>
           </div>
         </div>
       </div>
@@ -1526,10 +1555,10 @@
 
   /* ─── Titolo nella nav: compare solo dopo aver scrollato oltre l'header ─── */
   const navBrand = document.getElementById('navBrand');
-  const heroHeight = getComputedStyle(document.documentElement).getPropertyValue('--main-nav-h');
+  const heroHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--main-nav-h')) || 50;
   const heroObserver = new IntersectionObserver(entries => {
     entries.forEach(e => navBrand.classList.toggle('show', !e.isIntersecting));
-  }, { rootMargin: `-${heroHeight} 0px 0px 0px`, threshold: 0 });
+  }, { rootMargin: `-${heroHeight}px 0px 0px 0px`, threshold: 0 });
   heroObserver.observe(document.getElementById('home'));
 
   /* ─── Effetto di comparsa tra le sezioni ─── */
