@@ -319,24 +319,15 @@
       justify-content: space-between;
       gap: 1rem;
       width: 100%;
-      max-height: 200px;
       border: none;
       cursor: pointer;
       text-align: left;
       padding: 1.6rem 1.5rem;
       font-family: 'Jost', sans-serif;
       color: var(--testo);
-      overflow: hidden;
-      transition: filter .15s ease, opacity .4s ease, max-height .4s ease, padding .4s ease;
+      transition: filter .15s ease;
     }
     .reveal-toggle:hover { filter: brightness(.96); }
-    .reveal-toggle.consumed {
-      opacity: 0;
-      max-height: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      pointer-events: none;
-    }
     .reveal-toggle-sage  { background: var(--sage); }
     .reveal-toggle-peach { background: var(--peach); }
     .reveal-toggle-eyebrow {
@@ -1691,9 +1682,9 @@
     const willOpen = !panel.classList.contains('open');
     panel.classList.toggle('open', willOpen);
     btn.setAttribute('aria-expanded', String(willOpen));
-    // una volta aperto il blocco non serve più: si ritira invece di
-    // trasformarsi in un ingombrante pulsante "nascondi"
-    btn.classList.toggle('consumed', willOpen);
+    // il blocco resta come intestazione fissa della sezione: cambia
+    // solo l'icona (+/×), il testo non si trasforma mai in un "nascondi"
+    btn.classList.toggle('open', willOpen);
   }
 
   /* Il Menù è il motivo principale del sito: si apre da solo scorrendo
