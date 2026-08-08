@@ -6,7 +6,7 @@
   <title>61^ Sagra della Trota e del Formaggio Salato</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -17,11 +17,11 @@
       --sage:       #91ad94;
       --sage-deep:  #71906f;
       --sage-dark:  #4d6650;
-      --mint:       #cad5c5;
-      --terra:      #e18475;
+      --mint:       #cbd6c8;
+      --terra:      #dd7f6f;
       --terra-deep: #c96a5c;
       --crema:      #fbf6ef;
-      --testo:      #1c1c17;
+      --testo:      #191712;
       --grigio:     #6b6a5f;
 
       --verde:    var(--sage-dark);
@@ -31,7 +31,7 @@
       --acqua:    var(--sage-deep);
       --acqua-c:  var(--mint);
 
-      --main-nav-h: 50px;
+      --main-nav-h: 54px;
       --cat-nav-h: 46px;
     }
 
@@ -49,83 +49,89 @@
       line-height: 1.6;
     }
 
-    /* ─── HERO — blocchi di colore in stile locandina "Terra/Tjere" ── */
+    /* ─── HERO — importata dal progetto Claude Design "Sito sagra con design intrecciato" ── */
     .hero {
+      position: relative;
       color: var(--testo);
       scroll-margin-top: calc(var(--main-nav-h) + 4px);
       overflow: hidden;
+      background: var(--crema);
     }
-    .hero-row {
-      padding: 1.6rem 1.5rem;
-    }
+    .hero-row { padding: 1.6rem 1.4rem 1.6rem; }
     .hero-row-peach { background: var(--peach); }
     .hero-row-sage  { background: var(--sage); }
     .hero-row-mint  { background: var(--mint); }
 
+    .hero-row-title1 { position: relative; padding: 1.6rem 1.4rem 1.6rem; }
+    .hero-row-title2 { padding: .9rem 1.4rem 1.5rem; }
+
     .hero-title {
+      max-width: 62%;
+      margin: 0;
       font-family: 'Jost', sans-serif;
       font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: -.01em;
-      line-height: .96;
-      font-size: clamp(2.1rem, 10.5vw, 4.6rem);
+      letter-spacing: -.02em;
+      line-height: .86;
+      font-size: clamp(2.75rem, 13.5vw, 5.75rem);
       overflow-wrap: break-word;
     }
-    .hero-row-sage .hero-title { margin-top: -.15em; }
+    .hero-title-sub {
+      max-width: 62%;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      letter-spacing: -.02em;
+      line-height: .92;
+      font-size: clamp(1.75rem, 8.5vw, 3.375rem);
+    }
+
+    /* badge rosso "61ª edizione" che scavalca il taglio peach/sage */
+    .hero-edition-badge {
+      position: absolute;
+      right: 0;
+      bottom: -2.9rem;
+      max-width: 44%;
+      background: var(--terra);
+      color: var(--testo);
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      line-height: 1.05;
+      font-size: clamp(1.375rem, 6.5vw, 1.875rem);
+      padding: 1.1rem 1.25rem;
+    }
 
     .hero-row-mint {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: .5rem;
-      padding-top: 1.7rem;
-      padding-bottom: 1.7rem;
+      gap: .6rem;
+      align-items: flex-start;
+      max-width: 60%;
+      padding: 1.6rem 1.4rem 1.75rem;
     }
-    .hero-facts {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .7rem;
-    }
-    .hero-facts li:first-child {
-      font-family: 'Jost', sans-serif;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      font-size: 1rem;
-      color: #fff;
-      background: var(--terra);
-      padding: .5rem 1.3rem;
-    }
-    .hero-facts li:last-child {
-      font-size: 1rem;
-      color: var(--testo);
-      opacity: .8;
-      max-width: 300px;
-    }
-    .hero-facts .ast { display: none; }
+    .hero-row-mint .ast { font: 400 1.375rem/.9 'Jost'; color: var(--terra); flex-shrink: 0; }
+    .hero-tagline { font: 500 clamp(1.125rem, 5vw, 1.375rem)/1.25 'Jost'; }
 
     .hero-row-date {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding-top: 1.4rem;
-      padding-bottom: 1.4rem;
+      position: relative;
+      padding: 1.5rem 1.4rem 1.6rem;
+      min-height: 190px;
+    }
+    .hero-date-badge {
+      display: inline-block;
+      background: var(--sage-deep);
+      padding: 1rem 1.375rem;
     }
     .hero-date-big {
       font-family: 'Jost', sans-serif;
       font-weight: 500;
-      font-size: clamp(1.8rem, 8vw, 2.6rem);
-      line-height: 1.05;
+      font-size: clamp(2.125rem, 10vw, 2.875rem);
+      line-height: 1;
     }
     .hero-date-big .arrow { color: var(--terra); }
     .hero-date-place {
-      font-size: clamp(1.2rem, 5vw, 1.7rem);
+      position: absolute;
+      right: 1.4rem;
+      bottom: 1.4rem;
       text-align: right;
+      font: 400 clamp(1rem, 5vw, 1.375rem)/1.15 'Jost';
     }
 
     /* ─── BOTTONI GENERICI ───────────────────────── */
@@ -163,11 +169,11 @@
     }
     .main-nav-brand {
       color: #fff;
-      font-family: 'Jost', sans-serif;
-      font-weight: 600;
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
       text-transform: uppercase;
-      font-size: .72rem;
-      letter-spacing: .03em;
+      font-size: .68rem;
+      letter-spacing: .02em;
       line-height: 1.25;
       white-space: nowrap;
       overflow: hidden;
@@ -371,6 +377,81 @@
     @keyframes revealFadeIn {
       from { opacity: 0; transform: translateY(-10px); }
       to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── TENDE: il Menù si apre scorrendo (scroll-driven, via transform) ── */
+    .curtain {
+      position: relative;
+      height: 220vh;
+      background: var(--testo);
+    }
+    .curtain-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .curtain-backdrop {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--crema);
+      padding: 0 1.8rem;
+    }
+    .curtain-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: .68rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--terra-deep);
+    }
+    .curtain-title {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      letter-spacing: -.03em;
+      line-height: .88;
+      font-size: clamp(4.5rem, 26vw, 9.4rem);
+      margin: .7rem 0;
+    }
+    .curtain-sub {
+      font-size: clamp(.94rem, 4.4vw, 1.125rem);
+      color: var(--grigio);
+      max-width: 300px;
+    }
+    .curtain-panel {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 50%;
+      display: flex;
+      justify-content: center;
+      will-change: transform;
+    }
+    .curtain-panel-top {
+      top: 0;
+      background: var(--peach);
+      align-items: flex-end;
+      padding-bottom: 1.4rem;
+      transform: translateY(calc(var(--p, 0) * -101%));
+    }
+    .curtain-panel-bottom {
+      bottom: 0;
+      background: var(--sage);
+      align-items: flex-start;
+      padding-top: 1.4rem;
+      transform: translateY(calc(var(--p, 0) * 101%));
+    }
+    .curtain-cue {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: .75rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
     }
 
     .menu-section {
@@ -889,20 +970,21 @@
 
 <!-- ═══ HERO — blocchi di colore in stile locandina ═══════════ -->
 <header class="hero" id="home">
-  <div class="hero-row hero-row-peach">
+  <div class="hero-row-title1 hero-row-peach">
     <h1 class="hero-title">Sagra della<br>Trota</h1>
+    <div class="hero-edition-badge">61ª edizione</div>
   </div>
-  <div class="hero-row hero-row-sage">
-    <h1 class="hero-title">e del Formaggio<br>Salato</h1>
+  <div class="hero-row-title2 hero-row-sage">
+    <div class="hero-title-sub">e del Formaggio<br>Salato</div>
   </div>
-  <div class="hero-row hero-row-mint">
-    <ul class="hero-facts">
-      <li><span class="ast">✳</span> 61ª edizione</li>
-      <li><span class="ast">✳</span> Gnocchi, frico, pitina, formaggi e tanta musica dal vivo</li>
-    </ul>
+  <div class="hero-row-mint">
+    <span class="ast">✳</span>
+    <div class="hero-tagline">Gnocchi, frico, pitina, formaggi e tanta musica dal vivo</div>
   </div>
   <div class="hero-row hero-row-peach hero-row-date">
-    <div class="hero-date-big">7 <span class="arrow">→</span> 16<br>08. 2026</div>
+    <div class="hero-date-badge">
+      <div class="hero-date-big">7 <span class="arrow">→</span> 16<br>08. 2026</div>
+    </div>
     <div class="hero-date-place">Tramonti<br>di Sotto</div>
   </div>
 </header>
@@ -944,7 +1026,7 @@
         <div class="schedule-time">15-17</div>
         <div class="schedule-icon">🎶</div>
         <div>
-          <div class="schedule-title">Canti di Terra · per adulti</div>
+          <div class="schedule-title">Canti di Terra</div>
           <div class="schedule-sub">Casa della Conoscenza — Ambienti acustici, polifonie e vocalità nei canti di tradizione orale con Giuseppina Casarin.</div>
         </div>
       </div>
@@ -969,14 +1051,14 @@
         <div class="schedule-icon">⛪</div>
         <div>
           <div class="schedule-title">Suggestioni itineranti</div>
-          <div class="schedule-sub">Pieve di S. Maria Maggiore — Musica sacra con il coro Gjaluth, diretto da Lorenzo Benedet, al pianoforte Alessandro Pisano. Il restauratore Renato Portolan racconta gli affreschi della Pieve e il restauro dopo il terremoto del '76.</div>
+          <div class="schedule-sub">Pro loco — Musica sacra con il coro Gjaluth, diretto da Lorenzo Benedet, al pianoforte Alessandro Pisano. Il restauratore Renato Portolan racconta gli affreschi della Pieve e il restauro dopo il terremoto del '76.</div>
         </div>
       </div>
       <div class="schedule-item">
         <div class="schedule-time">19:00</div>
         <div class="schedule-icon">🍽️</div>
         <div>
-          <div class="schedule-title">Chioschi aperti (cena)</div>
+          <div class="schedule-title">Chioschi aperti</div>
           <div class="schedule-sub">Frico, pitina IGP, trota, formaggi, pistùm… e dolcetti per tutti i gusti!</div>
         </div>
       </div>
@@ -1028,7 +1110,7 @@
         <div class="schedule-time">10-19</div>
         <div class="schedule-icon">🧶</div>
         <div>
-          <div class="schedule-title">Lana e dintorni · per tutti</div>
+          <div class="schedule-title">Lana e dintorni</div>
           <div class="schedule-sub">Cortile Bolèt — Laboratorio di feltro con Caterina De Boni.</div>
         </div>
       </div>
@@ -1036,8 +1118,56 @@
         <div class="schedule-time">12:30</div>
         <div class="schedule-icon">🍽️</div>
         <div>
-          <div class="schedule-title">Chioschi aperti (pranzo)</div>
-          <div class="schedule-sub">Gnocchetti, frico, pitina IGP, filetto di trota, formaggi, pistùm, grigliata mista… e tanti dolcetti!</div>
+          <div class="schedule-title">Chioschi aperti</div>
+          <div class="schedule-sub">Frico, pitina IGP, trota, formaggi, pistùm… e dolcetti per tutti i gusti!</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">15-17</div>
+        <div class="schedule-icon">💃</div>
+        <div>
+          <div class="schedule-title">Danze balcaniche</div>
+          <div class="schedule-sub">Pro loco — Stage con Nilla Patrizio.</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">15-19</div>
+        <div class="schedule-icon">🧺</div>
+        <div>
+          <div class="schedule-title">Laboratori d'intreccio</div>
+          <div class="schedule-sub">Cortile Bolèt — Porta aglio (adulti) con Omar Ghinozzi; Fatti una borsa (adulti) con Mirco Pederzini; Cesto portapane (adulti) con Daniela Mirri; Volta la carta (tutti) con Lisetta Totis.</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">17:00</div>
+        <div class="schedule-icon">🎻</div>
+        <div>
+          <div class="schedule-title">Banda del Mago</div>
+          <div class="schedule-sub">Pro loco — Folk europeo e balfolk.</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">17-19</div>
+        <div class="schedule-icon">🧺</div>
+        <div>
+          <div class="schedule-title">Laboratori d'intreccio</div>
+          <div class="schedule-sub">Cortile Bolèt — Dai che intrecemo! (bambini) con Claudio "Caio" Zuffo; Crea una lanterna (tutti) con Stefano Mascherin.</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">19:00</div>
+        <div class="schedule-icon">🍽️</div>
+        <div>
+          <div class="schedule-title">Chioschi aperti</div>
+          <div class="schedule-sub">Frico, pitina IGP, trota, formaggi, pistùm… e dolcetti per tutti i gusti!</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">21:00</div>
+        <div class="schedule-icon">🎻</div>
+        <div>
+          <div class="schedule-title">Rudemà</div>
+          <div class="schedule-sub">Pro loco — Musica tradizionale italiana ed europea.</div>
         </div>
       </div>
     </div>
@@ -1109,7 +1239,7 @@
         <div class="schedule-icon">🍽️</div>
         <div>
           <div class="schedule-title">Chioschi aperti</div>
-          <div class="schedule-sub">Gusta le nostre specialità gastronomiche!</div>
+          <div class="schedule-sub">Frico, pitina IGP, trota, formaggi, pistùm… e dolcetti per tutti i gusti!</div>
         </div>
       </div>
       <div class="schedule-item">
@@ -1122,7 +1252,7 @@
       </div>
       <div class="schedule-item">
         <div class="schedule-time">22:30</div>
-        <div class="schedule-icon">🎱</div>
+        <div class="schedule-icon">🎟️</div>
         <div>
           <div class="schedule-title">Tombolissssima di Ferragosto</div>
         </div>
@@ -1179,16 +1309,22 @@
 
 <!-- ═══ MENÙ ═══════════════════════════════════════════════ -->
 <section class="page-section" id="menu">
-  <button type="button" class="reveal-toggle reveal-toggle-peach" id="menuToggle" onclick="toggleReveal('menuPanel', this)" aria-expanded="false" aria-controls="menuPanel" data-label-closed="Scopri il menù e scegli in anticipo cosa mangiare" data-label-open="Nascondi il menù">
-    <span>
-      <span class="reveal-toggle-eyebrow">🍽️ Menù</span>
-      <span class="reveal-toggle-label">Scopri il menù e scegli in anticipo cosa mangiare</span>
-    </span>
-    <span class="reveal-toggle-icon">＋</span>
-  </button>
-
-  <div class="reveal-panel" id="menuPanel">
-  <div class="reveal-panel-inner" style="padding-top:0">
+  <!-- tende che si aprono scorrendo, rivelando il menù -->
+  <div class="curtain" data-curtain>
+    <div class="curtain-sticky">
+      <div class="curtain-backdrop">
+        <div class="curtain-eyebrow">Chioschi aperti</div>
+        <div class="curtain-title">Menù</div>
+        <div class="curtain-sub">Scorri per scoprire il menù e scegliere in anticipo cosa mangiare.</div>
+      </div>
+      <div class="curtain-panel curtain-panel-top">
+        <div class="curtain-cue">Apri le tende ▲</div>
+      </div>
+      <div class="curtain-panel curtain-panel-bottom">
+        <div class="curtain-cue">▼ Scorri</div>
+      </div>
+    </div>
+  </div>
 
   <nav class="cat-nav">
     <button class="cat-btn active" onclick="scrollToCat('#antipasti', this)">🍽️ Antipasti</button>
@@ -1554,8 +1690,6 @@
     </section>
 
   </main>
-  </div>
-  </div>
 </section>
 
 <!-- ═══ PRENOTAZIONI ═══════════════════════════════════════ -->
@@ -1666,8 +1800,8 @@
     autoOpenReveal(id);
   }
 
-  /* ─── Blocchi apribili (Attività / Menù) ─── */
-  const revealTogglesBySection = { attivita: 'attivitaToggle', menu: 'menuToggle' };
+  /* ─── Blocco apribile (Attività) ─── */
+  const revealTogglesBySection = { attivita: 'attivitaToggle' };
 
   function autoOpenReveal(sectionId) {
     const toggleId = revealTogglesBySection[sectionId];
@@ -1687,19 +1821,23 @@
     btn.classList.toggle('open', willOpen);
   }
 
-  /* Il Menù è il motivo principale del sito: si apre da solo scorrendo
-     fino a lì, senza bisogno di cliccare (a differenza di Attività,
-     che resta un contenuto di corredo apribile solo su richiesta). */
-  const menuAutoOpenObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        autoOpenReveal('menu');
-        menuAutoOpenObserver.disconnect();
-      }
-    });
-  }, { threshold: 0, rootMargin: '0px 0px -35% 0px' });
-  const menuSectionEl = document.getElementById('menu');
-  if (menuSectionEl) menuAutoOpenObserver.observe(menuSectionEl);
+  /* Le tende del Menù si aprono seguendo lo scroll (transform, non altezza:
+     resta fluido anche durante lo scroll attivo, senza scatti). */
+  (function () {
+    const curtain = document.querySelector('[data-curtain]');
+    if (!curtain) return;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const vh = window.innerHeight;
+      const travel = curtain.offsetHeight - vh;
+      let p = travel > 0 ? (window.pageYOffset - curtain.offsetTop) / travel : 0;
+      p = Math.max(0, Math.min(1, p));
+      curtain.style.setProperty('--p', p.toFixed(4));
+    };
+    window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    requestAnimationFrame(update);
+  })();
 
   const mainIds = ['home', 'attivita', 'menu', 'prenotazioni'];
   const mainSections = mainIds.map(id => document.getElementById(id));
