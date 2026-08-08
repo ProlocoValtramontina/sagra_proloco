@@ -63,25 +63,27 @@
     .hero-row-mint  { background: var(--mint); }
 
     .hero-row-title1 { position: relative; padding: 1.6rem 1.4rem 1.6rem; }
-    .hero-row-title2 { padding: .9rem 1.4rem 1.5rem; }
+    .hero-row-title2 { padding: 3.3rem 1.4rem 1.5rem; }
 
     .hero-title {
-      max-width: 62%;
       margin: 0;
       font-family: 'Jost', sans-serif;
       font-weight: 500;
       letter-spacing: -.02em;
       line-height: .86;
-      font-size: clamp(2.75rem, 13.5vw, 5.75rem);
-      overflow-wrap: break-word;
+      font-size: clamp(2.2rem, 11.5vw, 5.75rem);
     }
     .hero-title-sub {
-      max-width: 62%;
       font-family: 'Jost', sans-serif;
       font-weight: 500;
       letter-spacing: -.02em;
       line-height: .92;
-      font-size: clamp(1.75rem, 8.5vw, 3.375rem);
+      font-size: clamp(1.5rem, 7.5vw, 3.375rem);
+    }
+    /* ogni riga del titolo resta su una sola linea (niente "Sagra / della / Trota") */
+    .hero-title span, .hero-title-sub span {
+      display: block;
+      white-space: nowrap;
     }
 
     /* badge rosso "61ª edizione" che scavalca il taglio peach/sage */
@@ -110,9 +112,12 @@
     .hero-tagline { font: 500 clamp(1.125rem, 5vw, 1.375rem)/1.25 'Jost'; }
 
     .hero-row-date {
-      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
       padding: 1.5rem 1.4rem 1.6rem;
-      min-height: 190px;
     }
     .hero-date-badge {
       display: inline-block;
@@ -127,9 +132,6 @@
     }
     .hero-date-big .arrow { color: var(--terra); }
     .hero-date-place {
-      position: absolute;
-      right: 1.4rem;
-      bottom: 1.4rem;
       text-align: right;
       font: 400 clamp(1rem, 5vw, 1.375rem)/1.15 'Jost';
     }
@@ -971,11 +973,11 @@
 <!-- ═══ HERO — blocchi di colore in stile locandina ═══════════ -->
 <header class="hero" id="home">
   <div class="hero-row-title1 hero-row-peach">
-    <h1 class="hero-title">Sagra della<br>Trota</h1>
+    <h1 class="hero-title"><span>Sagra della</span><span>Trota</span></h1>
     <div class="hero-edition-badge">61ª edizione</div>
   </div>
   <div class="hero-row-title2 hero-row-sage">
-    <div class="hero-title-sub">e del Formaggio<br>Salato</div>
+    <div class="hero-title-sub"><span>e del Formaggio</span><span>Salato</span></div>
   </div>
   <div class="hero-row-mint">
     <span class="ast">✳</span>
