@@ -63,7 +63,7 @@
     .hero-row-mint  { background: var(--mint); }
 
     .hero-row-title1 { position: relative; padding: 1.6rem 1.4rem 1.6rem; }
-    .hero-row-title2 { padding: 3.3rem 1.4rem 1.5rem; }
+    .hero-row-title2 { padding: 3.3rem 1.4rem .9rem; }
 
     .hero-title {
       margin: 0;
@@ -117,7 +117,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1rem;
-      padding: 1.5rem 1.4rem 1.6rem;
+      padding: .9rem 1.4rem 1rem;
     }
     .hero-date-badge {
       display: inline-block;
@@ -365,6 +365,33 @@
       transition: transform .35s ease;
     }
     .reveal-toggle.open .reveal-toggle-icon { transform: rotate(45deg); }
+
+    .menu-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      background: var(--oro-c);
+      color: var(--terra-deep);
+      font-family: 'Jost', sans-serif;
+      font-weight: 600;
+      font-size: .85rem;
+      letter-spacing: .02em;
+      padding: .7rem 1.4rem;
+      transition: filter .15s ease;
+    }
+    .menu-hint:hover { filter: brightness(.96); }
+    .menu-hint-arrow {
+      display: inline-block;
+      animation: menuHintBounce 1.4s ease-in-out infinite;
+    }
+    @keyframes menuHintBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
 
     .reveal-panel { display: none; }
     .reveal-panel.open { display: block; }
@@ -979,10 +1006,6 @@
   <div class="hero-row-title2 hero-row-sage">
     <div class="hero-title-sub"><span>e del</span><span>Formaggio Salato</span></div>
   </div>
-  <div class="hero-row-mint">
-    <span class="ast">✳</span>
-    <div class="hero-tagline">Gnocchi, frico, pitina, formaggi e tanta musica dal vivo</div>
-  </div>
   <div class="hero-row hero-row-peach hero-row-date">
     <div class="hero-date-badge">
       <div class="hero-date-big">7 <span class="arrow">→</span> 16<br>08. 2026</div>
@@ -995,10 +1018,13 @@
 <section class="page-section" id="attivita">
   <button type="button" class="reveal-toggle reveal-toggle-sage" id="attivitaToggle" onclick="toggleReveal('attivitaPanel', this)" aria-expanded="false" aria-controls="attivitaPanel" data-label-closed="Scopri le attività in programma" data-label-open="Nascondi le attività">
     <span>
-      <span class="reveal-toggle-eyebrow">🎉 Attività &amp; Programma</span>
-      <span class="reveal-toggle-label">Scopri le attività in programma</span>
+      <span class="reveal-toggle-label">🎉 Scopri le attività in programma</span>
     </span>
     <span class="reveal-toggle-icon">＋</span>
+  </button>
+
+  <button type="button" class="menu-hint" onclick="scrollToMain('menu', document.querySelectorAll('.main-btn')[2])">
+    🍽️ <span>Il menù è qui sotto</span> <span class="menu-hint-arrow">↓</span>
   </button>
 
   <div class="section-wrap" style="padding-top:0; padding-bottom:0">
