@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#fbf6ef;color:#191712;font-family:'Jost',system-ui,sans-serif}
+  a{color:#c96a5c}a:hover{color:#a8503f}
+  @keyframes cueB{0%,100%{transform:translate(-50%,0);opacity:.85}50%{transform:translate(-50%,6px);opacity:.4}}
+  @keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+</style>
+</helmet>
+
+<!-- ══ TOP NAV ══ -->
+<nav data-nav style="position:sticky;top:0;z-index:200;background:#4d6650;display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:54px">
+  <span data-brand style="font:600 12px/1.2 'Space Mono',monospace;letter-spacing:.02em;color:#fbf6ef;opacity:0;transform:translateY(-4px);transition:opacity .3s,transform .3s">SAGRA DELLA TROTA</span>
+  <div style="display:flex;gap:8px;align-items:center">
+    <button type="button" data-goto="top" style="background:none;border:none;color:rgba(251,246,239,.85);font:500 13px 'Jost';cursor:pointer;padding:8px 10px">Home</button>
+    <button type="button" data-goto="menu" style="background:none;border:none;color:rgba(251,246,239,.85);font:500 13px 'Jost';cursor:pointer;padding:8px 10px">Men&ugrave;</button>
+    <button type="button" data-goto="prenota" style="position:relative;background:#dd7f6f;border:none;color:#191712;font:600 13px 'Jost';cursor:pointer;padding:8px 14px;border-radius:20px">
+      Ordine<span data-badge style="display:none;align-items:center;justify-content:center;position:absolute;top:-6px;right:-6px;min-width:19px;height:19px;padding:0 5px;background:#191712;color:#fff;border-radius:999px;font:700 10px 'Space Mono',monospace">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO — bande sagra, testo come index + blocchi stile locandina ══ -->
+<header id="top" style="position:relative;scroll-margin-top:54px;background:#fbf6ef;overflow:hidden">
+  <!-- riga 1: titolo su peach -->
+  <div style="position:relative;z-index:2;background:#ffc3a7;padding:26px 22px 26px">
+    <h1 style="max-width:62%;margin:0;font:500 clamp(44px,13.5vw,92px)/.86 'Jost';letter-spacing:-.02em">Sagra della<br>Trota</h1>
+  </div>
+
+  <!-- riga 2: verde con titolo -->
+  <div style="position:relative;z-index:2;background:#91ad94;padding:14px 22px 24px">
+    <div style="max-width:62%;font:500 clamp(28px,8.5vw,54px)/.92 'Jost';letter-spacing:-.02em">e del Formaggio<br>Salato</div>
+  </div>
+
+  <!-- riga 3: info su mint -->
+  <div style="position:relative;z-index:2;background:#cbd6c8;padding:26px 22px 28px">
+    <div style="max-width:60%;display:flex;gap:10px;align-items:flex-start"><span style="font:400 22px/.9 'Jost';color:#c96a5c">&#10037;</span><div style="font:500 clamp(18px,5vw,22px)/1.25 'Jost'">Gnocchi, frico, pitina, formaggi e tanta musica dal vivo</div></div>
+  </div>
+
+  <!-- riga 4: date su peach, con Tramonti di Sotto in basso a destra -->
+  <div style="position:relative;z-index:2;background:#ffc3a7;padding:24px 22px 26px;min-height:190px">
+    <!-- riquadro VERDE sulla data -->
+    <div style="position:relative;z-index:2;display:inline-block;background:#6f9070;padding:16px 22px">
+      <div style="font:500 clamp(34px,10vw,46px)/1 'Jost';color:#191712">7 <span style="color:#c96a5c">&rarr;</span> 16<br>08. 2026</div>
+    </div>
+    <div style="position:absolute;z-index:2;right:22px;bottom:22px;text-align:right;font:400 clamp(16px,5vw,22px)/1.15 'Jost';color:#191712">Tramonti<br>di Sotto</div>
+  </div>
+
+  <!-- riquadro ROSSO con "61ª edizione" che scavalca il taglio peach/verde -->
+  <div style="position:absolute;z-index:3;top:96px;right:0;width:42%;min-height:150px;background:#dd7f6f;display:flex;align-items:center;padding:18px 20px">
+    <div style="font:500 clamp(22px,6.5vw,30px)/1.05 'Jost';color:#191712">61&#170; edizione</div>
+  </div>
+</header>
+
+<!-- ══ TENDE / ingresso menù ══ -->
+<div data-curtain style="position:relative;height:220vh;background:#191712">
+  <div data-pin style="position:relative;top:0;height:100vh;overflow:hidden;will-change:transform">
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fbf6ef;text-align:center;padding:0 30px">
+      <div style="font:700 11px 'Space Mono',monospace;letter-spacing:.3em;color:#c96a5c">CHIOSCHI APERTI</div>
+      <div style="font:500 clamp(72px,26vw,150px)/.88 'Jost';letter-spacing:-.03em;margin:12px 0">MEN&Ugrave;</div>
+      <div style="font:400 clamp(15px,4.4vw,18px) 'Jost';color:#6b6a5f;max-width:300px">Sfoglia le specialit&agrave; e componi il tuo ordine da mostrare alla cassa.</div>
+    </div>
+    <div style="position:absolute;top:0;left:0;right:0;height:50%;background:#ffc3a7;transform:translateY(calc(var(--p,0)*-101%));will-change:transform;display:flex;align-items:flex-end;justify-content:center;padding-bottom:22px">
+      <div style="font:600 12px 'Space Mono',monospace;letter-spacing:.2em">APRI LE TENDE &#9651;</div>
+    </div>
+    <div style="position:absolute;bottom:0;left:0;right:0;height:50%;background:#91ad94;transform:translateY(calc(var(--p,0)*101%));will-change:transform;display:flex;align-items:flex-start;justify-content:center;padding-top:22px">
+      <div style="font:600 12px 'Space Mono',monospace;letter-spacing:.2em">&#9661; SCORRI</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MENÙ ══ -->
+<main id="menu" style="scroll-margin-top:54px;background:#fbf6ef">
+  <!-- category chips -->
+  <nav data-cat style="position:sticky;top:54px;z-index:100;background:#4d6650;display:flex;gap:8px;overflow-x:auto;padding:11px 16px;scrollbar-width:none">
+    <button type="button" data-cat-btn="antipasti" style="flex:none;background:#dd7f6f;border:none;color:#191712;border-radius:20px;padding:7px 15px;font:600 12.5px 'Jost';cursor:pointer;white-space:nowrap">Antipasti</button>
+    <button type="button" data-cat-btn="gnocchi" style="flex:none;background:rgba(255,255,255,.12);border:none;color:#fbf6ef;border-radius:20px;padding:7px 15px;font:600 12.5px 'Jost';cursor:pointer;white-space:nowrap">Gnocchi</button>
+    <button type="button" data-cat-btn="trota" style="flex:none;background:rgba(255,255,255,.12);border:none;color:#fbf6ef;border-radius:20px;padding:7px 15px;font:600 12.5px 'Jost';cursor:pointer;white-space:nowrap">Trota</button>
+    <button type="button" data-cat-btn="secondi" style="flex:none;background:rgba(255,255,255,.12);border:none;color:#fbf6ef;border-radius:20px;padding:7px 15px;font:600 12.5px 'Jost';cursor:pointer;white-space:nowrap">Secondi</button>
+    <button type="button" data-cat-btn="contorni" style="flex:none;background:rgba(255,255,255,.12);border:none;color:#fbf6ef;border-radius:20px;padding:7px 15px;font:600 12.5px 'Jost';cursor:pointer;white-space:nowrap">Contorni</button>
+    <button type="button" data-cat-btn="dolci" style="flex:none;background:rgba(255,255,255,.12);border:none;color:#fbf6ef;border-radius:20px;padding:7px 15px;font:600 12.5px 'Jost';cursor:pointer;white-space:nowrap">Dolci</button>
+  </nav>
+
+  <div style="max-width:720px;margin:0 auto;padding:14px 16px 48px">
+
+    <!-- ANTIPASTI -->
+    <section data-msec="antipasti" style="scroll-margin-top:112px;padding-top:20px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin:10px 0 18px"><span style="font:700 12px 'Space Mono',monospace;letter-spacing:.15em;color:#c96a5c">01</span><h2 style="margin:0;font:500 clamp(30px,8vw,42px)/1 'Jost';letter-spacing:-.02em">Antipasti</h2></div>
+      <article data-weave style="transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform:translateX(-30px);opacity:0;background:#fff;border-radius:20px;overflow:hidden;margin-bottom:16px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <img src="assets/tris.jpg" alt="Tris della Val Tramontina" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
+        <div style="padding:18px 20px 20px">
+          <h3 style="margin:0;font:600 22px/1.05 'Jost'">Tris della Val Tramontina</h3>
+          <p style="margin:7px 0 0;font:400 14.5px/1.55 'Jost';color:#6b6a5f">Pitina IGP, formaggio salato e il tradizionale pist&ugrave;m, su un letto di polenta calda.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px"><span style="font:700 9px 'Space Mono',monospace;letter-spacing:.08em;color:#c96a5c;background:#ffe6d8;padding:5px 9px;border-radius:20px">SPECIALIT&Agrave;</span></div>
+          <div data-stepper="Tris della Val Tramontina" style="display:flex;align-items:center;gap:12px;margin-top:14px;background:#fbf6ef;border-radius:24px;padding:6px 8px;width:fit-content">
+            <button type="button" data-item="Tris della Val Tramontina" data-delta="-1" style="width:32px;height:32px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 18px/1 'Jost';cursor:pointer">&#8211;</button>
+            <span data-qty="Tris della Val Tramontina" style="min-width:22px;text-align:center;font:600 16px 'Jost'">0</span>
+            <button type="button" data-item="Tris della Val Tramontina" data-delta="1" style="width:32px;height:32px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 18px/1 'Jost';cursor:pointer">+</button>
+          </div>
+        </div>
+      </article>
+      <article data-weave style="transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform:translateX(30px);opacity:0;background:#fff;border-radius:20px;overflow:hidden;margin-bottom:16px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <div style="width:100%;height:150px;background:repeating-linear-gradient(45deg,#e7ddca,#e7ddca 11px,#ded3bd 11px,#ded3bd 22px);display:flex;align-items:center;justify-content:center;font:700 10px 'Space Mono',monospace;letter-spacing:.12em;color:#a99a80">FOTO TRIS DI FORMAGGI</div>
+        <div style="padding:18px 20px 20px">
+          <h3 style="margin:0;font:600 22px/1.05 'Jost'">Tris di Formaggi</h3>
+          <p style="margin:7px 0 0;font:400 14.5px/1.55 'Jost';color:#6b6a5f">Latteria, pecorino e il tradizionale formai dal Cit, con polenta abbrustolita.</p>
+          <div data-stepper="Tris di Formaggi" style="display:flex;align-items:center;gap:12px;margin-top:14px;background:#fbf6ef;border-radius:24px;padding:6px 8px;width:fit-content">
+            <button type="button" data-item="Tris di Formaggi" data-delta="-1" style="width:32px;height:32px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 18px/1 'Jost';cursor:pointer">&#8211;</button>
+            <span data-qty="Tris di Formaggi" style="min-width:22px;text-align:center;font:600 16px 'Jost'">0</span>
+            <button type="button" data-item="Tris di Formaggi" data-delta="1" style="width:32px;height:32px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 18px/1 'Jost';cursor:pointer">+</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- GNOCCHI -->
+    <section data-msec="gnocchi" style="scroll-margin-top:112px;padding-top:24px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin:10px 0 18px"><span style="font:700 12px 'Space Mono',monospace;letter-spacing:.15em;color:#c96a5c">02</span><h2 style="margin:0;font:500 clamp(30px,8vw,42px)/1 'Jost';letter-spacing:-.02em">Gnocchi</h2></div>
+      <article data-weave style="transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform:translateX(-30px);opacity:0;background:#fff;border-radius:20px;overflow:hidden;margin-bottom:16px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <img src="assets/gnocchi-pitina.jpg" alt="Gnocchi alla Pitina" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
+        <div style="padding:18px 20px 20px">
+          <h3 style="margin:0;font:600 22px/1.05 'Jost'">Gnocchi alla Pitina, Rucola e Pomodorini</h3>
+          <p style="margin:7px 0 0;font:400 14.5px/1.55 'Jost';color:#6b6a5f">La pitina, salume affumicato della valle, con la freschezza di rucola e pomodorini.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px"><span style="font:700 9px 'Space Mono',monospace;letter-spacing:.08em;color:#4d6650;background:#e4ece2;padding:5px 9px;border-radius:20px">PRODOTTO TIPICO</span></div>
+          <div data-stepper="Gnocchi alla Pitina, Rucola e Pomodorini" style="display:flex;align-items:center;gap:12px;margin-top:14px;background:#fbf6ef;border-radius:24px;padding:6px 8px;width:fit-content">
+            <button type="button" data-item="Gnocchi alla Pitina, Rucola e Pomodorini" data-delta="-1" style="width:32px;height:32px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 18px/1 'Jost';cursor:pointer">&#8211;</button>
+            <span data-qty="Gnocchi alla Pitina, Rucola e Pomodorini" style="min-width:22px;text-align:center;font:600 16px 'Jost'">0</span>
+            <button type="button" data-item="Gnocchi alla Pitina, Rucola e Pomodorini" data-delta="1" style="width:32px;height:32px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 18px/1 'Jost';cursor:pointer">+</button>
+          </div>
+        </div>
+      </article>
+      <article data-weave style="transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform:translateX(30px);opacity:0;background:#fff;border-radius:20px;overflow:hidden;margin-bottom:16px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <img src="assets/gnocchi-cit.jpg" alt="Gnocchi al Formai dal Cit" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
+        <div style="padding:18px 20px 20px">
+          <h3 style="margin:0;font:600 22px/1.05 'Jost'">Gnocchi al Formai dal Cit</h3>
+          <p style="margin:7px 0 0;font:400 14.5px/1.55 'Jost';color:#6b6a5f">Formaggio cremoso e piccante che si scioglie sugli gnocchi fatti a mano.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px"><span style="font:700 9px 'Space Mono',monospace;letter-spacing:.08em;color:#c96a5c;background:#ffe6d8;padding:5px 9px;border-radius:20px">SPECIALIT&Agrave;</span></div>
+          <div data-stepper="Gnocchi al Formai dal Cit" style="display:flex;align-items:center;gap:12px;margin-top:14px;background:#fbf6ef;border-radius:24px;padding:6px 8px;width:fit-content">
+            <button type="button" data-item="Gnocchi al Formai dal Cit" data-delta="-1" style="width:32px;height:32px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 18px/1 'Jost';cursor:pointer">&#8211;</button>
+            <span data-qty="Gnocchi al Formai dal Cit" style="min-width:22px;text-align:center;font:600 16px 'Jost'">0</span>
+            <button type="button" data-item="Gnocchi al Formai dal Cit" data-delta="1" style="width:32px;height:32px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 18px/1 'Jost';cursor:pointer">+</button>
+          </div>
+        </div>
+      </article>
+      <article data-weave style="transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform:translateX(-30px);opacity:0;background:#fff;border-radius:20px;overflow:hidden;margin-bottom:16px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <div style="padding:18px 20px 20px">
+          <h3 style="margin:0;font:600 22px/1.05 'Jost'">Gnocchi al Pomodoro</h3>
+          <p style="margin:7px 0 0;font:400 14.5px/1.55 'Jost';color:#6b6a5f">Un sugo di pomodoro semplice e saporito. Un classico che piace a tutti.</p>
+          <div data-stepper="Gnocchi al Pomodoro" style="display:flex;align-items:center;gap:12px;margin-top:14px;background:#fbf6ef;border-radius:24px;padding:6px 8px;width:fit-content">
+            <button type="button" data-item="Gnocchi al Pomodoro" data-delta="-1" style="width:32px;height:32px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 18px/1 'Jost';cursor:pointer">&#8211;</button>
+            <span data-qty="Gnocchi al Pomodoro" style="min-width:22px;text-align:center;font:600 16px 'Jost'">0</span>
+            <button type="button" data-item="Gnocchi al Pomodoro" data-delta="1" style="width:32px;height:32px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 18px/1 'Jost';cursor:pointer">+</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- TROTA -->
+    <section data-msec="trota" style="scroll-margin-top:112px;padding-top:24px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin:10px 0 18px"><span style="font:700 12px 'Space Mono',monospace;letter-spacing:.15em;color:#c96a5c">03</span><h2 style="margin:0;font:500 clamp(30px,8vw,42px)/1 'Jost';letter-spacing:-.02em">La Trota</h2></div>
+      <article data-weave style="transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform:translateX(-30px);opacity:0;background:#cbd6c8;border-radius:20px;overflow:hidden;margin-bottom:16px">
+        <div style="padding:20px 20px 22px">
+          <h3 style="margin:0;font:600 22px/1.05 'Jost'">Filetto di Trota</h3>
+          <p style="margin:7px 0 14px;font:400 14.5px/1.55 'Jost';color:#4d5b48">Pesce del territorio cotto a bassa temperatura, servito con insalata di patate prezzemolate. Tre varianti:</p>
+          <div style="display:grid;grid-template-columns:1fr;gap:10px">
+            <div style="background:#fff;border-radius:14px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+              <div><div style="font:600 16px 'Jost'">alle Erbe</div><div style="font:400 12.5px 'Jost';color:#6b6a5f">Erbe aromatiche, burro, limone</div></div>
+              <div data-stepper="Trota alle Erbe" style="display:flex;align-items:center;gap:10px;background:#fbf6ef;border-radius:24px;padding:5px 7px;flex:none">
+                <button type="button" data-item="Trota alle Erbe" data-delta="-1" style="width:30px;height:30px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 17px/1 'Jost';cursor:pointer">&#8211;</button>
+                <span data-qty="Trota alle Erbe" style="min-width:20px;text-align:center;font:600 15px 'Jost'">0</span>
+                <button type="button" data-item="Trota alle Erbe" data-delta="1" style="width:30px;height:30px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 17px/1 'Jost';cursor:pointer">+</button>
+              </div>
+            </div>
+            <div style="background:#fff;border-radius:14px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+              <div><div style="font:600 16px 'Jost'">agli Agrumi</div><div style="font:400 12.5px 'Jost';color:#6b6a5f">Arancia e limone, timo, miele</div></div>
+              <div data-stepper="Trota agli Agrumi" style="display:flex;align-items:center;gap:10px;background:#fbf6ef;border-radius:24px;padding:5px 7px;flex:none">
+                <button type="button" data-item="Trota agli Agrumi" data-delta="-1" style="width:30px;height:30px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 17px/1 'Jost';cursor:pointer">&#8211;</button>
+                <span data-qty="Trota agli Agrumi" style="min-width:20px;text-align:center;font:600 15px 'Jost'">0</span>
+                <button type="button" data-item="Trota agli Agrumi" data-delta="1" style="width:30px;height:30px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 17px/1 'Jost';cursor:pointer">+</button>
+              </div>
+            </div>
+            <div style="background:#fff;border-radius:14px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+              <div><div style="font:600 16px 'Jost'">Mediterranea</div><div style="font:400 12.5px 'Jost';color:#6b6a5f">Pomodoro e origano</div></div>
+              <div data-stepper="Trota Mediterranea" style="display:flex;align-items:center;gap:10px;background:#fbf6ef;border-radius:24px;padding:5px 7px;flex:none">
+                <button type="button" data-item="Trota Mediterranea" data-delta="-1" style="width:30px;height:30px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 17px/1 'Jost';cursor:pointer">&#8211;</button>
+                <span data-qty="Trota Mediterranea" style="min-width:20px;text-align:center;font:600 15px 'Jost'">0</span>
+                <button type="button" data-item="Trota Mediterranea" data-delta="1" style="width:30px;height:30px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 17px/1 'Jost';cursor:pointer">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- SECONDI -->
+    <section data-msec="secondi" style="scroll-margin-top:112px;padding-top:24px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin:10px 0 18px"><span style="font:700 12px 'Space Mono',monospace;letter-spacing:.15em;color:#c96a5c">04</span><h2 style="margin:0;font:500 clamp(30px,8vw,42px)/1 'Jost';letter-spacing:-.02em">Secondi</h2></div>
+      <article data-weave style="transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform:translateX(-30px);opacity:0;background:#fff;border-radius:20px;overflow:hidden;margin-bottom:16px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <img src="assets/frico.jpg" alt="Frico con Polenta" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
+        <div style="padding:18px 20px 20px">
+          <h3 style="margin:0;font:600 22px/1.05 'Jost'">Frico con Polenta</h3>
+          <p style="margin:7px 0 0;font:400 14.5px/1.55 'Jost';color:#6b6a5f">Formaggio e patate dorati in padella: croccante fuori, filante dentro.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px"><span style="font:700 9px 'Space Mono',monospace;letter-spacing:.08em;color:#fff;background:#4d6650;padding:5px 9px;border-radius:20px">TRADIZIONE FRIULANA</span></div>
+          <div data-stepper="Frico con Polenta" style="display:flex;align-items:center;gap:12px;margin-top:14px;background:#fbf6ef;border-radius:24px;padding:6px 8px;width:fit-content">
+            <button type="button" data-item="Frico con Polenta" data-delta="-1" style="width:32px;height:32px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 18px/1 'Jost';cursor:pointer">&#8211;</button>
+            <span data-qty="Frico con Polenta" style="min-width:22px;text-align:center;font:600 16px 'Jost'">0</span>
+            <button type="button" data-item="Frico con Polenta" data-delta="1" style="width:32px;height:32px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 18px/1 'Jost';cursor:pointer">+</button>
+          </div>
+        </div>
+      </article>
+      <article data-weave style="transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform:translateX(30px);opacity:0;background:#fff;border-radius:20px;overflow:hidden;margin-bottom:16px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <img src="assets/salsiccia.jpg" alt="Salsiccia con Polenta" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
+        <div style="padding:18px 20px 20px">
+          <h3 style="margin:0;font:600 22px/1.05 'Jost'">Salsiccia con Polenta</h3>
+          <p style="margin:7px 0 0;font:400 14.5px/1.55 'Jost';color:#6b6a5f">Salsiccia artigianale insaporita con spezie, con polenta abbrustolita.</p>
+          <div data-stepper="Salsiccia con Polenta" style="display:flex;align-items:center;gap:12px;margin-top:14px;background:#fbf6ef;border-radius:24px;padding:6px 8px;width:fit-content">
+            <button type="button" data-item="Salsiccia con Polenta" data-delta="-1" style="width:32px;height:32px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 18px/1 'Jost';cursor:pointer">&#8211;</button>
+            <span data-qty="Salsiccia con Polenta" style="min-width:22px;text-align:center;font:600 16px 'Jost'">0</span>
+            <button type="button" data-item="Salsiccia con Polenta" data-delta="1" style="width:32px;height:32px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 18px/1 'Jost';cursor:pointer">+</button>
+          </div>
+        </div>
+      </article>
+      <article data-weave style="transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform:translateX(-30px);opacity:0;background:#fff;border-radius:20px;overflow:hidden;margin-bottom:16px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <div style="padding:18px 20px 20px">
+          <h3 style="margin:0;font:600 22px/1.05 'Jost'">Grigliata Mista con Polenta</h3>
+          <p style="margin:7px 0 0;font:400 14.5px/1.55 'Jost';color:#6b6a5f">Pollo, salsiccia e coppa marinata alla griglia, con polenta abbrustolita.</p>
+          <div data-stepper="Grigliata Mista con Polenta" style="display:flex;align-items:center;gap:12px;margin-top:14px;background:#fbf6ef;border-radius:24px;padding:6px 8px;width:fit-content">
+            <button type="button" data-item="Grigliata Mista con Polenta" data-delta="-1" style="width:32px;height:32px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 18px/1 'Jost';cursor:pointer">&#8211;</button>
+            <span data-qty="Grigliata Mista con Polenta" style="min-width:22px;text-align:center;font:600 16px 'Jost'">0</span>
+            <button type="button" data-item="Grigliata Mista con Polenta" data-delta="1" style="width:32px;height:32px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 18px/1 'Jost';cursor:pointer">+</button>
+          </div>
+        </div>
+      </article>
+      <article data-weave style="transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform:translateX(30px);opacity:0;background:#fff;border-radius:20px;overflow:hidden;margin-bottom:16px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <div style="padding:18px 20px 20px">
+          <h3 style="margin:0;font:600 22px/1.05 'Jost'">Hamburger Vegano</h3>
+          <p style="margin:7px 0 0;font:400 14.5px/1.55 'Jost';color:#6b6a5f">100% vegetale, nel panino con pomodori, insalata e hummus di ceci.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px"><span style="font:700 9px 'Space Mono',monospace;letter-spacing:.08em;color:#4d6650;background:#e4ece2;padding:5px 9px;border-radius:20px">VEGANO</span></div>
+          <div data-stepper="Hamburger Vegano" style="display:flex;align-items:center;gap:12px;margin-top:14px;background:#fbf6ef;border-radius:24px;padding:6px 8px;width:fit-content">
+            <button type="button" data-item="Hamburger Vegano" data-delta="-1" style="width:32px;height:32px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 18px/1 'Jost';cursor:pointer">&#8211;</button>
+            <span data-qty="Hamburger Vegano" style="min-width:22px;text-align:center;font:600 16px 'Jost'">0</span>
+            <button type="button" data-item="Hamburger Vegano" data-delta="1" style="width:32px;height:32px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 18px/1 'Jost';cursor:pointer">+</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- CONTORNI -->
+    <section data-msec="contorni" style="scroll-margin-top:112px;padding-top:24px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin:10px 0 18px"><span style="font:700 12px 'Space Mono',monospace;letter-spacing:.15em;color:#c96a5c">05</span><h2 style="margin:0;font:500 clamp(30px,8vw,42px)/1 'Jost';letter-spacing:-.02em">Contorni</h2></div>
+      <article data-weave style="transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform:translateX(-30px);opacity:0;background:#fff;border-radius:20px;overflow:hidden;margin-bottom:16px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <div style="padding:18px 20px 20px">
+          <h3 style="margin:0;font:600 22px/1.05 'Jost'">Fagioli con Cipolla</h3>
+          <p style="margin:7px 0 0;font:400 14.5px/1.55 'Jost';color:#6b6a5f">Cotti lentamente con cipolla dorata. Semplicit&agrave; contadina.</p>
+          <div data-stepper="Fagioli con Cipolla" style="display:flex;align-items:center;gap:12px;margin-top:14px;background:#fbf6ef;border-radius:24px;padding:6px 8px;width:fit-content">
+            <button type="button" data-item="Fagioli con Cipolla" data-delta="-1" style="width:32px;height:32px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 18px/1 'Jost';cursor:pointer">&#8211;</button>
+            <span data-qty="Fagioli con Cipolla" style="min-width:22px;text-align:center;font:600 16px 'Jost'">0</span>
+            <button type="button" data-item="Fagioli con Cipolla" data-delta="1" style="width:32px;height:32px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 18px/1 'Jost';cursor:pointer">+</button>
+          </div>
+        </div>
+      </article>
+      <article data-weave style="transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform:translateX(30px);opacity:0;background:#fff;border-radius:20px;overflow:hidden;margin-bottom:16px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <img src="assets/patatine.jpg" alt="Patatine Fritte" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block">
+        <div style="padding:18px 20px 20px">
+          <h3 style="margin:0;font:600 22px/1.05 'Jost'">Patatine Fritte</h3>
+          <p style="margin:7px 0 0;font:400 14.5px/1.55 'Jost';color:#6b6a5f">Croccanti e dorate. Il contorno classico, buono con tutto.</p>
+          <div data-stepper="Patatine Fritte" style="display:flex;align-items:center;gap:12px;margin-top:14px;background:#fbf6ef;border-radius:24px;padding:6px 8px;width:fit-content">
+            <button type="button" data-item="Patatine Fritte" data-delta="-1" style="width:32px;height:32px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 18px/1 'Jost';cursor:pointer">&#8211;</button>
+            <span data-qty="Patatine Fritte" style="min-width:22px;text-align:center;font:600 16px 'Jost'">0</span>
+            <button type="button" data-item="Patatine Fritte" data-delta="1" style="width:32px;height:32px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 18px/1 'Jost';cursor:pointer">+</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- DOLCI -->
+    <section data-msec="dolci" style="scroll-margin-top:112px;padding-top:24px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin:10px 0 18px"><span style="font:700 12px 'Space Mono',monospace;letter-spacing:.15em;color:#c96a5c">06</span><h2 style="margin:0;font:500 clamp(30px,8vw,42px)/1 'Jost';letter-spacing:-.02em">Dolci</h2></div>
+      <article data-weave style="transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform:translateX(-30px);opacity:0;background:#fff;border-radius:20px;overflow:hidden;margin-bottom:16px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <div style="padding:18px 20px 20px">
+          <h3 style="margin:0;font:600 22px/1.05 'Jost'">Strudel di Mele</h3>
+          <p style="margin:7px 0 0;font:400 14.5px/1.55 'Jost';color:#6b6a5f">Mele in sfoglia sottile e dorata, profumate di cannella.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px"><span style="font:700 9px 'Space Mono',monospace;letter-spacing:.08em;color:#c96a5c;background:#ffe6d8;padding:5px 9px;border-radius:20px">FATTO IN CASA</span></div>
+          <div data-stepper="Strudel di Mele" style="display:flex;align-items:center;gap:12px;margin-top:14px;background:#fbf6ef;border-radius:24px;padding:6px 8px;width:fit-content">
+            <button type="button" data-item="Strudel di Mele" data-delta="-1" style="width:32px;height:32px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 18px/1 'Jost';cursor:pointer">&#8211;</button>
+            <span data-qty="Strudel di Mele" style="min-width:22px;text-align:center;font:600 16px 'Jost'">0</span>
+            <button type="button" data-item="Strudel di Mele" data-delta="1" style="width:32px;height:32px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 18px/1 'Jost';cursor:pointer">+</button>
+          </div>
+        </div>
+      </article>
+      <article data-weave style="transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform:translateX(30px);opacity:0;background:#fff;border-radius:20px;overflow:hidden;margin-bottom:16px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <div style="padding:18px 20px 20px">
+          <h3 style="margin:0;font:600 22px/1.05 'Jost'">Panna Cotta</h3>
+          <p style="margin:7px 0 0;font:400 14.5px/1.55 'Jost';color:#6b6a5f">Vellutata, ai frutti di bosco oppure arancia e amaretti.</p>
+          <div data-stepper="Panna Cotta ai Frutti di Bosco o Arancia e Amaretti" style="display:flex;align-items:center;gap:12px;margin-top:14px;background:#fbf6ef;border-radius:24px;padding:6px 8px;width:fit-content">
+            <button type="button" data-item="Panna Cotta ai Frutti di Bosco o Arancia e Amaretti" data-delta="-1" style="width:32px;height:32px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 18px/1 'Jost';cursor:pointer">&#8211;</button>
+            <span data-qty="Panna Cotta ai Frutti di Bosco o Arancia e Amaretti" style="min-width:22px;text-align:center;font:600 16px 'Jost'">0</span>
+            <button type="button" data-item="Panna Cotta ai Frutti di Bosco o Arancia e Amaretti" data-delta="1" style="width:32px;height:32px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 18px/1 'Jost';cursor:pointer">+</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- PRENOTAZIONI -->
+    <section id="prenota" data-msec="prenota" style="scroll-margin-top:112px;padding-top:30px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin:10px 0 8px"><span style="font:700 12px 'Space Mono',monospace;letter-spacing:.15em;color:#c96a5c">&#10037;</span><h2 style="margin:0;font:500 clamp(30px,8vw,42px)/1 'Jost';letter-spacing:-.02em">Il tuo ordine</h2></div>
+      <p style="margin:0 0 16px;font:400 14.5px/1.55 'Jost';color:#6b6a5f">Componi l'ordine con i pulsanti &laquo;+&raquo; e &laquo;&#8211;&raquo;, poi conferma per generare lo scontrino da mostrare alla cassa.</p>
+
+      <div data-editor style="background:#fff;border-radius:20px;padding:20px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <div data-empty style="text-align:center;color:#6b6a5f;font:400 14.5px 'Jost';padding:14px 0 18px">Il carrello &egrave; vuoto. Sfoglia il men&ugrave; e aggiungi i piatti che desideri.</div>
+        <div data-cartlist></div>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px dashed #e2d9c9">
+          <label for="tableNum" style="display:block;font:500 14px 'Jost';margin-bottom:8px">&#127869;&#65039; Numero tavolo <span style="color:#6b6a5f;font-weight:400">(servizio al tavolo)</span></label>
+          <input id="tableNum" data-table type="text" inputmode="numeric" maxlength="6" placeholder="es. 12" style="width:100%;max-width:220px;border:1px solid #d8cfc2;border-radius:12px;background:#fbf6ef;padding:11px 14px;font:400 16px 'Jost';color:#191712">
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:12px;flex-wrap:wrap">
+          <span style="font:400 14px 'Jost';color:#6b6a5f">Piatti: <strong data-count style="color:#4d6650">0</strong></span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button type="button" data-clear style="background:#f0ece4;border:none;color:#191712;border-radius:22px;padding:11px 18px;font:600 13.5px 'Jost';cursor:pointer">Svuota</button>
+            <button type="button" data-confirm disabled style="background:#4d6650;border:none;color:#fff;border-radius:22px;padding:11px 20px;font:600 13.5px 'Jost';cursor:pointer">Conferma ordine</button>
+          </div>
+        </div>
+        <p style="margin:16px 0 0;padding-top:14px;border-top:1px dashed #e2d9c9;font:400 12.5px/1.5 'Jost';color:#6b6a5f">Il pagamento avviene alla cassa; il servizio &egrave; direttamente al tavolo.</p>
+      </div>
+
+      <div data-receipt style="display:none;background:#fff;border-radius:20px;padding:20px;box-shadow:0 10px 26px -16px rgba(40,25,15,.4)">
+        <div style="text-align:center;font:600 16px 'Jost';color:#4d6650;text-transform:uppercase;letter-spacing:.04em;padding-bottom:14px;margin-bottom:6px;border-bottom:1px dashed #d8cfc2">&#129534; Scontrino ordine</div>
+        <div data-rtable></div>
+        <div data-rlist></div>
+        <div style="display:flex;justify-content:space-between;margin-top:14px;padding-top:14px;border-top:2px solid #4d6650;font:700 16px 'Jost'"><span>Totale piatti</span><span data-rcount>0</span></div>
+        <div style="margin-top:16px"><button type="button" data-edit style="background:#f0ece4;border:none;color:#191712;border-radius:22px;padding:11px 18px;font:600 13.5px 'Jost';cursor:pointer">&#9998; Modifica ordine</button></div>
+        <p style="margin:14px 0 0;font:400 12.5px/1.5 'Jost';color:#6b6a5f">Ordine confermato: mostra questa schermata alla cassa. Il servizio sar&agrave; al tuo tavolo.</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer style="background:#4d6650;color:rgba(251,246,239,.75);text-align:center;padding:40px 24px">
+  <img src="assets/proloco.png" alt="Pro Loco Valtramontina" style="height:44px;width:auto;margin:0 auto 12px;display:block;border-radius:6px">
+  <div style="font:600 16px 'Jost';color:#ffc3a7;text-transform:uppercase;letter-spacing:.04em">Pro Loco Valtramontina</div>
+  <div style="width:32px;height:2px;background:#dd7f6f;margin:12px auto;border-radius:2px"></div>
+  <p style="margin:0;font:400 13px 'Jost'">61&#170; Sagra della Trota e del Formaggio Salato</p>
+  <p style="margin:6px 0 0;font:400 12px 'Jost';opacity:.6">Tramonti di Sotto &#183; 7 &rarr; 16 agosto 2026</p>
+</footer>
+
+<!-- ══ FAB ══ -->
+<button type="button" data-goto="prenota" aria-label="Vai all'ordine" style="position:fixed;bottom:20px;right:20px;z-index:300;width:60px;height:60px;border-radius:50%;background:#dd7f6f;color:#191712;border:none;font-size:24px;box-shadow:0 8px 22px rgba(40,25,15,.35);cursor:pointer;display:flex;align-items:center;justify-content:center">
+  &#128722;<span data-badge style="display:none;align-items:center;justify-content:center;position:absolute;top:-2px;right:-2px;min-width:22px;height:22px;padding:0 5px;background:#191712;color:#fff;border-radius:999px;font:700 11px 'Space Mono',monospace;border:2px solid #fbf6ef">0</span>
+</button>
+
+<!-- ══ MODAL tavolo ══ -->
+<div data-modal style="display:none;position:fixed;inset:0;z-index:500;background:rgba(25,23,18,.55);align-items:center;justify-content:center;padding:24px">
+  <div style="background:#fff;border-radius:20px;padding:24px 22px;max-width:360px;width:100%;box-shadow:0 16px 44px rgba(0,0,0,.28)">
+    <h3 style="margin:0 0 10px;font:600 18px 'Jost';color:#4d6650">&#127869;&#65039; Servizio al tavolo</h3>
+    <p style="margin:0 0 18px;font:400 14.5px/1.6 'Jost';color:#191712">Il servizio &egrave; direttamente al tavolo: indica il numero del tavolo e attendi l&igrave; la consegna.</p>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <button type="button" data-modal-back style="background:#f0ece4;border:none;color:#191712;border-radius:22px;padding:12px;font:600 14px 'Jost';cursor:pointer">&larr; Scrivo il numero</button>
+      <button type="button" data-modal-skip style="background:#4d6650;border:none;color:#fff;border-radius:22px;padding:12px;font:600 14px 'Jost';cursor:pointer">Procedi senza tavolo</button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() { this._wire(); }
+  componentDidUpdate() { this._wire(); }
+  _wire() {
+    if (this._wired) return;
+    if (!document.querySelector('[data-curtain]')) return;
+    this._wired = true;
+    const CART_KEY='sagraCartItems', CONFIRM_KEY='sagraCartConfirmed', TABLE_KEY='sagraTableNumber';
+    let cart={}; try{cart=JSON.parse(localStorage.getItem(CART_KEY))||{};}catch(e){cart={};}
+    let confirmed=localStorage.getItem(CONFIRM_KEY)==='1';
+    let tableNumber=localStorage.getItem(TABLE_KEY)||'';
+    const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const $=s=>document.querySelector(s);
+
+    const refresh=()=>{
+      document.querySelectorAll('[data-qty]').forEach(el=>{el.textContent=cart[el.getAttribute('data-qty')]||0;});
+      const total=Object.values(cart).reduce((a,b)=>a+b,0);
+      document.querySelectorAll('[data-badge]').forEach(b=>{b.textContent=total;b.style.display=total>0?'flex':'none';});
+      document.querySelectorAll('[data-item][data-delta]').forEach(btn=>{btn.style.opacity=confirmed?'.35':'';btn.style.pointerEvents=confirmed?'none':'';});
+      const editor=$('[data-editor]'),receipt=$('[data-receipt]'),entries=Object.entries(cart);
+      const tinput=$('[data-table]'); if(tinput) tinput.disabled=confirmed;
+      if(confirmed){
+        editor.style.display='none'; receipt.style.display='block';
+        $('[data-rtable]').innerHTML=tableNumber?`<div style="display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed #ece4d6;font:600 15px 'Jost'"><span>&#127869;&#65039; Tavolo</span><span style="color:#4d6650">${esc(tableNumber)}</span></div>`:'';
+        $('[data-rcount]').textContent=total;
+        $('[data-rlist]').innerHTML=entries.map(([n,q])=>`<div style="display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed #ece4d6;font:400 15px 'Jost'"><span>${esc(n)}</span><span style="font-weight:700;color:#4d6650">&times;${q}</span></div>`).join('');
+        return;
+      }
+      editor.style.display='block'; receipt.style.display='none';
+      $('[data-count]').textContent=total;
+      $('[data-confirm]').disabled=entries.length===0;
+      $('[data-confirm]').style.opacity=entries.length===0?'.5':'';
+      const list=$('[data-cartlist]'),empty=$('[data-empty]');
+      if(entries.length===0){list.innerHTML='';empty.style.display='block';return;}
+      empty.style.display='none';
+      list.innerHTML=entries.map(([n,q])=>`<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #f0ece4"><div style="font:600 15.5px 'Jost'">${esc(n)}</div><div data-stepper="${esc(n)}" style="display:flex;align-items:center;gap:10px;background:#fbf6ef;border-radius:24px;padding:5px 7px;flex:none"><button type="button" data-item="${esc(n)}" data-delta="-1" style="width:30px;height:30px;border-radius:50%;border:1px solid #e2d9c9;background:#fff;color:#4d6650;font:700 17px/1 'Jost';cursor:pointer">&#8211;</button><span style="min-width:20px;text-align:center;font:600 15px 'Jost'">${q}</span><button type="button" data-item="${esc(n)}" data-delta="1" style="width:30px;height:30px;border-radius:50%;border:none;background:#4d6650;color:#fff;font:700 17px/1 'Jost';cursor:pointer">+</button></div></div>`).join('');
+    };
+    const save=()=>{localStorage.setItem(CART_KEY,JSON.stringify(cart));refresh();};
+    const change=(item,d)=>{if(confirmed)return;const n=(cart[item]||0)+d;if(n<=0)delete cart[item];else cart[item]=n;save();};
+
+    document.addEventListener('click',e=>{
+      const step=e.target.closest('[data-item][data-delta]');
+      if(step){change(step.getAttribute('data-item'),parseInt(step.getAttribute('data-delta'),10));return;}
+      const goto=e.target.closest('[data-goto]');
+      if(goto){const t=goto.getAttribute('data-goto');const el=t==='top'?document.getElementById('top'):document.getElementById(t)||document.querySelector('[data-msec="'+t+'"]');if(el){const y=el.getBoundingClientRect().top+window.pageYOffset-56;window.scrollTo({top:y,behavior:'smooth'});}return;}
+      const cat=e.target.closest('[data-cat-btn]');
+      if(cat){const el=document.querySelector('[data-msec="'+cat.getAttribute('data-cat-btn')+'"]');if(el){const y=el.getBoundingClientRect().top+window.pageYOffset-104;window.scrollTo({top:y,behavior:'smooth'});}return;}
+      if(e.target.closest('[data-clear]')){cart={};confirmed=false;tableNumber='';localStorage.setItem(CONFIRM_KEY,'0');localStorage.removeItem(TABLE_KEY);const ti=$('[data-table]');if(ti)ti.value='';save();return;}
+      if(e.target.closest('[data-confirm]')){doConfirm(false);return;}
+      if(e.target.closest('[data-edit]')){confirmed=false;localStorage.setItem(CONFIRM_KEY,'0');refresh();return;}
+      if(e.target.closest('[data-modal-back]')){$('[data-modal]').style.display='none';const ti=$('[data-table]');if(ti)ti.focus();return;}
+      if(e.target.closest('[data-modal-skip]')){$('[data-modal]').style.display='none';doConfirm(true);return;}
+    });
+    function doConfirm(skip){
+      if(Object.keys(cart).length===0)return;
+      const ti=$('[data-table]');const val=ti?ti.value.trim():'';
+      if(!val&&!skip){$('[data-modal]').style.display='flex';return;}
+      tableNumber=val; if(val)localStorage.setItem(TABLE_KEY,val);else localStorage.removeItem(TABLE_KEY);
+      confirmed=true;localStorage.setItem(CONFIRM_KEY,'1');refresh();
+    }
+    const tinput=$('[data-table]');
+    if(tinput){if(tableNumber)tinput.value=tableNumber;tinput.addEventListener('input',()=>{tableNumber=tinput.value.trim();if(tableNumber)localStorage.setItem(TABLE_KEY,tableNumber);else localStorage.removeItem(TABLE_KEY);});}
+    refresh();
+
+    /* ── animazioni ── */
+    const curtain=document.querySelector('[data-curtain]');
+    const pin=curtain.querySelector('[data-pin]');
+    const loop=()=>{const vh=window.innerHeight;const travel=curtain.offsetHeight-vh;const rect=curtain.getBoundingClientRect();const pinY=Math.max(0,Math.min(travel,-rect.top));const p=travel>0?pinY/travel:0;if(pin)pin.style.transform='translateY('+pinY+'px)';curtain.style.setProperty('--p',p.toFixed(4));requestAnimationFrame(loop);};
+    requestAnimationFrame(loop);
+    const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.style.transform='none';en.target.style.opacity='1';io.unobserve(en.target);}});},{threshold:0.12});
+    document.querySelectorAll('[data-weave]').forEach(el=>io.observe(el));
+
+    /* brand nella nav dopo l'hero */
+    const brand=document.querySelector('[data-brand]');
+    const hero=document.getElementById('top');
+    if(brand&&hero){const ho=new IntersectionObserver(es=>{es.forEach(en=>{brand.style.opacity=en.isIntersecting?'0':'1';brand.style.transform=en.isIntersecting?'translateY(-4px)':'none';});},{rootMargin:'-56px 0px 0px 0px',threshold:0});ho.observe(hero);}
+
+    /* categoria attiva */
+    const catBtns=document.querySelectorAll('[data-cat-btn]');
+    const secs=[...document.querySelectorAll('[data-msec]')].filter(s=>s.getAttribute('data-msec')!=='prenota');
+    const co=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){const id=en.target.getAttribute('data-msec');catBtns.forEach(b=>{const on=b.getAttribute('data-cat-btn')===id;b.style.background=on?'#dd7f6f':'rgba(255,255,255,.12)';b.style.color=on?'#191712':'#fbf6ef';});}});},{threshold:.4});
+    secs.forEach(s=>co.observe(s));
+  }
+  renderVals(){return{};}
+}
+</script>
+</body>
+</html>

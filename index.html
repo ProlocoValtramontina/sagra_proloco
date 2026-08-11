@@ -330,7 +330,7 @@
       border: none;
       cursor: pointer;
       text-align: left;
-      padding: 1.6rem 1.5rem;
+      padding: .85rem 1.5rem;
       font-family: 'Jost', sans-serif;
       color: var(--testo);
       transition: filter .15s ease;
@@ -340,12 +340,12 @@
     .reveal-toggle-peach { background: var(--peach); }
     .reveal-toggle-eyebrow {
       display: block;
-      font-size: .72rem;
+      font-size: .66rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: .1em;
       opacity: .7;
-      margin-bottom: .3rem;
+      margin-bottom: .15rem;
     }
     .reveal-toggle-label {
       display: block;
@@ -353,12 +353,12 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: .01em;
-      font-size: 1.25rem;
+      font-size: 1.05rem;
       line-height: 1.2;
     }
     .reveal-toggle-icon {
       flex-shrink: 0;
-      font-size: 1.9rem;
+      font-size: 1.5rem;
       font-weight: 500;
       line-height: 1;
       color: var(--terra-deep);
@@ -384,7 +384,7 @@
     /* ─── TENDE: il Menù si apre scorrendo (scroll-driven, via transform) ── */
     .curtain {
       position: relative;
-      height: 220vh;
+      height: 145vh;
       background: var(--testo);
     }
     .curtain-sticky {
@@ -1329,8 +1329,7 @@
   </div>
 
   <nav class="cat-nav">
-    <button class="cat-btn active" onclick="scrollToCat('#antipasti', this)">🍽️ Antipasti</button>
-    <button class="cat-btn" onclick="scrollToCat('#gnocchi', this)">🥟 Gnocchi</button>
+    <button class="cat-btn active" onclick="scrollToCat('#primi', this)">🍲 Primi</button>
     <button class="cat-btn" onclick="scrollToCat('#trota', this)">🐟 Trota</button>
     <button class="cat-btn" onclick="scrollToCat('#secondi', this)">🔥 Secondi</button>
     <button class="cat-btn" onclick="scrollToCat('#contorni', this)">🫘 Contorni</button>
@@ -1339,100 +1338,78 @@
 
   <main class="section-wrap">
 
-    <!-- ═══ ANTIPASTI ══════════════════════════════════════ -->
-    <section class="menu-section" id="antipasti">
+    <!-- ═══ PRIMI ═══════════════════════════════════════════ -->
+    <section class="menu-section" id="primi">
       <div class="section-header">
-        <div class="section-icon oro">🍽️</div>
-        <h2>Antipasti</h2>
+        <div class="section-icon verde">🍲</div>
+        <h2>Primi</h2>
         <div class="section-line"></div>
       </div>
+      <p class="section-intro">Su richiesta, mezza porzione di gnocchetti a € 4.50.</p>
 
       <div class="dish-card">
         <div class="dish-img">
-          <img src="tris%20della%20val%20tramontina.jpg" alt="Tris della Val Tramontina" loading="lazy">
+          <img src="gnocchi%20cit.jpeg" alt="Gnocchetti al Formai dal Cít con Pepe e Noci" loading="lazy">
         </div>
         <div class="dish-body">
-          <h3 class="dish-name">Tris della Val Tramontina</h3>
+          <h3 class="dish-name">Gnocchetti al Formai dal Cít con Pepe e Noci</h3>
           <p class="dish-desc">
-            Un assaggio completo delle eccellenze della vallata in un unico piatto: Pitina IGP, formaggio salato e il tradizionale pistum, su un letto di polenta calda.
+            Il formai dal cít è un formaggio cremoso e piccante, ottenuto lavorando a mano formaggi stagionati fino a farli riposare nel "cit", il tradizionale vaso di terracotta che dà il nome al prodotto. Il suo sapore intenso si sposa con una nota di pepe e la croccantezza delle noci, per un condimento deciso e avvolgente.
           </p>
           <div class="dish-tags">
-            <span class="tag tag-oro">Specialità della sagra</span>
-            <span class="tag tag-grigio">Salame · Formaggio salato · Pestàt</span>
+            <span class="tag tag-grigio">🌾 Glutine</span>
+            <span class="tag tag-grigio">🥚 Uova</span>
+            <span class="tag tag-grigio">🥛 Latte</span>
+            <span class="tag tag-grigio">🌰 Frutta a guscio</span>
           </div>
-          <div class="stepper" data-item="Tris della Val Tramontina">
-            <button type="button" onclick="changeQty('Tris della Val Tramontina', -1)">–</button>
+          <div class="stepper" data-item="Gnocchetti al Formai dal Cít con Pepe e Noci">
+            <button type="button" onclick="changeQty('Gnocchetti al Formai dal Cít con Pepe e Noci', -1)">–</button>
             <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Tris della Val Tramontina', 1)">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="dish-card">
-        <div class="dish-img">🧀</div>
-        <div class="dish-body">
-          <h3 class="dish-name">Tris di Formaggi</h3>
-          <p class="dish-desc">
-            Una selezione di formaggi: latteria, pecorino e il tradizionale formai dal Cit, tre stagionature e caratteri diversi da assaporare fianco a fianco. Accompagnati da polenta appena abbrustolita.
-          </p>
-          <div class="dish-tags">
-            <span class="tag tag-oro">Latteria · Pecorino · Formai dal Cit</span>
-          </div>
-          <div class="stepper" data-item="Tris di Formaggi">
-            <button type="button" onclick="changeQty('Tris di Formaggi', -1)">–</button>
-            <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Tris di Formaggi', 1)">+</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ GNOCCHI ══════════════════════════════════════════ -->
-    <section class="menu-section" id="gnocchi">
-      <div class="section-header">
-        <div class="section-icon verde">🥟</div>
-        <h2>Gnocchi</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="dish-card">
-        <div class="dish-img">
-          <img src="gnocchi%20pitina%20pomodorini.jpg" alt="Gnocchi alla Pitina, Rucola e Pomodorini" loading="lazy">
-        </div>
-        <div class="dish-body">
-          <h3 class="dish-name">Gnocchi alla Pitina, Rucola e Pomodorini</h3>
-          <p class="dish-desc">
-            La pitina è un salume antico e prezioso, nato dalla necessità di conservare la carne di ovino e selvaggina nelle valli friulane. Affumicata e stagionata secondo tradizione, si sposa con la freschezza della rucola e l'acidità dei pomodorini in un piatto che racconta secoli di storia contadina.
-          </p>
-          <div class="dish-tags">
-            <span class="tag tag-verde">Prodotto tipico</span>
-            <span class="tag tag-grigio">Pitina · Rucola · Pomodorini</span>
-          </div>
-          <div class="stepper" data-item="Gnocchi alla Pitina, Rucola e Pomodorini">
-            <button type="button" onclick="changeQty('Gnocchi alla Pitina, Rucola e Pomodorini', -1)">–</button>
-            <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Gnocchi alla Pitina, Rucola e Pomodorini', 1)">+</button>
+            <button type="button" onclick="changeQty('Gnocchetti al Formai dal Cít con Pepe e Noci', 1)">+</button>
           </div>
         </div>
       </div>
 
       <div class="dish-card">
         <div class="dish-img">
-          <img src="gnocchi%20formaggio%20del%20cit.jpg" alt="Gnocchi al Formai dal Cit" loading="lazy">
+          <img src="gnocchi%20pitina%20pomodorini.jpg" alt="Gnocchetti Tricolore" loading="lazy">
         </div>
         <div class="dish-body">
-          <h3 class="dish-name">Gnocchi al Formai dal Cit</h3>
+          <h3 class="dish-name">Gnocchetti Tricolore: Pomodorini, Petuccia e Rucola</h3>
           <p class="dish-desc">
-            Il formai dal Cit è un formaggio cremoso e piccante, ottenuto lavorando a mano formaggi stagionati fino a farli riposare nel "cit", il tradizionale vaso di terracotta che dà il nome al prodotto. Il suo sapore intenso e pepato si scioglie sugli gnocchi, per un condimento deciso.
+            Un piatto molto tipico della tradizione locale: gnocchi conditi con pomodorini freschi, petuccia e rucola, per un tris di colori e sapori dell'estate.
           </p>
           <div class="dish-tags">
-            <span class="tag tag-oro">Specialità della sagra</span>
-            <span class="tag tag-grigio">Formai dal cit · Gnocchi fatti a mano</span>
+            <span class="tag tag-grigio">🌾 Glutine</span>
+            <span class="tag tag-grigio">🥚 Uova</span>
+            <span class="tag tag-grigio">🥛 Latte</span>
           </div>
-          <div class="stepper" data-item="Gnocchi al Formai dal Cit">
-            <button type="button" onclick="changeQty('Gnocchi al Formai dal Cit', -1)">–</button>
+          <div class="stepper" data-item="Gnocchetti Tricolore">
+            <button type="button" onclick="changeQty('Gnocchetti Tricolore', -1)">–</button>
             <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Gnocchi al Formai dal Cit', 1)">+</button>
+            <button type="button" onclick="changeQty('Gnocchetti Tricolore', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">
+          <img src="gnocchi%20ragu.jpeg" alt="Gnocchetti al Ragù" loading="lazy">
+        </div>
+        <div class="dish-body">
+          <h3 class="dish-name">Gnocchetti al Ragù</h3>
+          <p class="dish-desc">
+            Gnocchi conditi con un ragù di carne cotto lentamente, per un primo piatto sostanzioso dal gusto tradizionale.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-grigio">🌾 Glutine</span>
+            <span class="tag tag-grigio">🥚 Uova</span>
+            <span class="tag tag-grigio">🥛 Latte</span>
+          </div>
+          <div class="stepper" data-item="Gnocchetti al Ragù">
+            <button type="button" onclick="changeQty('Gnocchetti al Ragù', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Gnocchetti al Ragù', 1)">+</button>
           </div>
         </div>
       </div>
@@ -1440,17 +1417,37 @@
       <div class="dish-card">
         <div class="dish-img">🍅</div>
         <div class="dish-body">
-          <h3 class="dish-name">Gnocchi al Pomodoro</h3>
+          <h3 class="dish-name">Gnocchetti al Pomodoro</h3>
           <p class="dish-desc">
             Gnocchi conditi con un sugo di pomodoro semplice e saporito. Un classico che piace un po' a tutti.
           </p>
           <div class="dish-tags">
-            <span class="tag tag-grigio">Sugo di pomodoro</span>
+            <span class="tag tag-grigio">🌾 Glutine</span>
+            <span class="tag tag-grigio">🥚 Uova</span>
+            <span class="tag tag-grigio">🥛 Latte</span>
           </div>
-          <div class="stepper" data-item="Gnocchi al Pomodoro">
-            <button type="button" onclick="changeQty('Gnocchi al Pomodoro', -1)">–</button>
+          <div class="stepper" data-item="Gnocchetti al Pomodoro">
+            <button type="button" onclick="changeQty('Gnocchetti al Pomodoro', -1)">–</button>
             <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Gnocchi al Pomodoro', 1)">+</button>
+            <button type="button" onclick="changeQty('Gnocchetti al Pomodoro', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">🥗</div>
+        <div class="dish-body">
+          <h3 class="dish-name">Orzo con Verdure (VEG)</h3>
+          <p class="dish-desc">
+            Un piatto freddo e leggero a base di orzo, zucchine, ceci, pomodorini e olive: fresco, vegetale e adatto anche a chi cerca un'alternativa più leggera.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-grigio">🌾 Glutine</span>
+          </div>
+          <div class="stepper" data-item="Orzo con Verdure">
+            <button type="button" onclick="changeQty('Orzo con Verdure', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Orzo con Verdure', 1)">+</button>
           </div>
         </div>
       </div>
@@ -1465,16 +1462,28 @@
       </div>
 
       <div class="dish-card">
-        <div class="dish-img">🐟</div>
+        <div class="dish-img">
+          <img src="trota.jpeg" alt="Filetto di Trota con Patate Trifolate" loading="lazy">
+        </div>
         <div class="dish-body">
-          <h3 class="dish-name">Filetto di Trota</h3>
+          <h3 class="dish-name">Filetto di Trota con Patate Trifolate</h3>
           <p class="dish-desc">
-            La trota è l'anima di questa sagra: pesce del territorio, cotto a bassa temperatura sottovuoto per mantenerne la delicatezza, servito con un'insalata di patate prezzemolate. La proponiamo in tre varianti.
+            La trota è l'anima di questa sagra: pesce del territorio, cotto a bassa temperatura sottovuoto per mantenerne la delicatezza, servito con patate trifolate. La proponiamo in quattro varianti.
           </p>
           <div class="variant-cards">
             <div class="variant-card">
+              <div class="v-icon">🔥</div>
+              <div class="v-name">Trota Affumicata</div>
+              <div class="v-desc">Delicata affumicatura, per un gusto intenso e rustico</div>
+              <div class="stepper" data-item="Trota Affumicata">
+                <button type="button" onclick="changeQty('Trota Affumicata', -1)">–</button>
+                <span class="qty-value">0</span>
+                <button type="button" onclick="changeQty('Trota Affumicata', 1)">+</button>
+              </div>
+            </div>
+            <div class="variant-card">
               <div class="v-icon">🌿</div>
-              <div class="v-name">alle Erbe</div>
+              <div class="v-name">Trota alle Erbe</div>
               <div class="v-desc">Erbe aromatiche miste, burro, limone</div>
               <div class="stepper" data-item="Trota alle Erbe">
                 <button type="button" onclick="changeQty('Trota alle Erbe', -1)">–</button>
@@ -1484,7 +1493,7 @@
             </div>
             <div class="variant-card">
               <div class="v-icon">🍋</div>
-              <div class="v-name">agli Agrumi</div>
+              <div class="v-name">Trota agli Agrumi</div>
               <div class="v-desc">Scorza di arancia e limone, timo, un tocco di miele</div>
               <div class="stepper" data-item="Trota agli Agrumi">
                 <button type="button" onclick="changeQty('Trota agli Agrumi', -1)">–</button>
@@ -1494,7 +1503,7 @@
             </div>
             <div class="variant-card">
               <div class="v-icon">🫒</div>
-              <div class="v-name">Mediterranea</div>
+              <div class="v-name">Trota Mediterranea</div>
               <div class="v-desc">Pomodoro e origano</div>
               <div class="stepper" data-item="Trota Mediterranea">
                 <button type="button" onclick="changeQty('Trota Mediterranea', -1)">–</button>
@@ -1504,7 +1513,8 @@
             </div>
           </div>
           <div class="dish-tags" style="margin-top:.9rem">
-            <span class="tag tag-acqua">Pesce fresco locale</span>
+            <span class="tag tag-grigio">🐟 Pesce</span>
+            <span class="tag tag-grigio">🥚 Uova</span>
           </div>
         </div>
       </div>
@@ -1519,79 +1529,123 @@
       </div>
 
       <div class="dish-card">
-        <div class="dish-img">🥩</div>
+        <div class="dish-img">
+          <img src="tris%20della%20val%20tramontina.jpg" alt="Tris di Sapori della Val Tramontina" loading="lazy">
+        </div>
         <div class="dish-body">
-          <h3 class="dish-name">Grigliata Mista con Polenta</h3>
+          <h3 class="dish-name">Tris di Sapori della Val Tramontina</h3>
           <p class="dish-desc">
-            Pollo, salsiccia e una bistecchina di coppa marinata, cotti alla griglia e serviti con polenta abbrustolita.
+            Un assaggio completo delle eccellenze della vallata in un unico piatto: Pitina IGP, pistùm e formaggio salato, su un letto di polenta taragna.
           </p>
           <div class="dish-tags">
-            <span class="tag tag-oro">Alla brace · Polenta</span>
+            <span class="tag tag-grigio">🥛 Latte</span>
+            <span class="tag tag-grigio">🍷 Solfiti</span>
           </div>
-          <div class="stepper" data-item="Grigliata Mista con Polenta">
-            <button type="button" onclick="changeQty('Grigliata Mista con Polenta', -1)">–</button>
+          <div class="stepper" data-item="Tris di Sapori della Val Tramontina">
+            <button type="button" onclick="changeQty('Tris di Sapori della Val Tramontina', -1)">–</button>
             <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Grigliata Mista con Polenta', 1)">+</button>
+            <button type="button" onclick="changeQty('Tris di Sapori della Val Tramontina', 1)">+</button>
           </div>
         </div>
       </div>
 
       <div class="dish-card">
         <div class="dish-img">
-          <img src="salsiccia%20e%20polenta.jpg" alt="Salsiccia con Polenta" loading="lazy">
+          <img src="grigliata.jpeg" alt="Grigliata Mista con Polenta Taragna" loading="lazy">
         </div>
         <div class="dish-body">
-          <h3 class="dish-name">Salsiccia con Polenta</h3>
+          <h3 class="dish-name">Grigliata Mista con Polenta Taragna</h3>
           <p class="dish-desc">
-            La salsiccia artigianale, insaporita con spezie secondo la ricetta tradizionale, servita con fette di polenta abbrustolita.
+            Sovraccoscia di pollo, salsiccia e una bistecchina di maiale marinata, cotti alla griglia e serviti con polenta taragna abbrustolita.
           </p>
           <div class="dish-tags">
-            <span class="tag tag-grigio">Artigianale · Polenta</span>
+            <span class="tag tag-verde">✅ Nessuno degli allergeni obbligatori</span>
           </div>
-          <div class="stepper" data-item="Salsiccia con Polenta">
-            <button type="button" onclick="changeQty('Salsiccia con Polenta', -1)">–</button>
+          <div class="stepper" data-item="Grigliata Mista con Polenta Taragna">
+            <button type="button" onclick="changeQty('Grigliata Mista con Polenta Taragna', -1)">–</button>
             <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Salsiccia con Polenta', 1)">+</button>
+            <button type="button" onclick="changeQty('Grigliata Mista con Polenta Taragna', 1)">+</button>
           </div>
         </div>
       </div>
 
       <div class="dish-card">
         <div class="dish-img">
-          <img src="frico.jpg" alt="Frico con Polenta" loading="lazy">
+          <img src="salsicce%20e%20polenta.jpeg" alt="Salsiccia con Polenta Taragna" loading="lazy">
         </div>
         <div class="dish-body">
-          <h3 class="dish-name">Frico con Polenta</h3>
+          <h3 class="dish-name">Salsiccia con Polenta Taragna</h3>
           <p class="dish-desc">
-            Il frico è uno dei simboli della cucina friulana. Un impasto di formaggio e patate, fatto dorare in padella fino a diventare croccante fuori e filante dentro, servito con fette di polenta abbrustolita.
+            La salsiccia artigianale, insaporita con spezie secondo la ricetta tradizionale, servita con fette di polenta taragna abbrustolita.
           </p>
           <div class="dish-tags">
-            <span class="tag tag-verde-dark">Tradizione friulana</span>
-            <span class="tag tag-oro">Formaggio · Polenta</span>
+            <span class="tag tag-verde">✅ Nessuno degli allergeni obbligatori</span>
           </div>
-          <div class="stepper" data-item="Frico con Polenta">
-            <button type="button" onclick="changeQty('Frico con Polenta', -1)">–</button>
+          <div class="stepper" data-item="Salsiccia con Polenta Taragna">
+            <button type="button" onclick="changeQty('Salsiccia con Polenta Taragna', -1)">–</button>
             <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Frico con Polenta', 1)">+</button>
+            <button type="button" onclick="changeQty('Salsiccia con Polenta Taragna', 1)">+</button>
           </div>
         </div>
       </div>
 
       <div class="dish-card">
-        <div class="dish-img">🌿</div>
+        <div class="dish-img">
+          <img src="frico.jpg" alt="Frico con Polenta Taragna" loading="lazy">
+        </div>
         <div class="dish-body">
-          <h3 class="dish-name">Hamburger Vegano</h3>
+          <h3 class="dish-name">Frico con Polenta Taragna</h3>
           <p class="dish-desc">
-            Hamburger 100% vegetale, servito in un panino con pomodori, insalata e hummus di ceci.
+            Il frico è uno dei simboli della cucina friulana. Un impasto di formaggio e patate, fatto dorare in padella fino a diventare croccante fuori e filante dentro, servito con fette di polenta taragna abbrustolita.
           </p>
           <div class="dish-tags">
-            <span class="tag tag-verde">Vegano</span>
-            <span class="tag tag-grigio">100% vegetale</span>
+            <span class="tag tag-grigio">🥛 Latte</span>
           </div>
-          <div class="stepper" data-item="Hamburger Vegano">
-            <button type="button" onclick="changeQty('Hamburger Vegano', -1)">–</button>
+          <div class="stepper" data-item="Frico con Polenta Taragna">
+            <button type="button" onclick="changeQty('Frico con Polenta Taragna', -1)">–</button>
             <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Hamburger Vegano', 1)">+</button>
+            <button type="button" onclick="changeQty('Frico con Polenta Taragna', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">
+          <img src="formaggi.jpeg" alt="Formaggi con Polenta Taragna" loading="lazy">
+        </div>
+        <div class="dish-body">
+          <h3 class="dish-name">Formaggi con Polenta Taragna</h3>
+          <p class="dish-desc">
+            Una selezione di formaggi locali: pecorino, formaggio salato e latteria, tre stagionature e caratteri diversi da assaporare fianco a fianco, accompagnati da polenta taragna appena abbrustolita.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-grigio">🥛 Latte</span>
+          </div>
+          <div class="stepper" data-item="Formaggi con Polenta Taragna">
+            <button type="button" onclick="changeQty('Formaggi con Polenta Taragna', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Formaggi con Polenta Taragna', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">
+          <img src="formaggi%20e%20pitina.jpeg" alt="Formaggi e Pitina IGP con Polenta Taragna" loading="lazy">
+        </div>
+        <div class="dish-body">
+          <h3 class="dish-name">Formaggi e Pitina IGP con Polenta Taragna</h3>
+          <p class="dish-desc">
+            Selezione di formaggi locali — pecorino, formaggio salato e latteria — arricchita dalla pitina IGP, il salume simbolo della vallata, servita con polenta taragna abbrustolita.
+          </p>
+          <div class="dish-tags">
+            <span class="tag tag-grigio">🥛 Latte</span>
+            <span class="tag tag-grigio">🍷 Solfiti</span>
+          </div>
+          <div class="stepper" data-item="Formaggi e Pitina IGP con Polenta Taragna">
+            <button type="button" onclick="changeQty('Formaggi e Pitina IGP con Polenta Taragna', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Formaggi e Pitina IGP con Polenta Taragna', 1)">+</button>
           </div>
         </div>
       </div>
@@ -1606,15 +1660,16 @@
       </div>
 
       <div class="dish-card">
-        <div class="dish-img">🫘</div>
+        <div class="dish-img">
+          <img src="fagioli.jpeg" alt="Fagioli con Cipolla" loading="lazy">
+        </div>
         <div class="dish-body">
           <h3 class="dish-name">Fagioli con Cipolla</h3>
           <p class="dish-desc">
             Fagioli cotti lentamente con cipolla dorata e un filo d'olio. Un contorno semplice della tradizione contadina.
           </p>
           <div class="dish-tags">
-            <span class="tag tag-grigio">Senza glutine</span>
-            <span class="tag tag-verde">Vegetariano</span>
+            <span class="tag tag-verde">✅ Nessuno degli allergeni obbligatori</span>
           </div>
           <div class="stepper" data-item="Fagioli con Cipolla">
             <button type="button" onclick="changeQty('Fagioli con Cipolla', -1)">–</button>
@@ -1626,20 +1681,21 @@
 
       <div class="dish-card">
         <div class="dish-img">
-          <img src="patatine%20fritte.jpg" alt="Patatine Fritte" loading="lazy">
+          <img src="ptatine%20fritte.jpeg" alt="Patatine Fritte Crunchy" loading="lazy">
         </div>
         <div class="dish-body">
-          <h3 class="dish-name">Patatine Fritte</h3>
+          <h3 class="dish-name">Patatine Fritte Crunchy</h3>
           <p class="dish-desc">
             Patatine fritte croccanti e dorate. Il contorno classico, buono con qualsiasi piatto.
           </p>
           <div class="dish-tags">
-            <span class="tag tag-grigio">Senza glutine · Vegetariano</span>
+            <span class="tag tag-verde">✅ Nessuno degli allergeni obbligatori</span>
+            <span class="tag tag-grigio">❄️ Surgelato</span>
           </div>
-          <div class="stepper" data-item="Patatine Fritte">
-            <button type="button" onclick="changeQty('Patatine Fritte', -1)">–</button>
+          <div class="stepper" data-item="Patatine Fritte Crunchy">
+            <button type="button" onclick="changeQty('Patatine Fritte Crunchy', -1)">–</button>
             <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Patatine Fritte', 1)">+</button>
+            <button type="button" onclick="changeQty('Patatine Fritte Crunchy', 1)">+</button>
           </div>
         </div>
       </div>
@@ -1654,15 +1710,20 @@
       </div>
 
       <div class="dish-card">
-        <div class="dish-img">🥧</div>
+        <div class="dish-img">
+          <img src="strudel.jpeg" alt="Strudel di Mele" loading="lazy">
+        </div>
         <div class="dish-body">
           <h3 class="dish-name">Strudel di Mele</h3>
           <p class="dish-desc">
             Mele avvolte in una sfoglia sottile e dorata, cotte al forno secondo la tradizione contadina. Un dolce caldo e profumato di cannella.
           </p>
           <div class="dish-tags">
-            <span class="tag tag-oro">Fatto in casa</span>
-            <span class="tag tag-grigio">Mele · Cannella</span>
+            <span class="tag tag-grigio">🌾 Glutine</span>
+            <span class="tag tag-grigio">🥛 Latte</span>
+            <span class="tag tag-grigio">🥚 Uova</span>
+            <span class="tag tag-grigio">🌰 Frutta a guscio</span>
+            <span class="tag tag-grigio">❄️ Surgelato</span>
           </div>
           <div class="stepper" data-item="Strudel di Mele">
             <button type="button" onclick="changeQty('Strudel di Mele', -1)">–</button>
@@ -1675,17 +1736,57 @@
       <div class="dish-card">
         <div class="dish-img">🍮</div>
         <div class="dish-body">
-          <h3 class="dish-name">Panna Cotta ai Frutti di Bosco o Arancia e Amaretti</h3>
+          <h3 class="dish-name">Ricotta Fresca di Marsure con Salsa</h3>
           <p class="dish-desc">
-            Panna cotta vellutata, servita a scelta con una fresca coulis di frutti di bosco oppure con salsa all'arancia e amaretti sbriciolati. Un dolce al cucchiaio semplice ed elegante, per chiudere in leggerezza.
+            Ricotta fresca di Marsure servita con una salsa a scelta tra frutti di bosco o arancia e amaretti sbriciolati. Un dolce al cucchiaio semplice e genuino, per chiudere in leggerezza.
           </p>
           <div class="dish-tags">
-            <span class="tag tag-grigio">Senza glutine</span>
+            <span class="tag tag-grigio">🥛 Latte</span>
+            <span class="tag tag-grigio">🌾 Glutine <small>(salsa)</small></span>
+            <span class="tag tag-grigio">🌰 Frutta a guscio <small>(salsa amaretti)</small></span>
+            <span class="tag tag-grigio">❄️ Surgelato <small>(salsa frutti di bosco)</small></span>
           </div>
-          <div class="stepper" data-item="Panna Cotta ai Frutti di Bosco o Arancia e Amaretti">
-            <button type="button" onclick="changeQty('Panna Cotta ai Frutti di Bosco o Arancia e Amaretti', -1)">–</button>
+          <div class="stepper" data-item="Ricotta Fresca di Marsure con Salsa">
+            <button type="button" onclick="changeQty('Ricotta Fresca di Marsure con Salsa', -1)">–</button>
             <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Panna Cotta ai Frutti di Bosco o Arancia e Amaretti', 1)">+</button>
+            <button type="button" onclick="changeQty('Ricotta Fresca di Marsure con Salsa', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">🍰</div>
+        <div class="dish-body">
+          <h3 class="dish-name">Dolce del Giorno</h3>
+          <p class="dish-desc">
+            Il dolce disponibile cambia a seconda del giorno: chiedi alla cassa qual è quello del momento.
+          </p>
+          <div class="variant-cards" style="grid-template-columns: repeat(2, 1fr)">
+            <div class="variant-card">
+              <div class="v-icon">🍂</div>
+              <div class="v-name">Torta soffice con fichi e noci</div>
+              <div class="v-desc">Glutine · Latte · Uova · Frutta a guscio</div>
+            </div>
+            <div class="variant-card">
+              <div class="v-icon">🧁</div>
+              <div class="v-name">Muffin cioccolato, pere e nocciole (VEG)</div>
+              <div class="v-desc">Glutine · Frutta a guscio</div>
+            </div>
+            <div class="variant-card">
+              <div class="v-icon">🥧</div>
+              <div class="v-name">Crostata alla marmellata</div>
+              <div class="v-desc">Glutine · Uova · Latte</div>
+            </div>
+            <div class="variant-card">
+              <div class="v-icon">🍪</div>
+              <div class="v-name">Dolce sfoglia con mandorle e amaretti</div>
+              <div class="v-desc">Glutine · Latte · Uova · Frutta a guscio</div>
+            </div>
+          </div>
+          <div class="stepper" data-item="Dolce del Giorno" style="margin-top:.9rem">
+            <button type="button" onclick="changeQty('Dolce del Giorno', -1)">–</button>
+            <span class="qty-value">0</span>
+            <button type="button" onclick="changeQty('Dolce del Giorno', 1)">+</button>
           </div>
         </div>
       </div>
