@@ -366,32 +366,11 @@
     }
     .reveal-toggle.open .reveal-toggle-icon { transform: rotate(45deg); }
 
-    .menu-hint {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      width: 100%;
-      border: none;
-      cursor: pointer;
-      background: var(--oro-c);
-      color: var(--terra-deep);
-      font-family: 'Jost', sans-serif;
-      font-weight: 600;
-      font-size: .85rem;
-      letter-spacing: .02em;
-      padding: .7rem 1.4rem;
-      transition: filter .15s ease;
-    }
-    .menu-hint:hover { filter: brightness(.96); }
-    .menu-hint-arrow {
-      display: inline-block;
-      animation: menuHintBounce 1.4s ease-in-out infinite;
-    }
-    @keyframes menuHintBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(4px); }
-    }
+    /* ─── Banner grande di apertura del Menù ─────── */
+    .reveal-toggle-lg { padding: 1.7rem 1.5rem; }
+    .reveal-toggle-lg .reveal-toggle-eyebrow { font-size: .72rem; margin-bottom: .3rem; }
+    .reveal-toggle-lg .reveal-toggle-label { font-size: 1.7rem; }
+    .reveal-toggle-lg .reveal-toggle-icon { font-size: 2.3rem; }
 
     .reveal-panel { display: none; }
     .reveal-panel.open { display: block; }
@@ -402,6 +381,16 @@
     }
     .reveal-panel.open .reveal-panel-inner {
       animation: revealFadeIn .45s ease forwards;
+    }
+    /* la tendina del Menù si apre "scorrendo" dall'alto verso il basso */
+    .reveal-panel.open .reveal-panel-inner.menu-curtain {
+      opacity: 1;
+      transform: none;
+      animation: menuCurtainDrop .7s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    @keyframes menuCurtainDrop {
+      from { clip-path: inset(0 0 100% 0); }
+      to   { clip-path: inset(0 0 0% 0); }
     }
     @keyframes revealFadeIn {
       from { opacity: 0; transform: translateY(-10px); }
@@ -948,11 +937,7 @@
     <span class="reveal-toggle-icon">＋</span>
   </button>
 
-  <button type="button" class="menu-hint" onclick="scrollToMain('menu', document.querySelectorAll('.main-btn')[2])">
-    🍽️ <span>Il menù è qui sotto</span> <span class="menu-hint-arrow">↓</span>
-  </button>
-
-  <div class="section-wrap" style="padding-top:0; padding-bottom:0">
+<div class="section-wrap" style="padding-top:0; padding-bottom:0">
     <div class="reveal-panel" id="attivitaPanel">
     <div class="reveal-panel-inner">
     <p class="section-intro" style="margin-top:0">I giorni con stand gastronomico, musica dal vivo e attività per tutta la famiglia. Ecco il programma della sagra.</p>
@@ -1262,15 +1247,16 @@
 
 <!-- ═══ MENÙ ═══════════════════════════════════════════════ -->
 <section class="page-section" id="menu">
-  <button type="button" class="reveal-toggle reveal-toggle-peach" id="menuToggle" onclick="toggleReveal('menuPanel', this)" aria-expanded="false" aria-controls="menuPanel" data-label-closed="Scopri il menù" data-label-open="Nascondi il menù">
+  <button type="button" class="reveal-toggle reveal-toggle-peach reveal-toggle-lg" id="menuToggle" onclick="toggleReveal('menuPanel', this)" aria-expanded="false" aria-controls="menuPanel" data-label-closed="Scopri il menù" data-label-open="Nascondi il menù">
     <span>
-      <span class="reveal-toggle-label">🍽️ Scopri il menù</span>
+      <span class="reveal-toggle-eyebrow">Chioschi aperti</span>
+      <span class="reveal-toggle-label">🍽️ Il Menù</span>
     </span>
     <span class="reveal-toggle-icon">＋</span>
   </button>
 
   <div class="reveal-panel" id="menuPanel">
-  <div class="reveal-panel-inner" style="padding-top:0">
+  <div class="reveal-panel-inner menu-curtain" style="padding-top:0">
 
   <nav class="cat-nav">
     <button class="cat-btn active" onclick="scrollToCat('#primi', this)">🍲 Primi</button>
@@ -1860,6 +1846,22 @@
       toggleReveal(btn.getAttribute('aria-controls'), btn);
     }
   }
+
+  /* Il Menù si apre da solo, come una tendina, quando il suo banner
+     entra nello schermo scorrendo la pagina (non richiede un click). */
+  (function () {
+    const menuToggle = document.getElementById('menuToggle');
+    if (!menuToggle) return;
+    const menuAutoObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          autoOpenReveal('menu');
+          menuAutoObserver.unobserve(menuToggle);
+        }
+      });
+    }, { threshold: .6 });
+    menuAutoObserver.observe(menuToggle);
+  })();
 
   function toggleReveal(panelId, btn) {
     const panel = document.getElementById(panelId);
