@@ -408,81 +408,6 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ─── TENDE: il Menù si apre scorrendo (scroll-driven, via transform) ── */
-    .curtain {
-      position: relative;
-      height: 145vh;
-      background: var(--testo);
-    }
-    .curtain-sticky {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow: hidden;
-    }
-    .curtain-backdrop {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: var(--crema);
-      padding: 0 1.8rem;
-    }
-    .curtain-eyebrow {
-      font-family: 'Space Mono', monospace;
-      font-weight: 700;
-      font-size: .68rem;
-      letter-spacing: .3em;
-      text-transform: uppercase;
-      color: var(--terra-deep);
-    }
-    .curtain-title {
-      font-family: 'Jost', sans-serif;
-      font-weight: 500;
-      letter-spacing: -.03em;
-      line-height: .88;
-      font-size: clamp(4.5rem, 26vw, 9.4rem);
-      margin: .7rem 0;
-    }
-    .curtain-sub {
-      font-size: clamp(.94rem, 4.4vw, 1.125rem);
-      color: var(--grigio);
-      max-width: 300px;
-    }
-    .curtain-panel {
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 50%;
-      display: flex;
-      justify-content: center;
-      will-change: transform;
-    }
-    .curtain-panel-top {
-      top: 0;
-      background: var(--peach);
-      align-items: flex-end;
-      padding-bottom: 1.4rem;
-      transform: translateY(calc(var(--p, 0) * -101%));
-    }
-    .curtain-panel-bottom {
-      bottom: 0;
-      background: var(--sage);
-      align-items: flex-start;
-      padding-top: 1.4rem;
-      transform: translateY(calc(var(--p, 0) * 101%));
-    }
-    .curtain-cue {
-      font-family: 'Space Mono', monospace;
-      font-weight: 700;
-      font-size: .75rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-    }
-
     .menu-section {
       margin-top: 2.8rem;
       scroll-margin-top: calc(var(--main-nav-h) + var(--cat-nav-h) + 10px);
@@ -1337,22 +1262,15 @@
 
 <!-- ═══ MENÙ ═══════════════════════════════════════════════ -->
 <section class="page-section" id="menu">
-  <!-- tende che si aprono scorrendo, rivelando il menù -->
-  <div class="curtain" data-curtain>
-    <div class="curtain-sticky">
-      <div class="curtain-backdrop">
-        <div class="curtain-eyebrow">Chioschi aperti</div>
-        <div class="curtain-title">Menù</div>
-        <div class="curtain-sub">Scorri per scoprire il menù e scegliere in anticipo cosa mangiare.</div>
-      </div>
-      <div class="curtain-panel curtain-panel-top">
-        <div class="curtain-cue">Scopri il menù ▲</div>
-      </div>
-      <div class="curtain-panel curtain-panel-bottom">
-        <div class="curtain-cue">▼ Scorri</div>
-      </div>
-    </div>
-  </div>
+  <button type="button" class="reveal-toggle reveal-toggle-peach" id="menuToggle" onclick="toggleReveal('menuPanel', this)" aria-expanded="false" aria-controls="menuPanel" data-label-closed="Scopri il menù" data-label-open="Nascondi il menù">
+    <span>
+      <span class="reveal-toggle-label">🍽️ Scopri il menù</span>
+    </span>
+    <span class="reveal-toggle-icon">＋</span>
+  </button>
+
+  <div class="reveal-panel" id="menuPanel">
+  <div class="reveal-panel-inner" style="padding-top:0">
 
   <nav class="cat-nav">
     <button class="cat-btn active" onclick="scrollToCat('#primi', this)">🍲 Primi</button>
@@ -1819,6 +1737,9 @@
     </section>
 
   </main>
+
+  </div>
+  </div>
 </section>
 
 <!-- ═══ PRENOTAZIONI ═══════════════════════════════════════ -->
@@ -1930,7 +1851,7 @@
   }
 
   /* ─── Blocco apribile (Attività) ─── */
-  const revealTogglesBySection = { attivita: 'attivitaToggle' };
+  const revealTogglesBySection = { attivita: 'attivitaToggle', menu: 'menuToggle' };
 
   function autoOpenReveal(sectionId) {
     const toggleId = revealTogglesBySection[sectionId];
@@ -1949,24 +1870,6 @@
     // solo l'icona (+/×), il testo non si trasforma mai in un "nascondi"
     btn.classList.toggle('open', willOpen);
   }
-
-  /* Le tende del Menù si aprono seguendo lo scroll (transform, non altezza:
-     resta fluido anche durante lo scroll attivo, senza scatti). */
-  (function () {
-    const curtain = document.querySelector('[data-curtain]');
-    if (!curtain) return;
-    let raf = 0;
-    const update = () => {
-      raf = 0;
-      const vh = window.innerHeight;
-      const travel = curtain.offsetHeight - vh;
-      let p = travel > 0 ? (window.pageYOffset - curtain.offsetTop) / travel : 0;
-      p = Math.max(0, Math.min(1, p));
-      curtain.style.setProperty('--p', p.toFixed(4));
-    };
-    window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
-    requestAnimationFrame(update);
-  })();
 
   const mainIds = ['home', 'attivita', 'menu', 'prenotazioni'];
   const mainSections = mainIds.map(id => document.getElementById(id));
