@@ -371,6 +371,29 @@
     .reveal-toggle-lg .reveal-toggle-eyebrow { font-size: .72rem; margin-bottom: .3rem; }
     .reveal-toggle-lg .reveal-toggle-label { font-size: 1.7rem; }
     .reveal-toggle-lg .reveal-toggle-icon { font-size: 2.3rem; }
+    .menu-scroll-note {
+      margin: 0;
+      text-align: center;
+      background: var(--crema);
+      color: var(--grigio);
+      font-size: .72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      padding: .5rem 1rem;
+    }
+    .menu-order-tip {
+      display: flex;
+      gap: .6rem;
+      align-items: flex-start;
+      background: var(--peach);
+      color: var(--testo);
+      font-size: .92rem;
+      line-height: 1.45;
+      padding: .9rem 1.1rem;
+      margin: 0 1rem 1.4rem;
+      border-radius: 12px;
+    }
 
     .reveal-panel { display: none; }
     .reveal-panel.open { display: block; }
@@ -943,175 +966,13 @@
     <p class="section-intro" style="margin-top:0">I giorni con stand gastronomico, musica dal vivo e attività per tutta la famiglia. Ecco il programma della sagra.</p>
 
     <div class="schedule-tabs">
-      <button class="day-btn active" onclick="showDay('day1', this)">Sab 8</button>
-      <button class="day-btn" onclick="showDay('day2', this)">Dom 9</button>
-      <button class="day-btn" onclick="showDay('day3', this)">Ven 14</button>
+      <button class="day-btn active" onclick="showDay('day3', this)">Ven 14</button>
       <button class="day-btn" onclick="showDay('day4', this)">Sab 15</button>
       <button class="day-btn" onclick="showDay('day5', this)">Dom 16</button>
     </div>
 
-    <!-- SABATO 8 AGOSTO -->
-    <div class="schedule-day active" id="day1">
-      <div class="schedule-item">
-        <div class="schedule-time">10:00</div>
-        <div class="schedule-icon">🌲</div>
-        <div>
-          <div class="schedule-title">Forest bathing</div>
-          <div class="schedule-sub">Pro loco — Esperienza olistica di riconnessione con la natura a cura di Alberto Cancian.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">15-17</div>
-        <div class="schedule-icon">🎶</div>
-        <div>
-          <div class="schedule-title">Canti di Terra</div>
-          <div class="schedule-sub">Casa della Conoscenza — Ambienti acustici, polifonie e vocalità nei canti di tradizione orale con Giuseppina Casarin.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">17-19</div>
-        <div class="schedule-icon">🧺</div>
-        <div>
-          <div class="schedule-title">Laboratori d'intreccio</div>
-          <div class="schedule-sub">Cortile Bolèt — "Intreccia la fantasia" (bambini) con Mirco Pederzini e Daniela Mirri; "Per fare un fiore…" (tutti) con Alessandra Sottocornola.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">17:00</div>
-        <div class="schedule-icon">🎻</div>
-        <div>
-          <div class="schedule-title">Porte 'Perte</div>
-          <div class="schedule-sub">Pro loco — Musica tradizionale europea e balfolk.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">17:30</div>
-        <div class="schedule-icon">⛪</div>
-        <div>
-          <div class="schedule-title">Suggestioni itineranti</div>
-          <div class="schedule-sub">Pro loco — Musica sacra con il coro Gjaluth, diretto da Lorenzo Benedet, al pianoforte Alessandro Pisano. Il restauratore Renato Portolan racconta gli affreschi della Pieve e il restauro dopo il terremoto del '76.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">19:00</div>
-        <div class="schedule-icon">🍽️</div>
-        <div>
-          <div class="schedule-title">Chioschi aperti</div>
-          <div class="schedule-sub">Frico, pitina IGP, trota, formaggi, pistùm… e dolcetti per tutti i gusti!</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">21:00</div>
-        <div class="schedule-icon">🎻</div>
-        <div>
-          <div class="schedule-title">Rolling Around</div>
-          <div class="schedule-sub">Pro loco — Musica celtica/irlandese.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">23:00</div>
-        <div class="schedule-icon">🎻</div>
-        <div>
-          <div class="schedule-title">Trio Hilt</div>
-          <div class="schedule-sub">Pro loco — Musica tradizionale europea e balfolk.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- DOMENICA 9 AGOSTO -->
-    <div class="schedule-day" id="day2">
-      <div class="schedule-item">
-        <div class="schedule-time">9:00</div>
-        <div class="schedule-icon">🧘</div>
-        <div>
-          <div class="schedule-title">Yoga sul prato</div>
-          <div class="schedule-sub">Via Roma — Il valore dell'attesa, tra aspettativa e intenzione: avvicinamento allo yoga con Paola Turelli.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">10:00</div>
-        <div class="schedule-icon">🐸</div>
-        <div>
-          <div class="schedule-title">Amphibia</div>
-          <div class="schedule-sub">Loc. Comesta — Visita guidata all'oasi naturalistica per la conservazione di anfibi autoctoni, con l'erpetologo Claudio Bagnoli.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">10-12</div>
-        <div class="schedule-icon">🧺</div>
-        <div>
-          <div class="schedule-title">Laboratori d'intreccio</div>
-          <div class="schedule-sub">Cortile Bolèt — Libellule (tutti) con Stefano Mascherin; Dai che intrecemo! (bambini) con Claudio "Caio" Zuffo; Per fare un fiore… (tutti) con Alessandra Sottocornola; Parata per pazzi pupazzi (tutti) con Ilaria Bomben.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">10-19</div>
-        <div class="schedule-icon">🧶</div>
-        <div>
-          <div class="schedule-title">Lana e dintorni</div>
-          <div class="schedule-sub">Cortile Bolèt — Laboratorio di feltro con Caterina De Boni.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">12:30</div>
-        <div class="schedule-icon">🍽️</div>
-        <div>
-          <div class="schedule-title">Chioschi aperti</div>
-          <div class="schedule-sub">Frico, pitina IGP, trota, formaggi, pistùm… e dolcetti per tutti i gusti!</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">15-17</div>
-        <div class="schedule-icon">💃</div>
-        <div>
-          <div class="schedule-title">Danze balcaniche</div>
-          <div class="schedule-sub">Pro loco — Stage con Nilla Patrizio.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">15-19</div>
-        <div class="schedule-icon">🧺</div>
-        <div>
-          <div class="schedule-title">Laboratori d'intreccio</div>
-          <div class="schedule-sub">Cortile Bolèt — Porta aglio (adulti) con Omar Ghinozzi; Fatti una borsa (adulti) con Mirco Pederzini; Cesto portapane (adulti) con Daniela Mirri; Volta la carta (tutti) con Lisetta Totis.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">17:00</div>
-        <div class="schedule-icon">🎻</div>
-        <div>
-          <div class="schedule-title">Banda del Mago</div>
-          <div class="schedule-sub">Pro loco — Folk europeo e balfolk.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">17-19</div>
-        <div class="schedule-icon">🧺</div>
-        <div>
-          <div class="schedule-title">Laboratori d'intreccio</div>
-          <div class="schedule-sub">Cortile Bolèt — Dai che intrecemo! (bambini) con Claudio "Caio" Zuffo; Crea una lanterna (tutti) con Stefano Mascherin.</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">19:00</div>
-        <div class="schedule-icon">🍽️</div>
-        <div>
-          <div class="schedule-title">Chioschi aperti</div>
-          <div class="schedule-sub">Frico, pitina IGP, trota, formaggi, pistùm… e dolcetti per tutti i gusti!</div>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">21:00</div>
-        <div class="schedule-icon">🎻</div>
-        <div>
-          <div class="schedule-title">Rudemà</div>
-          <div class="schedule-sub">Pro loco — Musica tradizionale italiana ed europea.</div>
-        </div>
-      </div>
-    </div>
-
     <!-- VENERDÌ 14 AGOSTO -->
-    <div class="schedule-day" id="day3">
+    <div class="schedule-day active" id="day3">
       <div class="schedule-item">
         <div class="schedule-time">15:30</div>
         <div class="schedule-icon">🎭</div>
@@ -1254,9 +1115,12 @@
     </span>
     <span class="reveal-toggle-icon">＋</span>
   </button>
+  <p class="menu-scroll-note">▼ Si apre scorrendo verso il basso</p>
 
   <div class="reveal-panel" id="menuPanel">
   <div class="reveal-panel-inner menu-curtain" style="padding-top:0">
+
+  <p class="menu-order-tip">💡 Su ogni piatto usa i pulsanti “+” e “–” per comporre il tuo ordine: alla fine trovi un riepilogo pronto da mostrare in cassa, per ordinare più velocemente.</p>
 
   <nav class="cat-nav">
     <button class="cat-btn active" onclick="scrollToCat('#primi', this)">🍲 Primi</button>
