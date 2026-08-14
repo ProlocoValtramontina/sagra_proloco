@@ -928,7 +928,7 @@
     <button class="main-btn" onclick="scrollToMain('attivita', this)">🎉 Attività</button>
     <button class="main-btn" onclick="scrollToMain('menu', this)">🍽️ Menù</button>
     <button class="main-btn" onclick="scrollToMain('prenotazioni', this)">
-      🛒 Prenotazioni
+      🧾 Riepilogo ordine
       <span class="nav-cart-badge cart-badge">0</span>
     </button>
   </div>
@@ -1207,6 +1207,7 @@
         </div>
       </div>
 
+      <!-- Temporaneamente non disponibili questa sera
       <div class="dish-card">
         <div class="dish-img">🍅</div>
         <div class="dish-body">
@@ -1244,6 +1245,7 @@
           </div>
         </div>
       </div>
+      -->
     </section>
 
     <!-- ═══ TROTA ════════════════════════════════════════════ -->
@@ -1593,19 +1595,19 @@
   </div>
 </section>
 
-<!-- ═══ PRENOTAZIONI ═══════════════════════════════════════ -->
+<!-- ═══ RIEPILOGO ORDINE ═══════════════════════════════════════ -->
 <section class="page-section" id="prenotazioni">
   <div class="section-wrap">
     <div class="section-header">
-      <div class="section-icon oro">🛒</div>
-      <h2>Prenotazioni</h2>
+      <div class="section-icon oro">🧾</div>
+      <h2>Riepilogo ordine</h2>
       <div class="section-line"></div>
     </div>
     <p class="section-intro">Componi il tuo ordine dal menù con i pulsanti “+” e “–”, poi conferma per generare lo scontrino virtuale da mostrare alla cassa.</p>
 
     <div class="cart-box" id="cart-editor">
       <div id="cart-empty" class="cart-empty">
-        Il carrello è vuoto. Sfoglia il menù e aggiungi i piatti che desideri.
+        Il riepilogo è vuoto. Sfoglia il menù e aggiungi i piatti che desideri.
       </div>
       <div id="cart-list"></div>
 
@@ -1615,15 +1617,15 @@
       </div>
 
       <div class="cart-actions">
-        <span class="cart-total-badge">Piatti nel carrello: <strong id="cart-total-count">0</strong></span>
+        <span class="cart-total-badge">Piatti nel riepilogo: <strong id="cart-total-count">0</strong></span>
         <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
           <button class="btn btn-ghost" onclick="scrollToMain('menu', document.querySelectorAll('.main-btn')[2])">Vai al menù</button>
-          <button class="btn btn-verde" onclick="clearCart()">Svuota carrello</button>
+          <button class="btn btn-verde" onclick="clearCart()">Svuota riepilogo</button>
           <button class="btn btn-confirm" id="confirm-order-btn" onclick="confirmOrder()">✅ Conferma ordine</button>
         </div>
       </div>
 
-      <p class="cart-note">Il carrello serve solo a preparare l'ordine: il pagamento avviene alla cassa, mentre il servizio è direttamente al tavolo.</p>
+      <p class="cart-note">Il riepilogo serve solo a preparare l'ordine: il pagamento avviene alla cassa, mentre il servizio è direttamente al tavolo.</p>
     </div>
 
     <div class="cart-box" id="cart-receipt" style="display:none">
@@ -1656,9 +1658,9 @@
   </div>
 </div>
 
-<!-- ═══ FAB CARRELLO ═══════════════════════════════════════ -->
-<button class="cart-fab" onclick="scrollToMain('prenotazioni', document.querySelectorAll('.main-btn')[3])" aria-label="Vai alle prenotazioni">
-  🛒
+<!-- ═══ FAB RIEPILOGO ═══════════════════════════════════════ -->
+<button class="cart-fab" onclick="scrollToMain('prenotazioni', document.querySelectorAll('.main-btn')[3])" aria-label="Vai al riepilogo ordine">
+  🧾
   <span class="fab-badge cart-badge">0</span>
 </button>
 
@@ -1799,7 +1801,7 @@
     if (btn) btn.classList.add('active');
   }
 
-  /* ─── Carrello prenotazioni ─── */
+  /* ─── Riepilogo ordine ─── */
   const CART_KEY = 'sagraCartItems';
   const CONFIRM_KEY = 'sagraCartConfirmed';
   const TABLE_KEY = 'sagraTableNumber';
@@ -1881,7 +1883,7 @@
       if (qtyEl) qtyEl.textContent = qty;
     });
 
-    // badge del carrello (nav + fab)
+    // badge del riepilogo (nav + fab)
     const total = Object.values(cart).reduce((a, b) => a + b, 0);
     document.querySelectorAll('.cart-badge').forEach(b => {
       b.textContent = total;
