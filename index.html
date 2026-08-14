@@ -71,14 +71,14 @@
       font-weight: 500;
       letter-spacing: -.02em;
       line-height: .86;
-      font-size: clamp(2.2rem, 11.5vw, 5.75rem);
+      font-size: clamp(2.35rem, 12vw, 6.1rem);
     }
     .hero-title-sub {
       font-family: 'Jost', sans-serif;
       font-weight: 500;
       letter-spacing: -.02em;
       line-height: .88;
-      font-size: clamp(2.2rem, 11.5vw, 5.75rem);
+      font-size: clamp(2.35rem, 12vw, 6.1rem);
     }
     /* ogni riga del titolo resta su una sola linea (niente "Sagra / della / Trota") */
     .hero-title span, .hero-title-sub span {
@@ -1119,7 +1119,7 @@
   <div class="reveal-panel" id="menuPanel">
   <div class="reveal-panel-inner menu-curtain" style="padding-top:0">
 
-  <p class="menu-order-tip">💡 Su ogni piatto usa i pulsanti “+” e “–” per comporre il tuo ordine: alla fine trovi un riepilogo pronto da mostrare in cassa, per ordinare più velocemente.</p>
+  <p class="menu-order-tip">💡 Usa “+” e “–” per scegliere in anticipo cosa mangiare e arrivare in cassa già pronto: non è una prenotazione.</p>
 
   <nav class="cat-nav">
     <button class="cat-btn active" onclick="scrollToCat('#primi', this)">🍲 Primi</button>
@@ -1553,39 +1553,17 @@
 
       <div class="dish-card">
         <div class="dish-img">
-          <img src="new%20dolci%20mix.jpg" alt="Dolce del Giorno" loading="lazy">
+          <img src="new%20dolci%20mix.jpg" alt="Delizie del Giorno" loading="lazy">
         </div>
         <div class="dish-body">
-          <h3 class="dish-name">Dolce del Giorno</h3>
+          <h3 class="dish-name">🍯 Delizie del Giorno</h3>
           <p class="dish-desc">
-            Il dolce disponibile cambia a seconda del giorno: chiedi alla cassa qual è quello del momento.
+            Ogni giorno le nostre volontarie preparano dolci fatti in casa diversi: crostate, torte ai fichi e non solo. Chiedi alla cassa cosa c'è di disponibile oggi!
           </p>
-          <div class="variant-cards" style="grid-template-columns: repeat(2, 1fr)">
-            <div class="variant-card">
-              <div class="v-icon">🍂</div>
-              <div class="v-name">Torta soffice con fichi e noci</div>
-              <div class="v-desc">Glutine · Latte · Uova · Frutta a guscio</div>
-            </div>
-            <div class="variant-card">
-              <div class="v-icon">🧁</div>
-              <div class="v-name">Muffin cioccolato, pere e nocciole (VEG)</div>
-              <div class="v-desc">Glutine · Frutta a guscio</div>
-            </div>
-            <div class="variant-card">
-              <div class="v-icon">🥧</div>
-              <div class="v-name">Crostata alla marmellata</div>
-              <div class="v-desc">Glutine · Uova · Latte</div>
-            </div>
-            <div class="variant-card">
-              <div class="v-icon">🍪</div>
-              <div class="v-name">Dolce sfoglia con mandorle e amaretti</div>
-              <div class="v-desc">Glutine · Latte · Uova · Frutta a guscio</div>
-            </div>
-          </div>
-          <div class="stepper" data-item="Dolce del Giorno" style="margin-top:.9rem">
-            <button type="button" onclick="changeQty('Dolce del Giorno', -1)">–</button>
+          <div class="stepper" data-item="Delizie del Giorno" style="margin-top:.9rem">
+            <button type="button" onclick="changeQty('Delizie del Giorno', -1)">–</button>
             <span class="qty-value">0</span>
-            <button type="button" onclick="changeQty('Dolce del Giorno', 1)">+</button>
+            <button type="button" onclick="changeQty('Delizie del Giorno', 1)">+</button>
           </div>
         </div>
       </div>
@@ -1605,7 +1583,7 @@
       <h2>Riepilogo ordine</h2>
       <div class="section-line"></div>
     </div>
-    <p class="section-intro">Componi il tuo ordine dal menù con i pulsanti “+” e “–”, poi conferma per generare lo scontrino virtuale da mostrare alla cassa.</p>
+    <p class="section-intro">Scegli qui in anticipo cosa mangiare, così arrivi alla cassa già pronto: non è una prenotazione.</p>
 
     <div class="cart-box" id="cart-editor">
       <div id="cart-empty" class="cart-empty">
@@ -1627,7 +1605,7 @@
         </div>
       </div>
 
-      <p class="cart-note">Il riepilogo serve solo a preparare l'ordine: il pagamento avviene alla cassa, mentre il servizio è direttamente al tavolo.</p>
+      <p class="cart-note">Questo è solo un promemoria per te: il pagamento avviene alla cassa e il servizio è direttamente al tavolo, non prenota nulla.</p>
     </div>
 
     <div class="cart-box" id="cart-receipt" style="display:none">
