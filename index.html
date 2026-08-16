@@ -1126,8 +1126,8 @@
 
   <nav class="cat-nav">
     <button class="cat-btn active" onclick="scrollToCat('#primi', this)">🍲 Primi</button>
-    <button class="cat-btn" onclick="scrollToCat('#trota', this)">🐟 Trota</button>
     <button class="cat-btn" onclick="scrollToCat('#secondi', this)">🔥 Secondi</button>
+    <button class="cat-btn" onclick="scrollToCat('#trota', this)">🐟 Trota</button>
     <button class="cat-btn" onclick="scrollToCat('#contorni', this)">🫘 Contorni</button>
     <button class="cat-btn" onclick="scrollToCat('#dolci', this)">🍰 Dolci</button>
   </nav>
@@ -1188,6 +1188,7 @@
         </div>
       </div>
 
+      <!-- Esaurito, temporaneamente nascosto
       <div class="dish-card">
         <div class="dish-img">
           <img src="new%20gnocchetti%20rag%C3%B9.jpeg" alt="Gnocchetti al Ragù" loading="lazy">
@@ -1209,6 +1210,8 @@
           </div>
         </div>
       </div>
+      -->
+
 
       <!-- Temporaneamente non disponibili questa sera
       <div class="dish-card">
@@ -1249,73 +1252,6 @@
         </div>
       </div>
       -->
-    </section>
-
-    <!-- ═══ TROTA ════════════════════════════════════════════ -->
-    <section class="menu-section" id="trota">
-      <div class="section-header">
-        <div class="section-icon acqua">🐟</div>
-        <h2>La Trota</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="dish-card">
-        <div class="dish-img">
-          <img src="new%20trota%20(1).jpeg" alt="Filetto di Trota con Patate Trifolate" loading="lazy">
-        </div>
-        <div class="dish-body">
-          <h3 class="dish-name">Filetto di Trota con Patate Trifolate</h3>
-          <p class="dish-desc">
-            La trota è l'anima di questa sagra: pesce del territorio, cotto a bassa temperatura sottovuoto per mantenerne la delicatezza, servito con patate trifolate. La proponiamo in quattro varianti.
-          </p>
-          <div class="variant-cards">
-            <div class="variant-card">
-              <div class="v-icon">🔥</div>
-              <div class="v-name">Trota Affumicata</div>
-              <div class="v-desc">Delicata affumicatura, per un gusto intenso e rustico</div>
-              <div class="stepper" data-item="Trota Affumicata">
-                <button type="button" onclick="changeQty('Trota Affumicata', -1)">–</button>
-                <span class="qty-value">0</span>
-                <button type="button" onclick="changeQty('Trota Affumicata', 1)">+</button>
-              </div>
-            </div>
-            <div class="variant-card">
-              <div class="v-icon">🌿</div>
-              <div class="v-name">Trota alle Erbe</div>
-              <div class="v-desc">Erbe aromatiche miste, burro, limone</div>
-              <div class="stepper" data-item="Trota alle Erbe">
-                <button type="button" onclick="changeQty('Trota alle Erbe', -1)">–</button>
-                <span class="qty-value">0</span>
-                <button type="button" onclick="changeQty('Trota alle Erbe', 1)">+</button>
-              </div>
-            </div>
-            <div class="variant-card">
-              <div class="v-icon">🍋</div>
-              <div class="v-name">Trota agli Agrumi</div>
-              <div class="v-desc">Scorza di arancia e limone, timo, un tocco di miele</div>
-              <div class="stepper" data-item="Trota agli Agrumi">
-                <button type="button" onclick="changeQty('Trota agli Agrumi', -1)">–</button>
-                <span class="qty-value">0</span>
-                <button type="button" onclick="changeQty('Trota agli Agrumi', 1)">+</button>
-              </div>
-            </div>
-            <div class="variant-card">
-              <div class="v-icon">🫒</div>
-              <div class="v-name">Trota Mediterranea</div>
-              <div class="v-desc">Pomodoro e origano</div>
-              <div class="stepper" data-item="Trota Mediterranea">
-                <button type="button" onclick="changeQty('Trota Mediterranea', -1)">–</button>
-                <span class="qty-value">0</span>
-                <button type="button" onclick="changeQty('Trota Mediterranea', 1)">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="dish-tags" style="margin-top:.9rem">
-            <span class="tag tag-grigio">🐟 Pesce</span>
-            <span class="tag tag-grigio">🥚 Uova</span>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- ═══ SECONDI ═════════════════════════════════════════ -->
@@ -1387,6 +1323,7 @@
         </div>
       </div>
 
+      <!-- Esaurito, temporaneamente nascosto
       <div class="dish-card">
         <div class="dish-img">
           <img src="frico.jpg" alt="Frico con Polenta Taragna" loading="lazy">
@@ -1406,6 +1343,8 @@
           </div>
         </div>
       </div>
+      -->
+
 
       <div class="dish-card">
         <div class="dish-img">
@@ -1444,6 +1383,73 @@
             <button type="button" onclick="changeQty('Formaggi e Pitina IGP con Polenta Taragna', -1)">–</button>
             <span class="qty-value">0</span>
             <button type="button" onclick="changeQty('Formaggi e Pitina IGP con Polenta Taragna', 1)">+</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TROTA ════════════════════════════════════════════ -->
+    <section class="menu-section" id="trota">
+      <div class="section-header">
+        <div class="section-icon acqua">🐟</div>
+        <h2>La Trota</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img">
+          <img src="new%20trota%20(1).jpeg" alt="Filetto di Trota con Patate Trifolate" loading="lazy">
+        </div>
+        <div class="dish-body">
+          <h3 class="dish-name">Filetto di Trota con Patate Trifolate</h3>
+          <p class="dish-desc">
+            La trota è l'anima di questa sagra: pesce del territorio, cotto a bassa temperatura sottovuoto per mantenerne la delicatezza, servito con patate trifolate. La proponiamo in quattro varianti.
+          </p>
+          <div class="variant-cards">
+            <div class="variant-card">
+              <div class="v-icon">🔥</div>
+              <div class="v-name">Trota Affumicata</div>
+              <div class="v-desc">Delicata affumicatura, per un gusto intenso e rustico</div>
+              <div class="stepper" data-item="Trota Affumicata">
+                <button type="button" onclick="changeQty('Trota Affumicata', -1)">–</button>
+                <span class="qty-value">0</span>
+                <button type="button" onclick="changeQty('Trota Affumicata', 1)">+</button>
+              </div>
+            </div>
+            <div class="variant-card">
+              <div class="v-icon">🌿</div>
+              <div class="v-name">Trota alle Erbe</div>
+              <div class="v-desc">Erbe aromatiche miste, burro, limone</div>
+              <div class="stepper" data-item="Trota alle Erbe">
+                <button type="button" onclick="changeQty('Trota alle Erbe', -1)">–</button>
+                <span class="qty-value">0</span>
+                <button type="button" onclick="changeQty('Trota alle Erbe', 1)">+</button>
+              </div>
+            </div>
+            <div class="variant-card">
+              <div class="v-icon">🍋</div>
+              <div class="v-name">Trota agli Agrumi</div>
+              <div class="v-desc">Scorza di arancia e limone, timo, un tocco di miele</div>
+              <div class="stepper" data-item="Trota agli Agrumi">
+                <button type="button" onclick="changeQty('Trota agli Agrumi', -1)">–</button>
+                <span class="qty-value">0</span>
+                <button type="button" onclick="changeQty('Trota agli Agrumi', 1)">+</button>
+              </div>
+            </div>
+            <div class="variant-card">
+              <div class="v-icon">🫒</div>
+              <div class="v-name">Trota Mediterranea</div>
+              <div class="v-desc">Pomodoro e origano</div>
+              <div class="stepper" data-item="Trota Mediterranea">
+                <button type="button" onclick="changeQty('Trota Mediterranea', -1)">–</button>
+                <span class="qty-value">0</span>
+                <button type="button" onclick="changeQty('Trota Mediterranea', 1)">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="dish-tags" style="margin-top:.9rem">
+            <span class="tag tag-grigio">🐟 Pesce</span>
+            <span class="tag tag-grigio">🥚 Uova</span>
           </div>
         </div>
       </div>
